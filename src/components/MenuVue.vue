@@ -3,8 +3,6 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '@/router';
 
-
-
 const alacarte = ref(false);
 
 function showAlacarte() {
@@ -50,12 +48,12 @@ watch(router.currentRoute, () => {
               src="/public/logo-alacarte.svg">
             <p>Á la carte</p>
           </button></li>
-        <div v-if="alacarte">
+        <div v-if="alacarte" class="submenu">
           <ul>
-            <li class="router" :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">
+            <li :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">
               <RouterLink to="/entradas">Entradas</RouterLink>
             </li>
-            <li class="router" :class="{ 'selectedMenu': (teste3 == '/principais') }">
+            <li :class="{ 'selectedMenu': (teste3 == '/principais') }">
               <RouterLink to="/principais">Pratos Principais</RouterLink>
             </li>
           </ul>
@@ -65,15 +63,15 @@ watch(router.currentRoute, () => {
               src="/public/logo-rodizio.svg">
             <p>Rodízio</p>
           </button></li>
-        <div v-if="rodizio">
+        <div v-if="rodizio" class="submenu">
           <ul>
-            <li class="router" :class="{ 'selectedMenu': (teste3 == '/') }">
+            <li :class="{ 'selectedMenu': (teste3 == '/') }">
               <RouterLink to="/">Entradas</RouterLink>
             </li>
-            <li class="router" :class="{ 'selectedMenu': (teste3 == '/2') }">
+            <li :class="{ 'selectedMenu': (teste3 == '/2') }">
               <RouterLink to="/">Pratos Principais</RouterLink>
             </li>
-            <li class="router" :class="{ 'selectedMenu': (teste3 == '/1') }">
+            <li :class="{ 'selectedMenu': (teste3 == '/1') }">
               <RouterLink to="/">Sobremesas</RouterLink>
 
             </li>
@@ -83,18 +81,18 @@ watch(router.currentRoute, () => {
         <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
               src="/public/logo-bebida.svg">
             <p>Bebidas</p>
-          </button></li>
-        <div v-if="bebidas">
+          </button></li> 
+        <div v-if="bebidas" class="submenu">
           <ul>
-            <li class="router" :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">
+            <li :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">
               <RouterLink to="/nalcolicas">Não alcóolicas</RouterLink>
             </li>
-            <li class="router" :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">
+            <li :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">
               <RouterLink to="/alcolicas">Alcóolicas</RouterLink>
             </li>
           </ul>
         </div>
-        <li :class="{ 'selectedMenu': (teste3 = '/sobremesas') }">
+        <li>
           <RouterLink to="/sobremesas"><img src="/public/logo-sobremesa.svg">Sobremesas</RouterLink>
         </li>
       </ul>
@@ -115,8 +113,8 @@ main {
   width: 200px;
   top: 15.7 vh;
   left: 0;
-  background-color: rgba(40, 40, 40, 1);
   position: absolute;
+  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
 
 }
 
@@ -124,6 +122,7 @@ main {
   list-style-type: none;
   padding: 0;
   transition: 0.3s;
+
 }
 
 .sidebar ul li {
@@ -142,9 +141,11 @@ main {
   text-align: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
-  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   padding: 25px;
+  background-color: rgba(40, 40, 40, 1);
+  transition: 0.3s;
 }
+
 
 button {
   width: 100%;
@@ -175,9 +176,16 @@ li button:hover {
   background-color: rgba(94, 94, 94, 1);
 }
 
-li:hover {
+.submenu li a:hover {
   margin: 0;
   background-color: rgba(94, 94, 94, 1);
+}
+
+.sidebar li a:hover {
+  margin: 0;
+  background-color: rgba(94, 94, 94, 1);
+  border-right: rgba(156, 156, 156, 1) 3px solid;
+
 }
 
 .selectedMenu {
@@ -188,7 +196,7 @@ li:hover {
 
 
 
-.router {
+.submenu ul li a {
   width: 100%;
   height: 100px;
   text-decoration: none;
@@ -204,5 +212,7 @@ li:hover {
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   background-color: rgba(69, 69, 69, 1);
   padding: 20px;
+  padding-top: 10px;
 }
+
 </style>
