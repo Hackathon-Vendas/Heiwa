@@ -48,13 +48,13 @@ watch(router.currentRoute, () => {
               src="/public/logo-alacarte.svg">
             <p>Á la carte</p>
           </button></li>
-        <div v-if="alacarte" class="submenu">
+        <div v-if="alacarte">
           <ul>
-            <li :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">
-              <RouterLink to="/entradas">Entradas</RouterLink>
+            <li >
+              <RouterLink to="/entradas" :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">Entradas</RouterLink>
             </li>
-            <li :class="{ 'selectedMenu': (teste3 == '/principais') }">
-              <RouterLink to="/principais">Pratos Principais</RouterLink>
+            <li >
+              <RouterLink to="/principais" :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</RouterLink>
             </li>
           </ul>
         </div>
@@ -63,16 +63,16 @@ watch(router.currentRoute, () => {
               src="/public/logo-rodizio.svg">
             <p>Rodízio</p>
           </button></li>
-        <div v-if="rodizio" class="submenu">
+        <div v-if="rodizio">
           <ul>
-            <li :class="{ 'selectedMenu': (teste3 == '/') }">
-              <RouterLink to="/">Entradas</RouterLink>
+            <li >
+              <RouterLink to="/" :class="{ 'selectedMenu': (teste3 == '/') }">Entradas</RouterLink>
             </li>
-            <li :class="{ 'selectedMenu': (teste3 == '/2') }">
-              <RouterLink to="/">Pratos Principais</RouterLink>
+            <li >
+              <RouterLink to="/2" :class="{ 'selectedMenu': (teste3 == '/2') }">Pratos Principais</RouterLink>
             </li>
-            <li :class="{ 'selectedMenu': (teste3 == '/1') }">
-              <RouterLink to="/">Sobremesas</RouterLink>
+            <li >
+              <RouterLink to="/1" :class="{ 'selectedMenu': (teste3 == '/1') }">Sobremesas</RouterLink>
 
             </li>
           </ul>
@@ -82,18 +82,18 @@ watch(router.currentRoute, () => {
               src="/public/logo-bebida.svg">
             <p>Bebidas</p>
           </button></li> 
-        <div v-if="bebidas" class="submenu">
+        <div v-if="bebidas">
           <ul>
-            <li :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">
-              <RouterLink to="/nalcolicas">Não alcóolicas</RouterLink>
+            <li>
+              <RouterLink to="/nalcolicas" :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">Não alcóolicas</RouterLink>
             </li>
-            <li :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">
-              <RouterLink to="/alcolicas">Alcóolicas</RouterLink>
+            <li>
+              <RouterLink to="/alcolicas" :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">Alcóolicas</RouterLink>
             </li>
           </ul>
         </div>
-        <li>
-          <RouterLink to="/sobremesas"><img src="/public/logo-sobremesa.svg">Sobremesas</RouterLink>
+        <li :class="{ 'selectedMenu': (teste3 == '/sobremesas') }">
+          <button @click="router.push('/sobremesas')"><img src="/public/logo-sobremesa.svg"><p>Sobremesas</p></button>
         </li>
       </ul>
     </div>
@@ -141,11 +141,10 @@ main {
   text-align: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
-  padding: 25px;
-  background-color: rgba(40, 40, 40, 1);
+  padding: 35px;
+  background-color: rgba(69, 69, 69, 1);
   transition: 0.3s;
 }
-
 
 button {
   width: 100%;
@@ -153,7 +152,6 @@ button {
   border: none;
   transition: 0.3s;
 }
-
 
 button p {
   font-family: 'Inter', normal, sans-serif;
@@ -168,7 +166,7 @@ button p {
 }
 
 img {
-  margin-bottom: 20%;
+   margin-bottom: 20%;
   margin-top: 20%;
 }
 
@@ -176,43 +174,14 @@ li button:hover {
   background-color: rgba(94, 94, 94, 1);
 }
 
-.submenu li a:hover {
-  margin: 0;
+
+li a:hover {
   background-color: rgba(94, 94, 94, 1);
 }
 
-.sidebar li a:hover {
-  margin: 0;
-  background-color: rgba(94, 94, 94, 1);
-  border-right: rgba(156, 156, 156, 1) 3px solid;
-
-}
 
 .selectedMenu {
-  margin: 0;
-  background-color: rgba(94, 94, 94, 1);
+  background-color: rgba(94, 94, 94, 1) !important;
   border-right: rgba(156, 156, 156, 1) 3px solid;
 }
-
-
-
-.submenu ul li a {
-  width: 100%;
-  height: 100px;
-  text-decoration: none;
-  display: block;
-  top: 354px;
-  font-family: 'Inter', normal, sans-serif;
-  font-weight: 900;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  letter-spacing: 0.25em;
-  color: #FFFFFF;
-  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
-  background-color: rgba(69, 69, 69, 1);
-  padding: 20px;
-  padding-top: 10px;
-}
-
 </style>
