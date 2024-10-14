@@ -26,6 +26,7 @@ const rodizio = ref(false);
 const bebidas = ref(false);
 
 
+
 const teste2 = computed(() => router.currentRoute.value)
 const teste3 = ref("")
 
@@ -92,8 +93,8 @@ watch(router.currentRoute, () => {
             </li>
           </ul>
         </div>
-        <li :class="{ 'selectedMenu': (teste3 == '/sobremesas') }">
-          <button @click="router.push('/sobremesas')"><img src="/public/logo-sobremesa.svg"><p>Sobremesas</p></button>
+        <li>
+          <button @click="router.push('/sobremesas')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img src="/public/logo-sobremesa.svg"><p>Sobremesas</p></button>
         </li>
       </ul>
     </div>
