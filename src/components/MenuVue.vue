@@ -141,9 +141,11 @@ main {
   text-align: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
-  padding: 35px;
+  padding: 45px;
   background-color: rgba(69, 69, 69, 1);
   transition: 0.3s;
+  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.44));
+  width: 100%;
 }
 
 button {
@@ -170,18 +172,9 @@ img {
   margin-top: 20%;
 }
 
-li button:hover {
-  background-color: rgba(94, 94, 94, 1);
-}
-
-
-li a:hover {
-  background-color: rgba(94, 94, 94, 1);
-}
-
-
 .selectedMenu {
   background-color: rgba(94, 94, 94, 1) !important;
   border-right: rgba(156, 156, 156, 1) 3px solid;
 }
+
 </style>
