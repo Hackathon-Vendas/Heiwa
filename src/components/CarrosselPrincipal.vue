@@ -1,79 +1,43 @@
-<script>
-const imagens = [
+<script setup>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import { Autoplay } from 'swiper/modules';
+
+const fotos = [
   "img1.jpeg",
-  "img1.jpeg",
-  "img1.jpeg",
-]
-  // I  mport Swiper Vue.js components
-  import { Swiper, SwiperSlide } from 'swiper/vue';
+  "img2.jpg",
+  "img3.jpg",
+];
 
-  // Import Swiper styles
-  import 'swiper/css';
+const modules = [Autoplay];
 
-  import 'swiper/css/navigation';
-
-
-  // import required modules
-  import { Navigation } from 'swiper/modules';
-
-  export default {
-    components: {
-      Swiper,
-      SwiperSlide,
-    },
-    setup() {
-      return {
-        modules: [Navigation],
-      };
-    },
-  };
 </script>
 
 <template>
-  <swiper :rewind="true" :navigation="true" :modules="modules" class="mySwiper">
-    <swiper-slide v-for="imagem in imagens"><img :src="`public/${imagem}`" alt=""></swiper-slide>
-    </swiper>
+  <main class="container">
+    <Swiper
+      :loop="true"
+      :autoplay="{
+        delay: 2500,
+        disableOnInteraction: false
+      }"
+      :modules="modules"
+      class="mySwiper"
+    >
+      <SwiperSlide v-for="(foto, index) in fotos" :key="index">
+        <img :src="`/public/${foto}`" class="sushis" />
+      </SwiperSlide>
+    </Swiper>
+  </main>
 </template>
+
 <style>
-
-#app {
-  height: 100%;
-}
-html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-}
-
 .swiper {
-  width: 100%;
-  height: 100%;
+  height: 50vh;
+  width: 50vh;
 }
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.sushis {
+  height: 50vh;
+  width: 50vh;
 }
 </style>
