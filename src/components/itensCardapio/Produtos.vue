@@ -1,14 +1,10 @@
 <script setup>
-defineProps(['name', 'description', 'imagem', 'unit', 'price','title']);
+defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 </script>
 <template>
-    <main>
-      <div class="topo">
-        <img :src=imagem class="banner">
-        <h2>{{ title }}</h2>
-      </div>
-        <div class="produtos">
-            <div class="item">
+  <main>
+    <div class="produtos">
+      <div class="item">
         <img :src=imagem class="image">
         <div class="details">
           <div class="name">
@@ -18,9 +14,9 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price','title']);
           </div>
           <p class="description">{{ description }}</p>
         </div>
-            </div>
       </div>
-    </main>
+    </div>
+  </main>
 </template>
 
 
@@ -33,14 +29,7 @@ main {
   align-items: center;
   margin-top: 8%;
   margin-left: 27%;
-}
-
-.topo{
-  margin-bottom: 10%;
-}
-.banner {
-  width: 100%;
-  margin-bottom: 20px;
+  position: relative;
 }
 
 .produtos {
@@ -70,7 +59,7 @@ main {
   margin-top: 19px;
 }
 
-details h3 {
+h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 1000;
@@ -80,11 +69,12 @@ details h3 {
   color: #FFFFFF;
   margin-bottom: 2%;
 }
+
 .price {
   font-family: 'Inter', sans-serif, sans-serif;
   font-style: normal;
   font-weight: 1000;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 27px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
@@ -122,18 +112,5 @@ details h3 {
 .name {
   display: flex;
   flex-wrap: wrap;
-}
-
-h2 {
-  position: absolute;
-  top: 270px;
-  font-family: 'Inter', sans-serif;
-  font-style: normal;
-  font-weight: 900;
-  font-size: 25px;
-  line-height: 30px;
-  text-align: center;
-  letter-spacing: 0.25em;
-  color: #FFFFFF;
 }
 </style>
