@@ -3,9 +3,16 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '@/router';
 
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 const alacarte = ref(false);
 
-function showAlacarte() {
+  function showAlacarte() {
   rodizio.value = false
   bebidas.value = false
   alacarte.value = true
@@ -39,7 +46,9 @@ onMounted(() => {
 
 watch(router.currentRoute, () => {
   teste3.value = teste2.value.fullPath
-})
+});
+
+
 </script>
 <template>
   <main>
@@ -51,11 +60,12 @@ watch(router.currentRoute, () => {
           </button></li>
         <div v-if="alacarte">
           <ul>
-            <li >
-              <RouterLink to="/entradas" :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">Entradas</RouterLink>
+            <li>
+              <button @click="scrollToSection('section1')" class="sub-menu" :class="{ 'selectedMenu': se == true }">Entradas</button>
             </li>
-            <li >
-              <RouterLink to="/principais" :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</RouterLink>
+            <li>
+              <button @click="scrollToSection('section2')" class="sub-menu"
+                :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</button>
             </li>
           </ul>
         </div>
@@ -66,15 +76,17 @@ watch(router.currentRoute, () => {
           </button></li>
         <div v-if="rodizio">
           <ul>
-            <li >
-              <RouterLink to="/" :class="{ 'selectedMenu': (teste3 == '/') }">Entradas</RouterLink>
+            <li>
+              <button @click="scrollToSection('section3')" class="sub-menu"
+                :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">Entradas</button>
             </li>
-            <li >
-              <RouterLink to="/2" :class="{ 'selectedMenu': (teste3 == '/2') }">Pratos Principais</RouterLink>
+            <li>
+              <button @click="scrollToSection('section4')" class="sub-menu"
+                :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</button>
             </li>
-            <li >
-              <RouterLink to="/1" :class="{ 'selectedMenu': (teste3 == '/1') }">Sobremesas</RouterLink>
-
+            <li>
+              <button @click="scrollToSection('section5')" class="sub-menu"
+                :class="{ 'selectedMenu': (teste3 == '/1') }">Sobremesas</button>
             </li>
           </ul>
         </div>
@@ -82,19 +94,24 @@ watch(router.currentRoute, () => {
         <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
               src="/public/logo-bebida.svg">
             <p>Bebidas</p>
-          </button></li> 
+          </button></li>
         <div v-if="bebidas">
           <ul>
             <li>
-              <RouterLink to="/nalcolicas" :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">Não alcóolicas</RouterLink>
+              <button @click="scrollToSection('section6')" class="sub-menu"
+                :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">Não alcóolicas </button>
             </li>
             <li>
-              <RouterLink to="/alcolicas" :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">Alcóolicas</RouterLink>
+              <button @click="scrollToSection('section7')" class="sub-menu"
+                :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">Alcóolicas</button>
             </li>
           </ul>
         </div>
         <li>
-          <button @click="router.push('/sobremesas')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img src="/public/logo-sobremesa.svg"><p>Sobremesas</p></button>
+          <button @click="scrollToSection('section8')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img
+              src="/public/logo-sobremesa.svg">
+            <p>Sobremesas</p>
+          </button>
         </li>
       </ul>
     </div>
@@ -107,7 +124,7 @@ main {
   height: 100%;
   margin: auto;
   display: flex;
-  position:fixed;
+  position: absolute;
 }
 
 .aside {
@@ -131,7 +148,7 @@ main {
   height: 100%;
 }
 
-.aside ul li a {
+.aside .sub-menu {
   text-decoration: none;
   display: block;
   top: 354px;
@@ -169,7 +186,7 @@ button p {
 }
 
 img {
-   margin-bottom: 20%;
+  margin-bottom: 20%;
   margin-top: 20%;
 }
 
@@ -177,5 +194,4 @@ img {
   background-color: rgba(94, 94, 94, 1) !important;
   border-right: rgba(156, 156, 156, 1) 3px solid;
 }
-
 </style>
