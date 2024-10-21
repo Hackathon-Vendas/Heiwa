@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <div class="carossel">
-        <div class="container" id="img">
+    <div class="container">
+        <div class="carrossel">
             <img src="/public/yakisoba.png" alt="">
             <img src="/public/temakisalmao.png" alt="">
             <img src="/public/temakiatum.png" alt="">
@@ -19,21 +19,21 @@
 
 <style scoped>
 
-.carossel{
+.container{
     overflow: hidden;
     height: 160px;
-    width: 95%;
-    margin: auto;
-
+    margin-left: 15vh;
 }
-.container{
+.carrossel{
+    width: 86%;
     display: flex;
-    margin-left: 250px ;
+    margin-left: 57px ;
+    margin: auto;
 }
 img{
-    object-fit: cover;
     height: 160px;
     width: 343px;
+    margin: 26px 0;
 }
 
 </style>
