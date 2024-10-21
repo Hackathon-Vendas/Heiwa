@@ -17,9 +17,7 @@ export default {
     <main>
         <div v-if="showWelcomeScreen" class="welcome-screen">
             <div class="welcome-content">
-                <h1>DIGITE O NÚMERO DA MESA</h1>
-                <img class="logo-principal" src="/public/logoH.png">
-                <div class="logo-secundaria">SUSHI & BAR</div>
+                <h1>DIGITE O NÚMERO DA SUA MESA</h1>
                 <input type="text">
                 <label for=""></label>
                 <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
@@ -30,44 +28,23 @@ export default {
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 input {
-    width: 200px;
-    height: 30px;
+    margin-top: 30px;
+    width: 75%;
+    height: 50px;
     background-color: #D9D9D9;
     border-radius: 14px;
-    border: 1px solid #ffffff
+    border: 1px solid #ffffff;
+    padding-left: 40px;
+    font-size: 16px;
 }
 
 input:focus {
     outline: none;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    margin: auto;
-    margin-top: 15px;
-    justify-content: center;
-    align-items: center;
-}
-
-.logo-principal {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    margin-top: px;
-    justify-content: center;
-    align-items: center;
-    height: 105px;
-    width: 444px;
-}
-
-.logo-secundaria {
-    font-size: 25px;
-}
 
 .welcome-screen {
     position: fixed;
@@ -84,44 +61,49 @@ input:focus {
 .welcome-content {
     text-align: center;
     color: white;
+
 }
 
-.welcome-content h1 {
+.welcome-content h2 {
     left: calc(50% - 489px/2 + 0.5px);
     top: 350px;
-    font-family: 'Inter', 'san-siref';
     font-style: normal;
     font-weight: 900;
     font-size: 40px;
     line-height: 48px;
     text-align: center;
     color: #FFFFFF;
-
-
-    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
-.welcome-content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+.welcome-content h1{
+    font-family: "Inter", serif;
+    letter-spacing: 2px;
+    font-size: 35px;
+    max-width: 500px;
 }
 
 .continue-button {
+    width: 72%;
+    height: 50px;
     display: flex;
-    margin: auto;
-    margin-top: 10px;
-    height: 46px;
+    justify-content: center;
     align-items: center;
+    margin: auto;
+    margin-top: 35px;
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
-    background-color: #000000;
-    border: 2px solid #ffffff;
-    border-radius: 20px;
+    background-color: #B93333;
+    border: 2px solid #B93333;
+    border-radius: 14px;
+    cursor: pointer;
+    display: block;
 }
 
+
 .continue-button:hover {
-    background-color: #e63e3e;
+    background-color: #b40c0c;
+    transition: background-color 0.3s ease;
 }
 </style>
