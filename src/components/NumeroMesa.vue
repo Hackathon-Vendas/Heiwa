@@ -19,11 +19,9 @@ export default {
             <div class="welcome-content">
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
                 <input type="text">
-                <label for=""></label>
                 <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
             </div>
         </div>
-
     </main>
 </template>
 
@@ -31,7 +29,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 input {
-    margin-top: 30px;
+    margin-top: 15px;
     width: 75%;
     height: 50px;
     background-color: #D9D9D9;
@@ -61,34 +59,18 @@ input:focus {
 .welcome-content {
     text-align: center;
     color: white;
-
 }
 
-.welcome-content h2 {
-    left: calc(50% - 489px/2 + 0.5px);
-    top: 350px;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 48px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-bottom: 0.5rem;
-}
-
-.welcome-content h1{
+.welcome-content h1 {
     font-family: "Inter", serif;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     font-size: 35px;
     max-width: 500px;
 }
 
 .continue-button {
-    width: 72%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 85%;
+    height: 55px;
     margin: auto;
     margin-top: 35px;
     font-weight: bold;
@@ -104,6 +86,5 @@ input:focus {
 
 .continue-button:hover {
     background-color: #b40c0c;
-    transition: background-color 0.3s ease;
 }
 </style>
