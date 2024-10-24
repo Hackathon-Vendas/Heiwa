@@ -18,7 +18,6 @@ defineProps(['title','image']);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8%;
   margin-left: 27%;
 }
 
@@ -26,13 +25,13 @@ defineProps(['title','image']);
   margin-bottom: 10%;
   width: 1000px;
   text-align: center;
-  margin-left: 24%;
-  margin-top: 10%;
+  margin-left: 20%;
 
 }
 
 .banner {
   width: 100%;
+  margin-top: 8%;
 }
 
 h2 {

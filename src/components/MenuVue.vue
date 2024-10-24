@@ -11,6 +11,16 @@ const scrollToSection = (sectionId) => {
 };
 
 const alacarte = ref(false);
+const rodizio = ref(false);
+const bebidas = ref(false);
+const nalcoolicas =ref(false);
+const alcoolicas =ref(false);
+const entradas =ref(false);
+const principais =ref(false);
+const entradasR =ref(false);
+const principaisR =ref(false);
+const sobremesasR =ref(false);
+const sobremesas =ref(false);
 
   function showAlacarte() {
   rodizio.value = false
@@ -29,8 +39,6 @@ function showBebidas() {
   alacarte.value = false
 }
 
-const rodizio = ref(false);
-const bebidas = ref(false);
 
 
 
@@ -61,11 +69,11 @@ watch(router.currentRoute, () => {
         <div v-if="alacarte">
           <ul>
             <li>
-              <button @click="scrollToSection('section1')" class="sub-menu" :class="{ 'selectedMenu': se == true }">Entradas</button>
+              <button @click="scrollToSection('section1')" class="sub-menu" :class="{ 'selectedMenu': entradas == true }">Entradas</button>
             </li>
             <li>
               <button @click="scrollToSection('section2')" class="sub-menu"
-                :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</button>
+                :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
             </li>
           </ul>
         </div>
@@ -78,15 +86,15 @@ watch(router.currentRoute, () => {
           <ul>
             <li>
               <button @click="scrollToSection('section3')" class="sub-menu"
-                :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">Entradas</button>
+                :class="[{'selectedMenu': entradas == true }]">Entradas</button>
             </li>
             <li>
               <button @click="scrollToSection('section4')" class="sub-menu"
-                :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</button>
+                :class="{ 'selectedMenu': principaisR == true}">Pratos Principais</button>
             </li>
             <li>
               <button @click="scrollToSection('section5')" class="sub-menu"
-                :class="{ 'selectedMenu': (teste3 == '/1') }">Sobremesas</button>
+                :class="{ 'selectedMenu': sobremesaR == true}">Sobremesas</button>
             </li>
           </ul>
         </div>
@@ -99,11 +107,11 @@ watch(router.currentRoute, () => {
           <ul>
             <li>
               <button @click="scrollToSection('section6')" class="sub-menu"
-                :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">Não alcóolicas </button>
+                :class="{'selectedMenu': nalcoolicas == true}">Não alcóolicas </button>
             </li>
             <li>
               <button @click="scrollToSection('section7')" class="sub-menu"
-                :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">Alcóolicas</button>
+                :class="{ 'selectedMenu': alcoolicas == true }">Alcóolicas</button>
             </li>
           </ul>
         </div>
@@ -125,6 +133,7 @@ main {
   margin: auto;
   display: flex;
   position: absolute;
+  margin-top: 7.4%;
 }
 
 .aside {

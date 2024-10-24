@@ -21,6 +21,7 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 
 
 <style scoped>
+
 main {
   width: 60%;
   margin: auto;
@@ -29,7 +30,6 @@ main {
   align-items: center;
   margin-top: 8%;
   margin-left: 27%;
-  position: relative;
 }
 
 .produtos {
@@ -80,7 +80,6 @@ h3 {
   color: #FFFFFF;
   position: absolute;
   right: 15%;
-
 }
 
 .unit {
@@ -112,5 +111,64 @@ h3 {
 .name {
   display: flex;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  main {
+    width: 80%;
+    margin-left: 10%;
+  }
+  
+  .price {
+    right: 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 90%;
+    margin-left: 0;
+  }
+  
+  .item {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .image {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .price {
+    position: relative;
+    right: 0;
+    margin-top: 10px;
+  }
+  
+  .description {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 95%;
+    margin-left: 0;
+  }
+  
+  h3 {
+    font-size: 18px;
+  }
+  
+  .price {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .description {
+    font-size: 16px;
+  }
 }
 </style>
