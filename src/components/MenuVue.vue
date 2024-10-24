@@ -3,9 +3,26 @@ import { ref, onMounted, computed, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import router from '@/router';
 
-const alacarte = ref(false);
+const scrollToSection = (sectionId) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
 
-function showAlacarte() {
+const alacarte = ref(false);
+const rodizio = ref(false);
+const bebidas = ref(false);
+const nalcoolicas =ref(false);
+const alcoolicas =ref(false);
+const entradas =ref(false);
+const principais =ref(false);
+const entradasR =ref(false);
+const principaisR =ref(false);
+const sobremesasR =ref(false);
+const sobremesas =ref(false);
+
+  function showAlacarte() {
   rodizio.value = false
   bebidas.value = false
   alacarte.value = true
@@ -22,8 +39,6 @@ function showBebidas() {
   alacarte.value = false
 }
 
-const rodizio = ref(false);
-const bebidas = ref(false);
 
 
 
@@ -39,11 +54,13 @@ onMounted(() => {
 
 watch(router.currentRoute, () => {
   teste3.value = teste2.value.fullPath
-})
+});
+
+
 </script>
 <template>
   <main>
-    <div class="sidebar">
+    <div class="aside">
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
               src="/public/logo-alacarte.svg">
@@ -51,11 +68,12 @@ watch(router.currentRoute, () => {
           </button></li>
         <div v-if="alacarte">
           <ul>
-            <li >
-              <RouterLink to="/entradas" :class="[{ 'selectedMenu': (teste3 == '/entradas') }]">Entradas</RouterLink>
+            <li>
+              <button @click="scrollToSection('section1')" class="sub-menu" :class="{ 'selectedMenu': entradas == true }">Entradas</button>
             </li>
-            <li >
-              <RouterLink to="/principais" :class="{ 'selectedMenu': (teste3 == '/principais') }">Pratos Principais</RouterLink>
+            <li>
+              <button @click="scrollToSection('section2')" class="sub-menu"
+                :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
             </li>
           </ul>
         </div>
@@ -66,15 +84,17 @@ watch(router.currentRoute, () => {
           </button></li>
         <div v-if="rodizio">
           <ul>
-            <li >
-              <RouterLink to="/" :class="{ 'selectedMenu': (teste3 == '/') }">Entradas</RouterLink>
+            <li>
+              <button @click="scrollToSection('section3')" class="sub-menu"
+                :class="[{'selectedMenu': entradas == true }]">Entradas</button>
             </li>
-            <li >
-              <RouterLink to="/2" :class="{ 'selectedMenu': (teste3 == '/2') }">Pratos Principais</RouterLink>
+            <li>
+              <button @click="scrollToSection('section4')" class="sub-menu"
+                :class="{ 'selectedMenu': principaisR == true}">Pratos Principais</button>
             </li>
-            <li >
-              <RouterLink to="/1" :class="{ 'selectedMenu': (teste3 == '/1') }">Sobremesas</RouterLink>
-
+            <li>
+              <button @click="scrollToSection('section5')" class="sub-menu"
+                :class="{ 'selectedMenu': sobremesaR == true}">Sobremesas</button>
             </li>
           </ul>
         </div>
@@ -82,19 +102,24 @@ watch(router.currentRoute, () => {
         <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
               src="/public/logo-bebida.svg">
             <p>Bebidas</p>
-          </button></li> 
+          </button></li>
         <div v-if="bebidas">
           <ul>
             <li>
-              <RouterLink to="/nalcolicas" :class="{ 'selectedMenu': (teste3 == '/nalcolicas') }">Não alcóolicas</RouterLink>
+              <button @click="scrollToSection('section6')" class="sub-menu"
+                :class="{'selectedMenu': nalcoolicas == true}">Não alcóolicas </button>
             </li>
             <li>
-              <RouterLink to="/alcolicas" :class="{ 'selectedMenu': (teste3 == '/alcolicas') }">Alcóolicas</RouterLink>
+              <button @click="scrollToSection('section7')" class="sub-menu"
+                :class="{ 'selectedMenu': alcoolicas == true }">Alcóolicas</button>
             </li>
           </ul>
         </div>
         <li>
-          <button @click="router.push('/sobremesas')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img src="/public/logo-sobremesa.svg"><p>Sobremesas</p></button>
+          <button @click="scrollToSection('section8')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img
+              src="/public/logo-sobremesa.svg">
+            <p>Sobremesas</p>
+          </button>
         </li>
       </ul>
     </div>
@@ -107,10 +132,11 @@ main {
   height: 100%;
   margin: auto;
   display: flex;
-  position: static;
+  position: absolute;
+  margin-top: 7.4%;
 }
 
-.sidebar {
+.aside {
   width: 200px;
   top: 15.7 vh;
   left: 0;
@@ -119,19 +145,19 @@ main {
 
 }
 
-.sidebar ul {
+.aside ul {
   list-style-type: none;
   padding: 0;
   transition: 0.3s;
 
 }
 
-.sidebar ul li {
+.aside ul li {
   text-align: center;
   height: 100%;
 }
 
-.sidebar ul li a {
+.aside .sub-menu {
   text-decoration: none;
   display: block;
   top: 354px;
@@ -169,7 +195,7 @@ button p {
 }
 
 img {
-   margin-bottom: 20%;
+  margin-bottom: 20%;
   margin-top: 20%;
 }
 
@@ -177,5 +203,4 @@ img {
   background-color: rgba(94, 94, 94, 1) !important;
   border-right: rgba(156, 156, 156, 1) 3px solid;
 }
-
 </style>

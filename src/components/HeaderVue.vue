@@ -21,7 +21,7 @@ header {
   padding: 7px;
   margin: auto;
   background-color: #1a1818;
-  position: static;
+  position: fixed;
   filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
 }
 
