@@ -1,8 +1,6 @@
 <script setup>
 import Produtos from '@/components/itensCardapio/Produtos.vue';
 import TopoProduto from '@/components/itensCardapio/TopoProduto.vue';
-import { ref } from 'vue'
-
 import { useAlcoolicaStore, useEntradaStore, usePrincipalStore, useBebidaStore, useSobremesaStore, useSobremesarStore } from '@/stores/produto';
 
 const alcoolicaStore = useAlcoolicaStore();

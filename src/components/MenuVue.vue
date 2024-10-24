@@ -39,23 +39,94 @@ function showBebidas() {
   alacarte.value = false
 }
 
-
-
-
-const teste2 = computed(() => router.currentRoute.value)
-const teste3 = ref("")
-
-onMounted(() => {
-  setTimeout(() => {
-    teste3.value = teste2.value.fullPath
-    console.log(teste3)
-  }, "1");
-})
-
-watch(router.currentRoute, () => {
-  teste3.value = teste2.value.fullPath
-});
-
+function scrollToSection1() {
+nalcoolicas.value = false;
+ alcoolicas.value = false;
+ entradas.value = true;
+ principais.value = false;
+ entradasR.value = false;
+ principaisR.value = false;
+ sobremesasR.value = false;
+ sobremesas.value = false;
+ scrollToSection('section1');
+}
+function scrollToSection2() {
+  nalcoolicas.value = false;
+ alcoolicas.value = false;
+ entradas.value = false;
+ principais.value = true;
+ entradasR.value = false;
+ principaisR.value = false;
+ sobremesasR.value = false;
+ sobremesas.value = false;
+ scrollToSection('section2');
+}
+function scrollToSection3() {
+  nalcoolicas.value = false;
+ alcoolicas.value = false;
+ entradas.value = false;
+ principais.value = false;
+ entradasR.value = true;
+ principaisR.value = false;
+ sobremesasR.value = false;
+ sobremesas.value = false;
+ scrollToSection('section3');
+}
+function scrollToSection4() {
+  nalcoolicas.value = false;
+ alcoolicas.value = false;
+ entradas.value = false;
+ principais.value = false;
+ entradasR.value = false;
+ principaisR.value = true;
+ sobremesasR.value = false;
+ sobremesas.value = false;
+ scrollToSection('section4');
+}
+function scrollToSection5() {
+  nalcoolicas.value = false;
+ alcoolicas.value = false;
+ entradas.value = false;
+ principais.value = false;
+ entradasR.value = false;
+ principaisR.value = false;
+ sobremesasR.value = true;
+ sobremesas.value = false;
+ scrollToSection('section5');
+}
+function scrollToSection6() {
+  nalcoolicas.value = true;
+ alcoolicas.value = false;
+ entradas.value = false;
+ principais.value = false;
+ entradasR.value = false;
+ principaisR.value = false;
+ sobremesasR.value = false;
+ sobremesas.value = false;
+ scrollToSection('section6');
+}
+function scrollToSection7() {
+  nalcoolicas.value = false;
+ alcoolicas.value = true;
+ entradas.value = false;
+ principais.value = false;
+ entradasR.value = false;
+ principaisR.value = false;
+ sobremesasR.value = false;
+ sobremesas.value = false;
+ scrollToSection('section7');
+}
+function scrollToSection8() {
+nalcoolicas.value = false;
+ alcoolicas.value = false;
+ entradas.value = false;
+ principais.value = false;
+ entradasR.value = false;
+ principaisR.value = false;
+ sobremesasR.value = false;
+ sobremesas.value = true;
+ scrollToSection('section8');
+}
 
 </script>
 <template>
@@ -69,11 +140,10 @@ watch(router.currentRoute, () => {
         <div v-if="alacarte">
           <ul>
             <li>
-              <button @click="scrollToSection('section1')" class="sub-menu" :class="{ 'selectedMenu': entradas == true }">Entradas</button>
+              <button @click="scrollToSection1()" class="sub-menu" :class="{ 'selectedMenu': entradas == true }">Entradas</button>
             </li>
             <li>
-              <button @click="scrollToSection('section2')" class="sub-menu"
-                :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
+              <button @click="scrollToSection2()" class="sub-menu" :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
             </li>
           </ul>
         </div>
@@ -85,16 +155,16 @@ watch(router.currentRoute, () => {
         <div v-if="rodizio">
           <ul>
             <li>
-              <button @click="scrollToSection('section3')" class="sub-menu"
-                :class="[{'selectedMenu': entradas == true }]">Entradas</button>
+              <button @click="scrollToSection3() " class="sub-menu"
+                :class="[{'selectedMenu': entradasR == true }]">Entradas</button>
             </li>
             <li>
-              <button @click="scrollToSection('section4')" class="sub-menu"
+              <button @click="scrollToSection4()" class="sub-menu"
                 :class="{ 'selectedMenu': principaisR == true}">Pratos Principais</button>
             </li>
             <li>
-              <button @click="scrollToSection('section5')" class="sub-menu"
-                :class="{ 'selectedMenu': sobremesaR == true}">Sobremesas</button>
+              <button @click="scrollToSection5()" class="sub-menu"
+                :class="{ 'selectedMenu': sobremesasR == true}">Sobremesas</button>
             </li>
           </ul>
         </div>
@@ -106,17 +176,17 @@ watch(router.currentRoute, () => {
         <div v-if="bebidas">
           <ul>
             <li>
-              <button @click="scrollToSection('section6')" class="sub-menu"
+              <button @click="scrollToSection6()" class="sub-menu"
                 :class="{'selectedMenu': nalcoolicas == true}">Não alcóolicas </button>
             </li>
             <li>
-              <button @click="scrollToSection('section7')" class="sub-menu"
+              <button @click="scrollToSection7()" class="sub-menu"
                 :class="{ 'selectedMenu': alcoolicas == true }">Alcóolicas</button>
             </li>
           </ul>
         </div>
         <li>
-          <button @click="scrollToSection('section8')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img
+          <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
               src="/public/logo-sobremesa.svg">
             <p>Sobremesas</p>
           </button>
@@ -142,7 +212,8 @@ main {
   left: 0;
   position: absolute;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
-
+  height: 150vh;
+  
 }
 
 .aside ul {
@@ -173,6 +244,12 @@ main {
   transition: 0.3s;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.44));
   width: 100%;
+  cursor: pointer; /* Mostrar que é clicável */
+  transition: background-color 0.3s;
+}
+
+.sub-menu:hover {
+  background-color: rgba(94, 94, 94, 1); /* Hover */
 }
 
 button {

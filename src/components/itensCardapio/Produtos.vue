@@ -21,9 +21,8 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 
 
 <style scoped>
-
 main {
-  width: 60%;
+  width: 65%;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -39,6 +38,8 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
+  gap: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
 .item {
@@ -53,10 +54,11 @@ main {
 }
 
 .image {
-  width: 250px;
-  height: 230px;
+  width: 350px;
+  height: 220px;
   border-radius: 18px;
-  margin-top: 19px;
+  object-fit: cover;
+  margin-top: 2%;
 }
 
 h3 {
@@ -68,6 +70,7 @@ h3 {
   letter-spacing: 0.25em;
   color: #FFFFFF;
   margin-bottom: 2%;
+  display: inline-block;
 }
 
 .price {
@@ -78,8 +81,7 @@ h3 {
   line-height: 27px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
-  position: absolute;
-  right: 15%;
+  margin-left: auto;
 }
 
 .unit {
@@ -89,8 +91,9 @@ h3 {
   font-size: 16px;
   line-height: 24px;
   letter-spacing: 0.25em;
-  color: #FFFFFF;
-  margin-left: 10px;
+  color: #aaa;
+  margin-left: 0;
+  display: inline-block;
 }
 
 .description {
@@ -105,12 +108,13 @@ h3 {
 }
 
 .details {
-  height: 80%;
+  height: 70%;
+  margin-right: 4%;
 }
 
 .name {
   display: flex;
-  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 @media (max-width: 1200px) {
@@ -118,7 +122,7 @@ h3 {
     width: 80%;
     margin-left: 10%;
   }
-  
+
   .price {
     right: 10%;
   }
@@ -129,24 +133,24 @@ h3 {
     width: 90%;
     margin-left: 0;
   }
-  
+
   .item {
     flex-direction: column;
     height: auto;
   }
-  
+
   .image {
     width: 100%;
     height: auto;
     margin-top: 10px;
   }
-  
+
   .price {
     position: relative;
     right: 0;
     margin-top: 10px;
   }
-  
+
   .description {
     margin-top: 10px;
   }
@@ -157,16 +161,16 @@ h3 {
     width: 95%;
     margin-left: 0;
   }
-  
+
   h3 {
     font-size: 18px;
   }
-  
+
   .price {
     font-size: 14px;
     margin-top: 5px;
   }
-  
+
   .description {
     font-size: 16px;
   }
