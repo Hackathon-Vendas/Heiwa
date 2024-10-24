@@ -27,11 +27,11 @@ const BprincipalStore = useBprincipalStore();
 const BbebidasStore = useBbebidasStore();
 const BsobremeStore = useBsobremeStore();
 
-const Balcoolicas = BalcoolicaStore.alcoolicas;
-const Bentradas = BentradaStore.entradas;
-const Bprincipais = BprincipalStore.principais;
-const Bbebidas = BbebidasStore.bebidas;
-const Bsobremesas = BsobremeStore.sobremesas;
+const Balcoolicas = BalcoolicaStore.Balcoolicas;
+const Bentradas = BentradaStore.Bentradas;
+const Bprincipais = BprincipalStore.Bprincipais;
+const Bbebidas = BbebidasStore.Bbebidas;
+const Bsobremesas = BsobremeStore.Bsobremesas;
 
 
 </script>
