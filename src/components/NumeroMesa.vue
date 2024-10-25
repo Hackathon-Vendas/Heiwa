@@ -1,4 +1,5 @@
 <script>
+import { ref } from 'vue';
 export default {
     data() {
         return {
@@ -11,6 +12,7 @@ export default {
         }
     }
 };
+
 </script>
 
 <template>
@@ -18,7 +20,10 @@ export default {
         <div v-if="showWelcomeScreen" class="welcome-screen">
             <div class="welcome-content">
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
-                <input type="text">
+                <div class="input-container">
+                    <img src="/Mesa.png" class="input-icon">
+                    <input type="number" min="1" max="90">
+                </div>
                 <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
             </div>
         </div>
@@ -28,15 +33,31 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+.input-container {
+    position: relative;
+    align-items: center; 
+}
+
+.input-icon {
+    margin-top: 22px;
+    position: absolute;
+    left: 35px; 
+    padding: 10px;
+    width: 25px;
+    border-right: 2px solid black;
+    cursor: pointer;
+}
+
+
 input {
     margin-top: 15px;
-    width: 75%;
+    width: calc(75% - 15px);
     height: 50px;
     background-color: #D9D9D9;
     border-radius: 14px;
-    border: 1px solid #ffffff;
-    padding-left: 40px;
-    font-size: 16px;
+    border: 1px solid #D9D9D9;
+    padding-left: 60px;
+    font-size: 20px;
 }
 
 input:focus {
@@ -64,8 +85,8 @@ input:focus {
 .welcome-content h1 {
     font-family: "Inter", serif;
     letter-spacing: 1.5px;
-    font-size: 35px;
-    max-width: 500px;
+    font-size: 30px;
+    max-width: 450px;
 }
 
 .continue-button {
