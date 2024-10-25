@@ -7,11 +7,15 @@ export default {
     },
     methods: {
         closeWelcomeScreen() {
-            this.showWelcomeScreen = false;
+            const numMesa = document.getElementById('numMesa').value; 
+            if (numMesa < 1 || numMesa > 90) { 
+                alert(`Por favor, inserir número da mesa`); 
+            } else {
+                this.showWelcomeScreen = false;
+            }
         }
     }
 };
-
 </script>
 
 <template>
@@ -21,7 +25,7 @@ export default {
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
                 <div class="input-container">
                     <img src="/Mesa.png" class="input-icon">
-                    <input type="number" min="1" max="90">
+                    <input type="number" min="1" max="90" id="numMesa" required>
                 </div>
                 <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
             </div>
@@ -43,7 +47,7 @@ export default {
     left: 35px; 
     padding: 10px;
     width: 25px;
-    border-right: 2px solid black;
+    border-right: 2px solid rgba(0, 0, 0, 0.739);
     cursor: pointer;
 }
 
