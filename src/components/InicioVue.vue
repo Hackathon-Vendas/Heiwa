@@ -17,9 +17,9 @@ export default {
     <main>
         <div v-if="showWelcomeScreen" class="welcome-screen">
             <div class="welcome-content">
-                <h1>BEM VINDO AO </h1>
+                <h1>BEM-VINDO AO </h1>
                 <img class="logo-principal" src="/public/logoH.png">
-                <h2 class="logo-secundaria">SUSHI & BAR</h2>
+                <h2>SUSHI & BAR</h2>
                 <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
             </div>
         </div>
@@ -28,8 +28,9 @@ export default {
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
+
 
 input {
     margin-top: 30px;
@@ -46,21 +47,13 @@ input:focus {
     outline: none;
 }
 
-.logo-secundaria {
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300; 
-  letter-spacing: 0.25em;
-  color: #fff;
-}
-
 .welcome-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.425);
+    background-color: rgba(0, 0, 0, 0.726);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -72,27 +65,31 @@ input:focus {
 
 }
 
-.welcome-content h2 {
-    left: calc(50% - 489px/2 + 0.5px);
-    top: 350px;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 40px;
-    line-height: 48px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-bottom: 0.5rem;
+.welcome-content h1{
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: #fff;
 }
 
-.welcome-content h1{
-    font-family: "Inter", serif;
-    letter-spacing: 2px;
-    font-size: 35px;
-    max-width: 500px;
+.logo-principal{
+  height: 80px;
+  width: 441px;
+  margin-top: 20px;
+}
+
+.welcome-content h2 {
+  font-size: 22px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300; 
+  letter-spacing: 0.25em;
+  color: #fff;
+  margin-top: 0;
 }
 
 .continue-button {
-    width: 72%;
+    width: 50%;
     height: 50px;
     display: flex;
     justify-content: center;
@@ -102,8 +99,8 @@ input:focus {
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
-    background-color: #B93333;
-    border: 2px solid #B93333;
+    background-color: rgba(0, 0, 0, 0.726);
+    border: 2px solid #ffffff;
     border-radius: 14px;
     cursor: pointer;
     display: block;
@@ -111,7 +108,8 @@ input:focus {
 
 
 .continue-button:hover {
-    background-color: #b40c0c;
+    background-color: #ffffff;
+    color: black;
     transition: background-color 0.3s ease;
 }
 </style>
