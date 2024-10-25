@@ -1,7 +1,26 @@
 <script setup>
+import { onMounted } from 'vue';
+
 import Produtos from '@/components/itensCardapio/Produtos.vue';
 import TopoProduto from '@/components/itensCardapio/TopoProduto.vue';
 import { useAlcoolicaStore, useEntradaStore, usePrincipalStore, useBebidaStore, useSobremesaStore, useSobremesarStore } from '@/stores/produto';
+import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
+
+import { useRoute } from 'vue-router'
+const route = useRoute()
+
+const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
+onMounted(() => {
+  scrollToSection(route.hash)
+})
+
+
 
 const alcoolicaStore = useAlcoolicaStore();
 const entradaStore = useEntradaStore();
@@ -17,7 +36,6 @@ const bebidas = bebidaStore.bebidas;
 const sobremesas = sobremesaStore.sobremesas;
 const sobremesasRodizio = sobremesarStore.sobremesasR;
 
-import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
 
 const BalcoolicaStore = useBalcoolicaStore();
 const BentradaStore = useBentradaStore();
@@ -31,10 +49,9 @@ const Bprincipais = BprincipalStore.Bprincipais;
 const Bbebidas = BbebidasStore.Bbebidas;
 const Bsobremesas = BsobremeStore.Bsobremesas;
 
-
 </script>
 <template>
-  <div id="section1">
+  <div id="entradas">
     <div v-for="banner in Bentradas" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
@@ -43,7 +60,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
       :imagem="item.imagem" />
     </div>
   </div>
-  <div id="section2">
+  <div id="principais">
     <div v-for="banner in Bprincipais" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
@@ -54,7 +71,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     </div>
   </div>
 
-  <div id="section3">
+  <div id="entradasR">
     <div v-for="banner in Bentradas" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
@@ -63,7 +80,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
         :imagem="item.imagem" />
     </div>
   </div>
-  <div id="section4">
+  <div id="principaisR">
     <div v-for="banner in Bprincipais" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
@@ -73,7 +90,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
         :imagem="item.imagem" />
     </div>
   </div>
-<div id="section5">
+<div id="sobremesasR">
   <div v-for="banner in Bsobremesas" :key="banner">
     <TopoProduto :image="banner.image" :title="banner.title" />
   </div>
@@ -85,7 +102,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
 </div>
 
-<div id="section6">
+<div id="bebidas">
   <div v-for="banner in Bbebidas" :key="banner">
     <TopoProduto :image="banner.image" :title="banner.title" />
   </div>
@@ -95,7 +112,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
       :imagem="item.imagem" />
   </div>
 </div>
-<div id="section7">
+<div id="alcoolicas">
 
   <div v-for="banner in Balcoolicas" :key="banner">
     <TopoProduto :image="banner.image" :title="banner.title" />
@@ -108,7 +125,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
 </div>
 
-<div id="section8">
+<div id="-sobremesa">
   <div v-for="banner in Bsobremesas" :key="banner">
     <TopoProduto :image="banner.image" :title="banner.title" />
   </div>
@@ -120,7 +137,5 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 </div>
 </template>
 <style>
-.section {
-  height: 100vh;
-}
+
 </style>

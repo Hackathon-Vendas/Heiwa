@@ -18,14 +18,14 @@ defineProps(['title','image']);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 27%;
+  margin-left: 25%;
 }
 
 .topo{
   margin-bottom: 10%;
   width: 1000px;
   text-align: center;
-  margin-left: 20%;
+  margin-left: 23%;
 
 }
 

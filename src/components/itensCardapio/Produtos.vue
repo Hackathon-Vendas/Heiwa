@@ -28,7 +28,7 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 8%;
-  margin-left: 27%;
+  margin-left: 23%;
 }
 
 .produtos {
