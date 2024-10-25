@@ -49,7 +49,7 @@ export const usePrincipalStore = defineStore('principais', () => {
         {ame: 'Sashimi de Salmão', unit: '(10 unidades)', description: ' Fatias frescas de salmão, acompanhadas de wasabi e gengibre.', price: 'R$64,50', imagem: sushi1 },
         {ame: 'Sashimi de Atum', unit: '(10 unidades)', description: 'Filés de atum acompanhados de wasabi e gengibre.', price: 'R$50,00', imagem: sushi2 },
         {name: 'Yakissoba', unit: '(1 unidade)', description: 'Macarrão japonês salteado com camarões, lula e legumes.', price: 'R$55,90', imagem: sushi3 },
-        {name: 'Uramaki Califórnia', description: 'BArroz japonês envolto em alga nori, recheado com kani, pepino e manga.', unit: '(5 unidade)', price: 'R$35,90', imagem: sushi4 },
+        {name: 'Uramaki Califórnia', description: 'Arroz japonês envolto em alga nori, recheado com kani, pepino e manga.', unit: '(5 unidade)', price: 'R$35,90', imagem: sushi4 },
         {name: 'Temaki de Atum', description: 'Cone de alga recheado com atum fresco, arroz e cebolinha, perfeito para saborear com as mãos.', unit: '(1 unidade)', price: 'R$35,50', imagem: sushi5 }
     ]);
     return { principais};
@@ -61,7 +61,7 @@ export const useBebidaStore = defineStore('bebidas', () => {
         {name: 'Refri', unit: '(Unidade 1)', description: 'Refrigerantes diversos. 220ml', price: 'R$6,50', imagem: refri },
         {name: 'Sucos', description: 'Sucos naturais de frutos. 250ml', price: 'R$11,00', imagem: sucos },
     ]);
-    return { bebidas};
+    return {bebidas};
 });
 export const useSobremesaStore = defineStore('sobremesas', () => {
     const sobremesas = ref([

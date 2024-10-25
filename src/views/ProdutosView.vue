@@ -2,8 +2,19 @@
 import Produtos from '@/components/itensCardapio/Produtos.vue';
 import TopoProduto from '@/components/itensCardapio/TopoProduto.vue';
 import { ref } from 'vue'
+import ModalProducts from '@/components/ModalProducts.vue';
 
 import { useAlcoolicaStore, useEntradaStore, usePrincipalStore, useBebidaStore, useSobremesaStore, useSobremesarStore } from '@/stores/produto';
+
+const itemSelecionado = ref(null);
+const show = ref(false)
+function openModal(produto) {
+  console.log(produto)
+  itemSelecionado.value = produto
+
+  console.log("item")
+  show.value = true
+}
 
 const alcoolicaStore = useAlcoolicaStore();
 const entradaStore = useEntradaStore();
@@ -27,22 +38,23 @@ const BprincipalStore = useBprincipalStore();
 const BbebidasStore = useBbebidasStore();
 const BsobremeStore = useBsobremeStore();
 
-const Balcoolicas = BalcoolicaStore.alcoolicas;
-const Bentradas = BentradaStore.entradas;
-const Bprincipais = BprincipalStore.principais;
-const Bbebidas = BbebidasStore.bebidas;
-const Bsobremesas = BsobremeStore.sobremesas;
+const Balcoolicas = BalcoolicaStore.Balcoolicas;
+const Bentradas = BentradaStore.Bentradas;
+const Bprincipais = BprincipalStore.Bprincipais;
+const Bbebidas = BbebidasStore.Bbebidas;
+const Bsobremesas = BsobremeStore.Bsobremesas;
 
 
 </script>
 <template>
+  <ModalProducts v-model:isOpen="show" :item="itemSelecionado" />
   <div id="section1">
     <div v-for="banner in Bentradas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
+      <TopoProduto :image="banner.image" :title="banner.title"   />
     </div>
     <div v-for="item in entradas" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-      :imagem="item.imagem" />
+      :imagem="item.imagem" @click="openModal(item)" />
     </div>
   </div>
   <div id="section2">
