@@ -19,13 +19,17 @@ const router = createRouter({
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
-      return nextTick().then(() => {
-        const element = document.querySelector(to.hash);
-        if (element) {
-          element.scrollIntoView({behavior: 'smooth'});
-        }})
-      }
+      return new Promise((resolve) => {
+        nextTick(() => {
+          resolve({
+            el: to.hash,
+            behavior: 'smooth',
+          });
+        });
+      });
     }
+    return { top: 0 };
+  },
   });
 
 export default router
