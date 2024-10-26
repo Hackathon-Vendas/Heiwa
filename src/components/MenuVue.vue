@@ -116,7 +116,7 @@ main {
   left: 0;
   position: absolute;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
-  z-index: 1;
+  z-index: 2;
 
 }
 
