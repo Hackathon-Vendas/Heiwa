@@ -1,7 +1,17 @@
-<script setup></script>
+<script setup>
+import { RouterLink, useRouter } from 'vue-router';
+
+import router from '@/router'
+
+const rota = router.currentRoute.value.path;
+console.log(router.currentRoute.value.path)
+</script>
 
 <template>
   <header>
+    <div class="voltar">
+      <img class="home" src="/public/home.png">
+    </div>
     <div class="container">
       <img class="logo-principal" src="/public/logoH.png" />
       <h1 class="logo-secundaria">SUSHI & BAR</h1>
@@ -23,6 +33,11 @@ header {
   background-color: #1a1818;
   position: static;
   filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
+}
+.home{
+  top: 30px;
+  left: 25px;
+ 
 }
 
 .container {
@@ -47,8 +62,6 @@ header {
   letter-spacing: 0.25em;
   color: #fff;
 }
-
-
 
 .cart-icon {
   position: absolute;
