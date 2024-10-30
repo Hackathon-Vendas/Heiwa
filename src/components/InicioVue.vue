@@ -18,7 +18,7 @@ export default {
         <div v-if="showWelcomeScreen" class="welcome-screen">
             <div class="welcome-content">
                 <h1>BEM-VINDO AO </h1>
-                <img class="logo-principal" src="/public/logoH.png">
+                <img class="logo-principal" src="/public/logoHeiwa.png">
                 <h2>SUSHI & BAR</h2>
                 <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
             </div>
@@ -74,22 +74,22 @@ input:focus {
 }
 
 .logo-principal{
-  height: 80px;
-  width: 441px;
+  height: 156px;
+  width: 520px;
   margin-top: 20px;
 }
 
 .welcome-content h2 {
-  font-size: 22px;
+  font-size: 20px;
   font-family: 'Inter', sans-serif;
   font-weight: 300; 
   letter-spacing: 0.25em;
   color: #fff;
-  margin-top: 0;
+  margin-top: -81px;
 }
 
 .continue-button {
-    width: 50%;
+    width: 40%;
     height: 50px;
     display: flex;
     justify-content: center;
