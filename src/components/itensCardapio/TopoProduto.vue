@@ -23,15 +23,15 @@ defineProps(['title','image']);
 
 .topo{
   margin-bottom: 2%;
-  width: 1000px;
+  width: 1400px;
   text-align: center;
-  margin-left: 20%;
+  margin-left: 17%;
 
 }
 
 .banner {
   width: 100%;
-  margin-top: 8%;
+  margin-top: 7%;
 }
 
 h2 {

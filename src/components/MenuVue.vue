@@ -223,7 +223,7 @@ main {
   margin: auto;
   display: flex;
   position: absolute;
-  margin-top: 6.5%;
+  margin-top: 5.5%;
 }
 
 .aside {

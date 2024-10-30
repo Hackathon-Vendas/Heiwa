@@ -10,24 +10,24 @@ const route = useRoute()
 
 onMounted(() => {
   if (route.hash) {
-    setTimeout(() => {
-      const element = document.querySelector(route.hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
+    scrollToHash(route.hash);
   }
 });
 
 watch(() => route.hash, (newHash) => {
   if (newHash) {
-    const element = document.querySelector(newHash);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    scrollToHash(newHash);
   }
 });
 
+function scrollToHash(hash) {
+  const element = document.querySelector(hash);
+  if (element) {
+    setTimeout(() => {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }, 1000); // Aumente o tempo se necessário
+  }
+}
 
 const alcoolicaStore = useAlcoolicaStore();
 const entradaStore = useEntradaStore();

@@ -27,7 +27,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-left: 20%;
+  margin-left: 17%;
   margin-top: 1%;
 }
 
@@ -55,19 +55,19 @@ main {
 
 
 .image {
-  width: 30%;
+  width: 25%;
   height: 220px;
   border-radius: 20px !important;
   object-fit: cover;
   margin-top: 1.5%;
-  margin-left: 1%;
+  margin-left: 0.2%;
   margin-right: 1%;
 }
 
 h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
-  font-weight: 1000;
+  font-weight: 900;
   font-size: 20px;
   line-height: 27px;
   letter-spacing: 0.25em;
@@ -79,7 +79,7 @@ h3 {
 .price {
   font-family: 'Inter', sans-serif, sans-serif;
   font-style: normal;
-  font-weight: 1000;
+  font-weight: 900;
   font-size: 16px;
   line-height: 27px;
   letter-spacing: 0.25em;
@@ -102,7 +102,7 @@ h3 {
 .description {
   font-family: 'Inter', sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
   line-height: 20px;
   letter-spacing: 0.25em;
@@ -166,7 +166,7 @@ h3 {
   font-style: normal;
   font-weight: 900;
   font-size:  0.55em;
-  line-height: 10px;
+  line-height: 16px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
   display: inline-block;
