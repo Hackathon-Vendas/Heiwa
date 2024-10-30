@@ -1,33 +1,29 @@
-<script>
-export default {
-    data() {
-        return {
-            showWelcomeScreen: true,
-        };
-    },
-    methods: {
-        closeWelcomeScreen() {
-            const numMesa = document.getElementById('numMesa').value; 
-            if (numMesa < 1 || numMesa > 90) { 
-                alert(`Por favor, inserir número da mesa`); 
-            } else {
-                this.showWelcomeScreen = false;
-            }
-        }
+<script setup>
+import { ref } from "vue";
+
+const FuncaoExpandir = ref(true)
+const numMesa = ref(null)
+
+function Permissao() {
+    if (numMesa.value < 1 || numMesa.value   > 90) {
+        alert(`Por favor, inserir número da mesa`)
     }
-};
+    else {
+        FuncaoExpandir.value = false
+    }
+}
 </script>
 
 <template>
     <main>
-        <div v-if="showWelcomeScreen" class="welcome-screen">
-            <div class="welcome-content">
+        <div v-if="FuncaoExpandir" class="bemVindo">
+            <div class="container">
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
                 <div class="input-container">
                     <img src="/Mesa.png" class="input-icon">
-                    <input type="number" min="1" max="90" id="numMesa" required>
+                    <input type="number" min="1" max="90" id="numMesa" required v-model="numMesa">
                 </div>
-                <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
+                <button @click="Permissao" class="continue-button">CONTINUAR</button>
             </div>
         </div>
     </main>
@@ -38,13 +34,13 @@ export default {
 
 .input-container {
     position: relative;
-    align-items: center; 
+    align-items: center;
 }
 
 .input-icon {
     margin-top: 22px;
     position: absolute;
-    left: 35px; 
+    left: 35px;
     padding: 10px;
     width: 25px;
     border-right: 2px solid rgba(0, 0, 0, 0.739);
@@ -68,7 +64,7 @@ input:focus {
 }
 
 
-.welcome-screen {
+.bemVindo {
     position: fixed;
     top: 0;
     left: 0;
@@ -80,12 +76,12 @@ input:focus {
     align-items: center;
 }
 
-.welcome-content {
+.container {
     text-align: center;
     color: white;
 }
 
-.welcome-content h1 {
+.container h1 {
     font-family: "Inter", serif;
     letter-spacing: 1.5px;
     font-size: 30px;
@@ -101,14 +97,13 @@ input:focus {
     font-size: 20px;
     color: #ffffff;
     background-color: #B93333;
-    border: 2px solid #B93333;
+    border: 1px solid #B93333;
     border-radius: 14px;
     cursor: pointer;
     display: block;
+    outline-color: #ffffff;
 }
 
 
-.continue-button:hover {
-    background-color: #b40c0c;
-}
+
 </style>
