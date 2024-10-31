@@ -1,15 +1,22 @@
 <script setup>
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 import { ref } from "vue";
 
 const FuncaoExpandir = ref(true)
 const numMesa = ref(null)
 
 function Permissao() {
-    if (numMesa.value < 1 || numMesa.value   > 90) {
-        alert(`Por favor, inserir número da mesa`)
+    if (numMesa.value < 1 || numMesa.value > 90) {
+        toast.error('Por favor, insira o número da mesa', {
+            className: 'toast-dark'
+        });
     }
     else {
         FuncaoExpandir.value = false
+        toast.success('Concluído', {
+            className: 'toast-dark'
+        });
     }
 }
 </script>
@@ -32,6 +39,8 @@ function Permissao() {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+
+
 .input-container {
     position: relative;
     align-items: center;
@@ -43,7 +52,7 @@ function Permissao() {
     left: 35px;
     padding: 10px;
     width: 25px;
-    border-right: 2px solid rgba(0, 0, 0, 0.739);
+    border-right: 2px solid var(--cor-icon-fundo-input);
     cursor: pointer;
 }
 
@@ -52,9 +61,8 @@ input {
     margin-top: 15px;
     width: calc(75% - 15px);
     height: 50px;
-    background-color: #D9D9D9;
     border-radius: 14px;
-    border: 1px solid #D9D9D9;
+    border: 1px solid var(--cor-borda-input);
     padding-left: 60px;
     font-size: 20px;
 }
@@ -70,7 +78,7 @@ input:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.425);
+    background-color: var(--cor-icon-fundo-input);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,15 +103,13 @@ input:focus {
     margin-top: 35px;
     font-weight: bold;
     font-size: 20px;
-    color: #ffffff;
-    background-color: #B93333;
-    border: 1px solid #B93333;
+    color: var(--cor-letra-bottom-border);
+    background-color: var(--cor-fundo-bottom);
+    border: 1px solid var(--cor-fundo-borda-bottom);
     border-radius: 14px;
     cursor: pointer;
     display: block;
-    outline-color: #ffffff;
+    outline-color: var(--cor-letra-bottom-border);
 }
-
-
 
 </style>
