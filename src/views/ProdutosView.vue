@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, watch } from 'vue';
 import Produtos from '@/components/itensCardapio/Produtos.vue';
 import TopoProduto from '@/components/itensCardapio/TopoProduto.vue';
 import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
@@ -36,6 +37,8 @@ const Bsobremesas = BsobremeStore.sobremesas;
 const showModal = ref(false)
 </script>
 <template>
+  <main>
+  <div id="entradas" class="section">
   <div id="entradas" class="section">
     <div v-for="banner in Bentradas" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
@@ -49,6 +52,7 @@ const showModal = ref(false)
         :imagem="item.imagem"/>
     </div>
   </div>
+  <div id="principais" class="section">
   <div id="principais" class="section">
     <div v-for="banner in Bprincipais" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
@@ -65,6 +69,7 @@ const showModal = ref(false)
   </div>
 
   <div id="entradasR" class="section">
+  <div id="entradasR" class="section">
     <div v-for="banner in Bentradas" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
@@ -77,6 +82,7 @@ const showModal = ref(false)
         :imagem="item.imagem"/>
     </div>
   </div>
+  <div id="principaisR" class="section">
   <div id="principaisR" class="section">
     <div v-for="banner in Bprincipais" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
@@ -106,6 +112,7 @@ const showModal = ref(false)
     </div>
 
   </div>
+  </div>
 
   <div id="bebidas" class="section">
     <div v-for="banner in Bbebidas" :key="banner">
@@ -123,6 +130,9 @@ const showModal = ref(false)
   </div>
   <div id="alcoolicas" class="section">
 
+    <div v-for="banner in Balcoolicas" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
     <div v-for="banner in Balcoolicas" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
@@ -153,7 +163,7 @@ const showModal = ref(false)
   </div>
 </template>
 <style>
-.section {
-  height: 100vh;
+div .section {
+  height: 100%;
 }
 </style>
