@@ -6,9 +6,9 @@
             showWelcomeScreen.value = false
         }
 
-        function selecionar(evento) {
-            const input = evento.currentTarget.querySelector('input');
-            input.checked = true;
+        const evento = ref(null)
+        function selecionar(valor) {
+            evento.value = valor
         }
 </script>
 
@@ -18,13 +18,13 @@
                     <div class="welcome-content">
                         <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
                         <div class="input-container">
-                            <div class="alacarte" @click="selecionar">
+                            <div class="alacarte" @click="selecionar('alacarte')">
                                 <span>À la carte</span>
-                                <input type="radio" name="opção" value="alacarte">
+                                <input type="radio" name="opção" v-model="evento" value="alacarte">
                             </div>
-                            <div class="alacarte" @click="selecionar">
+                            <div class="alacarte" @click="selecionar('rodizio')">
                                 <span>Rodízio</span>
-                                <input type="radio" name="opção" value="rodizio">
+                                <input type="radio" name="opção" v-model="evento" value="rodizio">
                             </div>
                         </div>
                         <hr>
@@ -66,6 +66,7 @@ input[type="radio" i] {
     cursor: pointer;
     transform: scale(2.5);
 }
+
 
 .welcome-screen {
     position: fixed;
