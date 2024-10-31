@@ -8,7 +8,16 @@
                 <h1>PEDIDOS</h1>
                 <i>x</i>
             </div>
-            <div class="itens"></div>
+            <div class="itens">
+                <table>
+                    <tr>
+                        <td class="quantidade">1X</td>
+                        <td class="item">Água</td>
+                        <td class="valor">7,99</td>
+                        <td class="botaoExcluir"><img src="/public/excluir.png" alt=""></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </template>
@@ -45,5 +54,39 @@ i{
     margin-right: 49px;
     color: white;
 }
-
+.itens{
+    display: flex;
+    justify-content: center;
+    width: 89%;
+    margin: auto;
+}
+table{
+    width: 100%;
+    border-collapse: collapse; 
+}
+tr{
+    height: 84px;
+    width: 846px;
+    border-radius: 20px;
+    background-color: #6B6B6B;
+}
+.quantidade{
+    font-size: 30px;
+    padding-left: 30px;
+}
+.item{
+    font-size: 20px;
+    padding-left: 30px;
+    padding-right: 459px;
+}
+.valor{
+    font-size: 25px;
+    padding-right: 34px;
+    text-align: center;
+}
+.botaoExcluir{
+   padding-right: 17px;
+   text-align: center;
+   cursor: pointer;
+}
 </style>
