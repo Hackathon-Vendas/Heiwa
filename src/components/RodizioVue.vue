@@ -22,8 +22,8 @@
                                 <input type="radio" id="rodizio" name="opção" value="rodizio">
                             </label>
                         </div>
-                        <hr> 
                         <button @click="closeWelcomeScreen" class="continue-button">VOLTAR</button>
+
                     </div>
                 </div>
             </main>
@@ -31,8 +31,10 @@
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
+
+
 .alacarte {
-    background-color: #6B6B6B;
+    background-color: var(--cor-fundo-input);
     margin-left: 32px;
     margin-top: 15px;
     display: flex;
@@ -43,17 +45,11 @@
     cursor: pointer;
     align-items: center;
 }
-margin-top
+
 .alacarte span {
-    user-select: none   ;
+    user-select: none;
 }
 
-
-hr {
-    margin-top: 25px;
-    border: 1.8px solid white;
-    border-radius: 50px;
-}
 
 .input-container {
     font-family: 'Inter';
@@ -66,19 +62,19 @@ input[type="radio" i] {
     appearance: none;
     width: 29px;
     height: 30px;
-    border: 3px solid white;
+    border: 3px solid var(--cor-borda-input);
     border-radius: 45%;
 }
 
 input[type="radio" i]:checked {
-    background-color: #85DE66;
+    background-color: var(--cor-borda-input-radio);
 }
 
 .welcome-screen {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.425);
+    background-color: var(--cor-fundo);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +82,7 @@ input[type="radio" i]:checked {
 
 .welcome-content {
     text-align: center;
-    color: white;
+    color: var(--cor-borda-input);
 }
 
 .welcome-content h1 {
@@ -99,12 +95,13 @@ input[type="radio" i]:checked {
 
 .continue-button {
     margin: auto;
-    padding: 25px;
+    padding: 25px 0 0 0;
     font-weight: bold;
-    font-size: 25px;
-    color: #ffffff;
+    font-size: 20px;
+    color: var(--cor-borda-input);
     cursor: pointer;
-    background-color: #1e1e1e00;
-    border: solid #1e1e1e00;
+    background-color: var(--cor-fundo-bottom);
+    border: solid var(--cor-fundo-bottom);
+    text-decoration: underline;
 }
 </style>
