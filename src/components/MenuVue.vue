@@ -128,7 +128,7 @@ watch(router.currentRoute, () => {
 
 <style scoped>
 main {
-  width: 90%;
+  width: 20%;
   height: 100%;
   margin: auto;
   display: flex;

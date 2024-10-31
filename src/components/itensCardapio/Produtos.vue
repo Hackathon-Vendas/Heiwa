@@ -50,6 +50,7 @@ main {
   background-color: rgba(69, 69, 69, 1);
   color: rgba(255, 255, 255, 1);
   margin-top: 3%;
+  cursor: pointer;
 }
 
 .image {
