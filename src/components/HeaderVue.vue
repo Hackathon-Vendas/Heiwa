@@ -33,6 +33,7 @@ header {
   background-color: #1a1818;
   box-shadow: 0px 15px 29px rgba(189, 188, 188, 0.438);
   position: relative;
+
 }
 
 .container {
@@ -74,4 +75,5 @@ header {
   letter-spacing: 0.25em;
   color: #fff;
 }
+
 </style>
