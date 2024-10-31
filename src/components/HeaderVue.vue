@@ -36,9 +36,9 @@ header {
 }
 
 .container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  justify-content: space-between;
   max-width: 92%;
   margin: auto;
   position: relative;
@@ -48,19 +48,25 @@ header {
   height: 45px;
   width: 45px;
  }
-
+.home{
+  grid-column: 1;
+}
 .logo {
+  grid-column: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  
 }
 
 .logo-principal {
   height: 54px;
   width: auto;
 }
-
+.cart{
+  grid-column: 3;
+  display: flex;
+  justify-content: end;
+}
 .logo-secundaria {
   font-size: 14px;
   font-family: 'Inter', sans-serif;
