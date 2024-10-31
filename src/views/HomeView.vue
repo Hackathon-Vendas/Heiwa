@@ -1,11 +1,10 @@
 <script setup>
 import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
-import { ref } from "vue";
 </script>
 
 <template>
   <main>
-    <CarrosselPrincipal />
+   <!--<CarrosselPrincipal />-->
   </main>
 </template>
 
