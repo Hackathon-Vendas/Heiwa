@@ -10,7 +10,7 @@ console.log(router.currentRoute.value.path)
 <template>
   <header>
     <div class="container">
-      <div class="home">
+      <div class="home" v-if="rota == '/produtos'">
         <img class="voltar" src="/public/Voltar.png" alt="Home Icon">
       </div>
       <div class="logo">
