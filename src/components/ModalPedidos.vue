@@ -15,6 +15,49 @@
                     <p class="valor">7,99</p>
                     <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
                 </div>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
+            </div>
+            <div class="pedidoUsuario">
+                <div class="infoPedido">
+                    <h3>TOTAL</h3>
+                    <h3>R$835,10</h3>
+                </div>
+                <div class="botoesPedido"></div>
             </div>
         </div>
     </div>
@@ -42,9 +85,10 @@
 .informacoes h1{
     text-align: center;
     flex-grow: 1;
-    margin: 0;
+    margin: 43px 0 46px 0;
     color: white;
     font-size: 40px;
+    
 }
 i{
     cursor: pointer;
@@ -52,21 +96,28 @@ i{
     padding: 43px 0;
     margin-right: 49px;
     color: white;
+    margin: 43px 55px 46px 0;
+
 }
 .itens{
     display: flex;
     justify-content: center;
+    flex-direction: column;
     width: 89%;
     margin: auto;
+    height: 20rem;
+    overflow-y: scroll;
 }
 .item-1{
     width: 100%;
     display: flex;
+
     justify-content: space-around;
     align-items: center;
     background-color: #6B6B6B;
     height: 84px;
     border-radius: 20px;
+    margin: 20px auto;
 }
 
 .quantidade{
