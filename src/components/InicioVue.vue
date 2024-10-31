@@ -1,16 +1,7 @@
-<script>
-export default {
-    data() {
-        return {
-            showWelcomeScreen: true,
-        };
-    },
-    methods: {
-        closeWelcomeScreen() {
-            this.showWelcomeScreen = false;
-        }
-    }
-};
+<script setup>
+import { ref } from 'vue';
+
+const showWelcomeScreen = ref(true);
 </script>
 
 <template>
@@ -20,7 +11,7 @@ export default {
                 <h1>BEM-VINDO AO </h1>
                 <img class="logo-principal" src="/public/logoHeiwa.png">
                 <h2>SUSHI & BAR</h2>
-                <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
+                <button @click="showWelcomeScreen = !showWelcomeScreen" class="continue-button">CONTINUAR</button>
             </div>
         </div>
 
