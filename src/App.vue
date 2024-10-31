@@ -6,13 +6,19 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <HeaderVue />
   <MenuVue />
+  
   <InicioVue />
   <main>
     <RouterView />
   </main>
-  
+
+  <HeaderVue />
+  <RouterView />
+
 </template>
 
-<style scoped></style>
+
+
+<style scoped>
+</style>
