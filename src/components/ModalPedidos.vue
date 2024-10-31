@@ -9,14 +9,12 @@
                 <i>x</i>
             </div>
             <div class="itens">
-                <table>
-                    <tr>
-                        <td class="quantidade">1X</td>
-                        <td class="item">Água</td>
-                        <td class="valor">7,99</td>
-                        <td class="botaoExcluir"><img src="/public/excluir.png" alt=""></td>
-                    </tr>
-                </table>
+                <div class="item-1">
+                    <p class="quantidade">1X</p>
+                    <p class="item">Água</p>
+                    <p class="valor">7,99</p>
+                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+                </div>
             </div>
         </div>
     </div>
@@ -24,7 +22,7 @@
 <style scoped>
 .container{
     background-color: #2D2D2D;
-    width: 60%;
+    width: 65%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -33,6 +31,7 @@
 }
 .pedidos{
     width: 100%;
+    height: 100%;
 }
 .informacoes{
     display: flex;
@@ -60,16 +59,16 @@ i{
     width: 89%;
     margin: auto;
 }
-table{
+.item-1{
     width: 100%;
-    border-collapse: collapse; 
-}
-tr{
-    height: 84px;
-    width: 846px;
-    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     background-color: #6B6B6B;
+    height: 84px;
+    border-radius: 20px;
 }
+
 .quantidade{
     font-size: 30px;
     padding-left: 30px;
