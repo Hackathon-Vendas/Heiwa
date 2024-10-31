@@ -5,11 +5,6 @@
         function closeWelcomeScreen() {
             showWelcomeScreen.value = false
         }
-
-        const evento = ref(null)
-        function selecionar(valor) {
-            evento.value = valor
-        }
 </script>
 
         <template>
@@ -18,16 +13,16 @@
                     <div class="welcome-content">
                         <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
                         <div class="input-container">
-                            <div class="alacarte" @click="selecionar('alacarte')">
+                            <label class="alacarte" for="alacarte">
                                 <span>À la carte</span>
-                                <input type="radio" name="opção" v-model="evento" value="alacarte">
-                            </div>
-                            <div class="alacarte" @click="selecionar('rodizio')">
+                                <input type="radio" id="alacarte" name="opção" value="alacarte">
+                            </label>
+                            <label class="alacarte" for="rodizio">
                                 <span>Rodízio</span>
-                                <input type="radio" name="opção" v-model="evento" value="rodizio">
-                            </div>
+                                <input type="radio" id="rodizio" name="opção" value="rodizio">
+                            </label>
                         </div>
-                        <hr>
+                        <hr> 
                         <button @click="closeWelcomeScreen" class="continue-button">VOLTAR</button>
                     </div>
                 </div>
@@ -44,8 +39,13 @@
     justify-content: space-between;
     width: calc(500px - 120px);
     border-radius: 14px;
-    padding: 20px 40px;
+    padding: 16px 40px;
     cursor: pointer;
+    align-items: center;
+}
+margin-top
+.alacarte span {
+    user-select: none   ;
 }
 
 
@@ -62,11 +62,17 @@ hr {
 }
 
 input[type="radio" i] {
-    accent-color: #85DE66;
     cursor: pointer;
-    transform: scale(2.5);
+    appearance: none;
+    width: 29px;
+    height: 30px;
+    border: 3px solid white;
+    border-radius: 45%;
 }
 
+input[type="radio" i]:checked {
+    background-color: #85DE66;
+}
 
 .welcome-screen {
     position: fixed;
@@ -93,9 +99,9 @@ input[type="radio" i] {
 
 .continue-button {
     margin: auto;
-    margin-top: 25px;
+    padding: 25px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     color: #ffffff;
     cursor: pointer;
     background-color: #1e1e1e00;
