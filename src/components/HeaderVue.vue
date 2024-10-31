@@ -9,15 +9,17 @@ console.log(router.currentRoute.value.path)
 
 <template>
   <header>
-    <div class="voltar">
-      <img class="home" src="/public/home.png">
-    </div>
     <div class="container">
+    <div class="home">
+      <img class="voltar" src="/public/Voltar.png">
+    </div>
+    <div class="logos">
       <img class="logo-principal" src="/public/logoH.png" />
       <h1 class="logo-secundaria">SUSHI & BAR</h1>
     </div>
-    <div class="cart-icon">
-      <img src="/public/logo-carrinho.svg" />
+    <div class="cart">
+      <img class="cart-icon" src="/public/Vector.png" />
+    </div>
     </div>
   </header>
 </template>
@@ -34,20 +36,34 @@ header {
   position: static;
   filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
 }
-.home{
-  top: 30px;
-  left: 25px;
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+
+}
+
+.logos {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 137px;
+}
+
+.home, .home {
+  flex: 1;
+  display: flex;
+  justify-content: center;
  
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  margin: auto;
-  margin-top: 15px;
-  justify-content: center;
-  align-items: center;
+.voltar{
+ position: relative; 
+margin-right: 70%;
+margin-left: 2%;
 }
 
 .logo-principal {
@@ -63,15 +79,7 @@ header {
   color: #fff;
 }
 
-.cart-icon {
-  position: absolute;
-  top: 30px;
-  right: 25px;
-}
 
-.cart-icon img {
-  width: 40px;
-  height: auto;
-  cursor: pointer;
-}
+
+
 </style>
