@@ -64,7 +64,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
     <div v-for="item in principais" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+        :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
 
@@ -74,7 +74,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     </div>
     <div v-for="item in entradas" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+        :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
   <div id="section4">
@@ -84,7 +84,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
     <div v-for="item in principais" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+        :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
 <div id="section5">
@@ -94,7 +94,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
   <div v-for="item in sobremesasRodizio" :key="item">
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-      :imagem="item.imagem" />
+      :imagem="item.imagem" @click="openModal(item)"/>
   </div>
 
 </div>
@@ -106,7 +106,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
   <div v-for="item in bebidas" :key="item">
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-      :imagem="item.imagem" />
+      :imagem="item.imagem" @click="openModal(item)"/>
   </div>
 </div>
 <div id="section7">
@@ -117,7 +117,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
   <div v-for="item in alcoolicas" :key="item">
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-      :imagem="item.imagem" />
+      :imagem="item.imagem" @click="openModal(item)"/>
   </div>
 
 </div>
@@ -129,7 +129,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
   <div v-for="item in sobremesas" :key="item">
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-      :imagem="item.imagem" />
+      :imagem="item.imagem" @click="openModal(item)"/>
   </div>
 </div>
 </template>

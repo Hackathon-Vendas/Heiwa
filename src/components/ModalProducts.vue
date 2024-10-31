@@ -12,31 +12,35 @@ const closeModal = () => {
 </script>
 
 <template>
-    <div class="container" v-if="props.isOpen">
-        Carai
-        <h1>{{ props.item }}</h1>
-        <h2>{{ props.item }} unidades</h2>
-        <h2>R${{ props.item }}</h2>
-        <img :src=imagem>
-        <p>{{ props.item }}</p>
-        <label for="">Algum comentário?</label>
-        <textarea name="" id="" placeholder="Ex: Tirar cebola..."></textarea>
-        <div class="contador">
-            <button>-</button>
-            <p>1</p>
-            <button>+</button>
+    <div class="container-modal" v-if="props.isOpen">
+        <div class="imagem">
+            <img :src=props.item.imagem>
         </div>
-        <button>Adicionar: R${{ props.item }}</button>
-        <button @click="closeModal">fechar essa bomba ai</button>
+        <div class="textos">
+            <h1>{{ props.item.name }}</h1>
+            <h2>{{ props.item.unit }}</h2>
+            <h2>R${{ props.item.price }}</h2>
+            <p>{{ props.item.description }}</p> 
+            <label for="">Algum comentário?</label>
+            <textarea name="" id="" placeholder="Ex: Tirar molho..."></textarea>
+            <div class="contador">
+                <button>-</button>
+                <p>1</p>
+                <button>+</button>
+            </div>
+            <button>Adicionar: {{ props.item.price }}</button>
+            <button @click="closeModal">fechar essa bomba ai</button>
+        </div>
     </div>
 </template>
 
 <style>
-.container{
+.container-modal {
+    display: flex;
     position: absolute;
     top: 20%;
     left: 20%;
-    width: 50%;
-    background-color: red;
+    width: 60%;
+    background-color: #5A5A5A;
 }
 </style>
