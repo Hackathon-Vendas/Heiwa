@@ -1,29 +1,33 @@
         <script setup>
         import { ref } from "vue";
 
-        const showWelcomeScreen = ref(true)
-        function closeWelcomeScreen() {
-            showWelcomeScreen.value = false
+        const FuncaoEspansao = ref(true)
+        function FuncaoPassar() {
+            FuncaoEspansao.value = false
         }
+
+        const input = ref();
+        
 </script>
 
         <template>
             <main>
-                <div v-if="showWelcomeScreen" class="welcome-screen">
-                    <div class="welcome-content">
+                <div v-if="FuncaoEspansao" class="bem-vindo">
+                    <div class="container">
                         <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
                         <div class="input-container">
                             <label class="alacarte" for="alacarte">
                                 <span>À la carte</span>
-                                <input type="radio" id="alacarte" name="opção" value="alacarte">
+                                <input type="radio" id="alacarte" v-model="input" name="opção" value="alacarte">
                             </label>
                             <label class="alacarte" for="rodizio">
                                 <span>Rodízio</span>
-                                <input type="radio" id="rodizio" name="opção" value="rodizio">
+                                <input type="radio" id="rodizio" v-model="input" name="opção" value="rodizio">
                             </label>
                         </div>
-                        <button @click="closeWelcomeScreen" class="continue-button">VOLTAR</button>
-
+                        <button v-if="input == 'alacarte'"  @click="confirmar" class="confirm-button-2">CONFIRMAR</button>
+                        <button v-else  @click="FuncaoPassar" class="continue-button">VOLTAR</button>
+                        
                     </div>
                 </div>
             </main>
@@ -70,7 +74,7 @@ input[type="radio" i]:checked {
     background-color: var(--cor-borda-input-radio);
 }
 
-.welcome-screen {
+.bem-vindo {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -80,12 +84,12 @@ input[type="radio" i]:checked {
     align-items: center;
 }
 
-.welcome-content {
+.container {
     text-align: center;
     color: var(--cor-borda-input);
 }
 
-.welcome-content h1 {
+.container h1 {
     font-family: "Inter", serif;
     letter-spacing: 3px;
     max-width: 450px;
@@ -103,5 +107,22 @@ input[type="radio" i]:checked {
     background-color: var(--cor-fundo-bottom);
     border: solid var(--cor-fundo-bottom);
     text-decoration: underline;
+}
+
+.confirm-button-2 {
+    width: 85%;
+    height: 55px;
+    margin: auto;
+    margin-top: 35px;
+    font-weight: bold;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #B93333;
+    border: 2px solid #B93333;
+    border: 1px solid #B93333;
+    border-radius: 14px;
+    cursor: pointer;
+    display: block;
+    outline-color: #ffffff;
 }
 </style>
