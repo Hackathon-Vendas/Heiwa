@@ -1,19 +1,18 @@
-:root {
-    --cor-borda-input: #D9D9D9;
-    --cor-icon-fundo-input: #000000BC;
-    --cor-letra-bottom-border: #ffffff;
-    --cor-fundo-bottom: #B93333;
+
+:root{
+  --cor-fundo-input: #6B6B6B;
+  --cor-borda-input: #fff;
+  --cor-borda-input-radio: #85DE66;
+  --cor-fundo: #000000BC;
+  --cor-fundo-bottom: #1e1e1e00;
 }
-
-
-
 
 *{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
   }
   
   body{
-    background-color: #1E1E1E;
+    background-color: #1e1e1e
   }
+
