@@ -61,7 +61,7 @@
 </template>
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation } from 'swiper/modules';
+
 import 'swiper/css';
 const breakpoints = {
   724: {
