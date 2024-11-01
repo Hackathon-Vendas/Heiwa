@@ -17,7 +17,7 @@ export default {
     <div v-if="showWelcomeScreen" class="welcome-screen">
         <div class="welcome-content">
             <h1>BEM-VINDO AO </h1>
-            <img class="logo-principal" src="/public/logoHeiwa.png">
+            <img class="logo-principal" src="/logoHeiwa.png">
             <h2>SUSHI & BAR</h2>
             <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
         </div>

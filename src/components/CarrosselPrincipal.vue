@@ -24,7 +24,7 @@ const modules = [Autoplay];
       class="mySwiper"
     >
       <SwiperSlide v-for="(foto, index) in fotos" :key="index">
-        <img :src="`/public/${foto}`" class="sushis" />
+        <img :src="`/${foto}`" class="sushis" />
       </SwiperSlide>
     </Swiper>
   </main>

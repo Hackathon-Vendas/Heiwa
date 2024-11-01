@@ -133,7 +133,7 @@ function scrollToSection8() {
     <div class="aside">
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
-              src="/public/logo-alacarte.svg">
+              src="/logo-alacarte.svg">
             <p>Á la carte</p>
           </button></li>
         <div v-if="alacarte">
@@ -154,7 +154,7 @@ function scrollToSection8() {
         </div>
 
         <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img
-              src="/public/logo-rodizio.svg">
+              src="/logo-rodizio.svg">
             <p>Rodízio</p>
           </button></li>
         <div v-if="rodizio">
@@ -181,7 +181,7 @@ function scrollToSection8() {
         </div>
 
         <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
-              src="/public/logo-bebida.svg">
+              src="/logo-bebida.svg">
             <p>Bebidas</p>
           </button></li>
         <div v-if="bebidas">
@@ -205,7 +205,7 @@ function scrollToSection8() {
         <li>
           <RouterLink :to="{ path: '/produtos', hash: '#-sobremesa' }">
             <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
-                src="/public/logo-sobremesa.svg">
+                src="/logo-sobremesa.svg">
               <p>Sobremesas</p>
             </button>
           </RouterLink>

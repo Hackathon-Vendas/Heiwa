@@ -9,14 +9,14 @@ console.log(router.currentRoute.value)
   <header>
     <div class="container">
       <div class="home">
-        <img class="voltar" src="/public/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
+        <img class="voltar" src="/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
       </div>
       <div class="logo">
-        <img class="logo-principal" src="/public/logoH.png" alt="Logo Principal" />
+        <img class="logo-principal" src="/logoH.png" alt="Logo Principal" />
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="/public/Vector.png" alt="Cart Icon" />
+        <img class="cart-icon" src="/Vector.png" alt="Cart Icon" />
       </div>
     </div>
   </header>

@@ -8,7 +8,6 @@ import MenuVue from '@/components/MenuVue.vue'
  
   <InicioVue />
   <MenuVue />
-
   <HeaderVue />
   <RouterView />
 
