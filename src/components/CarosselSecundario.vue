@@ -8,30 +8,25 @@
       :spaceBetween="-45"
       :breakpoints="breakpoints"
     >
-      <swiper-slide><img src="/public/anmitsu.png" alt=""></swiper-slide>
+      <swiper-slide>
+        <div class="slide-item">
+          <img src="/public/anmitsu.png" alt="">
+          <div class="slide-title">
+            <p>Anmitsu</p>
+          </div>
+        </div>
+      </swiper-slide>
+
       <swiper-slide><img src="/public/petitgateau.png" alt=""></swiper-slide><swiper-slide><img src="/public/temakiatum.png" alt=""></swiper-slide>
       <swiper-slide><img src="/public/temakisalmao.png" alt=""></swiper-slide><swiper-slide><img src="/public/urumaki.png" alt=""></swiper-slide>
       <swiper-slide><img src="/public/gyoza.png" alt=""></swiper-slide><swiper-slide><img src="/public/yakisoba.png" alt=""></swiper-slide>
     </swiper>
   </template>
-<script>
-// Import Swiper Vue.js components
+<script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
-import 'swiper/css';
-
-// Import required modules
 import { Navigation } from 'swiper/modules';
-
-export default {
-  components: {
-    Swiper,
-    SwiperSlide,
-  },
-  setup() {
+import 'swiper/css';
     const breakpoints = {
-      // when window width is >= 640px
       724: {
         slidesPerView: 2.2,
         spaceBetween: 60
@@ -82,12 +77,6 @@ export default {
     }
     };
 
-    return {
-      modules: [Navigation],
-      breakpoints, // Retorna o objeto breakpoints
-    };
-  },
-};
 </script>
   <style scoped>
 .swiper {
@@ -100,6 +89,25 @@ export default {
   display: flex;
   justify-content: center;
   width: 86%;
+}
+
+
+.slide-title {
+  background-color: #00000070;
+  position: relative;
+  width: 80%;
+  margin-left: 7%;
+ /* margin: 0 auto; */ 
+  z-index: 10;
+}
+
+.slide-item p {
+  margin-top: -15%;
+  margin-left: 5%;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+
 }
 
 .swiper-slide img {
