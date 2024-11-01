@@ -87,7 +87,7 @@
 .informacoes h1{
     text-align: center;
     flex-grow: 1;
-    margin: 43px 0 46px 0;
+    margin: 43px 0;
     color: white;
     font-size: 40px;
 }
@@ -97,12 +97,9 @@ i{
     padding: 43px 0;
     margin-right: 49px;
     color: white;
-    margin: 43px 55px 46px 0;
-
 }
 .itens{
     display: flex;
-    justify-content: center;
     flex-direction: column;
     width: 89%;
     margin: auto;
@@ -122,9 +119,6 @@ i{
      padding: 2rem 0;
     border-radius: 20px;
     margin: 10px auto;
-}
-.item-1:first-child{
-    margin-top: 30%;
 }
 .quantidade{
     font-size: 30px;
