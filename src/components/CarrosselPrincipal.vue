@@ -1,5 +1,4 @@
 <script setup>
-import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import { Autoplay } from 'swiper/modules';
 

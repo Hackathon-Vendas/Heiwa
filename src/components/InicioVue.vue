@@ -14,22 +14,19 @@ export default {
 </script>
 
 <template>
-    <main>
-        <div v-if="showWelcomeScreen" class="welcome-screen">
-            <div class="welcome-content">
-                <h1>BEM-VINDO AO </h1>
-                <img class="logo-principal" src="/public/logoHeiwa.png">
-                <h2>SUSHI & BAR</h2>
-                <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
-            </div>
+    <div v-if="showWelcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <h1>BEM-VINDO AO </h1>
+            <img class="logo-principal" src="/public/logoHeiwa.png">
+            <h2>SUSHI & BAR</h2>
+            <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
         </div>
-
-    </main>
+    </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 
 input {
@@ -65,27 +62,27 @@ input:focus {
 
 }
 
-.welcome-content h1{
-  font-size: 15px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.25em;
-  color: #fff;
+.welcome-content h1 {
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    color: #fff;
 }
 
-.logo-principal{
-  height: 156px;
-  width: 520px;
-  margin-top: 20px;
+.logo-principal {
+    height: 156px;
+    width: 520px;
+    margin-top: 20px;
 }
 
 .welcome-content h2 {
-  font-size: 20px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300; 
-  letter-spacing: 0.25em;
-  color: #fff;
-  margin-top: -81px;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    color: #fff;
+    margin-top: -81px;
 }
 
 .continue-button {

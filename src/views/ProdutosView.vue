@@ -4,7 +4,6 @@ import Produtos from '@/components/itensCardapio/Produtos.vue';
 import TopoProduto from '@/components/itensCardapio/TopoProduto.vue';
 import { useAlcoolicaStore, useEntradaStore, usePrincipalStore, useBebidaStore, useSobremesaStore, useSobremesarStore } from '@/stores/produto';
 import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
-
 import { useRoute } from 'vue-router'
 const route = useRoute()
 
@@ -25,7 +24,7 @@ function scrollToHash(hash) {
   if (element) {
     setTimeout(() => {
       element.scrollIntoView({ behavior: 'smooth' });
-    }, 1000); // Aumente o tempo se necessário
+    }, 1000);
   }
 }
 

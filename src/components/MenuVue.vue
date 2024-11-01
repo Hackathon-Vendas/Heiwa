@@ -1,7 +1,6 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import router from '@/router';
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -28,7 +27,7 @@ function showAlacarte() {
 
 function showRodizio() {
   if (rodizio.value) {
-    rodizio.value = false; 
+    rodizio.value = false;
   } else {
     rodizio.value = true;
     alacarte.value = false;
@@ -38,12 +37,12 @@ function showRodizio() {
 
 function showBebidas() {
   if (bebidas.value) {
-    bebidas.value = false; 
+    bebidas.value = false;
   } else {
     bebidas.value = true;
     alacarte.value = false;
     rodizio.value = false;
-    
+
   }
 }
 
@@ -130,7 +129,7 @@ function scrollToSection8() {
 
 </script>
 <template>
-  <main>
+
     <div class="aside">
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
@@ -213,7 +212,6 @@ function scrollToSection8() {
         </li>
       </ul>
     </div>
-  </main>
 </template>
 
 <style scoped>
@@ -235,11 +233,11 @@ main {
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   height: calc(100vh - 10%);
   overflow-y: auto;
-  }
+}
 
-  .aside::-webkit-scrollbar {
-    display: none;
-  
+.aside::-webkit-scrollbar {
+  display: none;
+
 }
 
 .aside ul {
@@ -257,8 +255,8 @@ main {
   display: block;
   font-family: 'Inter', normal, sans-serif;
   font-weight: 900;
-  font-size: 1rem; 
-  padding: 3em;  
+  font-size: 1rem;
+  padding: 3em;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.25em;
@@ -329,48 +327,49 @@ img {
 
   .aside::-webkit-scrollbar {
     display: none;
-  
-}
 
-.aside ul li {
-  text-align: center;
-  height: 100%;
-}
+  }
+
+  .aside ul li {
+    text-align: center;
+    height: 100%;
+  }
 
 
-.aside .sub-menu {
-  display: block;
-  top: 354px;
-  font-family: 'Inter', normal, sans-serif;
-  font-weight: 700;
-  font-size: 10px;
-  line-height: 15px;
-  text-align: center !important;
-  letter-spacing: 0.25em;
-  color: #FFFFFF;
-  padding: 20px;
-  padding-left: 10%;
-  background-color: rgba(69, 69, 69, 1);
-  transition: 0.3s;
-  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.44));
-  width: 100%;
-}
-button p {
-  font-family: 'Inter', normal, sans-serif;
-  font-weight: 900;
-  font-size: 10px;
-  line-height: 17px;
-  text-align: center;
-  letter-spacing: 0.25em;
-  color: #FFFFFF;
-  margin-top: 0.3%;
-}
+  .aside .sub-menu {
+    display: block;
+    top: 354px;
+    font-family: 'Inter', normal, sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center !important;
+    letter-spacing: 0.25em;
+    color: #FFFFFF;
+    padding: 20px;
+    padding-left: 10%;
+    background-color: rgba(69, 69, 69, 1);
+    transition: 0.3s;
+    filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.44));
+    width: 100%;
+  }
 
-img {
-  width: 48px;
-  margin-bottom: 10%;
-  margin-top: 10%;
-}
+  button p {
+    font-family: 'Inter', normal, sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    color: #FFFFFF;
+    margin-top: 0.3%;
+  }
+
+  img {
+    width: 48px;
+    margin-bottom: 10%;
+    margin-top: 10%;
+  }
 }
 
 @media (max-width: 768px) {
