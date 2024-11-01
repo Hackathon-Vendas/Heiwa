@@ -22,6 +22,7 @@ function Permissao() {
 </script>
 
 <template>
+    <main>
         <div v-if="FuncaoExpandir" class="bemVindo">
             <div class="container">
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
@@ -32,6 +33,7 @@ function Permissao() {
                 <button @click="Permissao" class="continue-button">CONTINUAR</button>
             </div>
         </div>
+    </main>
 </template>
 
 <style scoped>
@@ -108,6 +110,5 @@ input:focus {
     cursor: pointer;
     display: block;
     outline-color: var(--cor-letra-bottom-border);
-}
-
+}           
 </style>
