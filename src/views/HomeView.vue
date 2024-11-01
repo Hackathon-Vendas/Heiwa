@@ -1,10 +1,15 @@
 <script setup>
+import NumeroMesa from '@/components/NumeroMesa.vue';
+
 import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 </script>
 
 <template>
   <main>
-   <!--<CarrosselPrincipal />-->
+
+    <NumeroMesa />
+   <CarrosselPrincipal />
+
   </main>
 </template>
 
