@@ -12,7 +12,6 @@ import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
   <main>
 
     <RodizioVue />
-  </main>
 
 
     <NumeroMesa />

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ProdutosView from '../views/ProdutosView.vue'
-import HomeView from '../views/HomeView.vue'
 import { nextTick } from 'vue'
 
 
@@ -19,8 +18,6 @@ const router = createRouter({
       name: 'home',
       component: HomeView
     }
-  ]
-})
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
@@ -35,6 +32,6 @@ const router = createRouter({
     }
     return { top: 0 };
   },
-  });
+})
 
 export default router
