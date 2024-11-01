@@ -57,7 +57,10 @@
                     <h3>TOTAL</h3>
                     <h3>R$835,10</h3>
                 </div>
-                <div class="botoesPedido"></div>
+                <div class="botoesPedido">
+                    <button class="finalizarPedido">FINALIZAR PEDIDO</button>
+                    <button class="pedirConta">PEDIR CONTA</button>
+                </div>
             </div>
         </div>
     </div>
@@ -78,7 +81,6 @@
 }
 .informacoes{
     display: flex;
-    padding: 43px 0;
     align-items: center;
     justify-content: center;
 }
@@ -88,7 +90,6 @@
     margin: 43px 0 46px 0;
     color: white;
     font-size: 40px;
-    
 }
 i{
     cursor: pointer;
@@ -108,18 +109,23 @@ i{
     height: 20rem;
     overflow-y: scroll;
 }
+.itens::-webkit-scrollbar{
+    display: none;
+}
 .item-1{
     width: 100%;
     display: flex;
-
     justify-content: space-around;
     align-items: center;
     background-color: #6B6B6B;
     height: 84px;
+     padding: 2rem 0;
     border-radius: 20px;
-    margin: 20px auto;
+    margin: 10px auto;
 }
-
+.item-1:first-child{
+    margin-top: 30%;
+}
 .quantidade{
     font-size: 30px;
     padding-left: 30px;
@@ -138,5 +144,10 @@ i{
    padding-right: 17px;
    text-align: center;
    cursor: pointer;
+}
+.infoPedido{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
 }
 </style>
