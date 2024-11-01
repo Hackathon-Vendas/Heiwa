@@ -6,12 +6,9 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <MenuVue />
-  
+ 
   <InicioVue />
-  <main>
-    <RouterView />
-  </main>
+  <MenuVue />
 
   <HeaderVue />
   <RouterView />

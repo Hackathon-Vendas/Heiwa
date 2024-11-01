@@ -3,15 +3,15 @@ import { RouterLink, useRouter } from 'vue-router';
 
 import router from '@/router'
 
-const rota = router.currentRoute.value.path;
-console.log(router.currentRoute.value.path)
+const rota = router.currentRoute.value.name;
+console.log(router.currentRoute.value)
 </script>
 
 <template>
   <header>
     <div class="container">
-      <div class="home" v-if="rota == '/produtos'">
-        <img class="voltar" src="/public/Voltar.png" alt="Home Icon">
+      <div class="home" >
+        <img class="voltar" src="/public/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
       </div>
       <div class="logo">
         <img class="logo-principal" src="/public/logoH.png" alt="Logo Principal" />
@@ -32,7 +32,7 @@ header {
   padding: 7px ;
   background-color: #1a1818;
   box-shadow: 0px 15px 29px rgba(189, 188, 188, 0.438);
-  position: relative;
+  position:fixed;
 
 }
 
