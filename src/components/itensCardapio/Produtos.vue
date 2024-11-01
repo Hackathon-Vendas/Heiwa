@@ -1,9 +1,7 @@
 <script setup>
 defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 </script>
-<template>
-  <main>
-    <div class="produtos">
+<template>    <div class="produtos">
       <div class="item">
         <img :src=imagem class="image">
         <div class="details">
@@ -16,21 +14,10 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
         </div>
       </div>
     </div>
-  </main>
 </template>
 
 
 <style scoped>
-main {
-  width: 75%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 17%;
-  margin-top: 1%;
-}
-
 .produtos {
   display: flex;
   flex-direction: column;
@@ -40,6 +27,8 @@ main {
   width: 100%;
   gap: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2%;
+  margin-left: 3%;
 }
 
 .item {
@@ -60,7 +49,7 @@ main {
   border-radius: 20px !important;
   object-fit: cover;
   margin-top: 1.5%;
-  margin-left: 0.2%;
+  margin-left: 1%;
   margin-right: 1%;
 }
 
@@ -119,25 +108,18 @@ h3 {
   display: flex;
   align-items: baseline;
 }
-@media (max-width: 1024px) {
-  main {
-  width: 50%;
-  margin: auto;
+@media (max-width: 1440px) {
+  .produtos {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 2%;
-  margin-left: 3%;
-}
-
-.produtos {
-  display: flex;
-  flex-direction: column;
+  gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  width: 70%;
-  margin-left: 0.1%;
+  width: 100%;
+  gap: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 2%;
+  margin-left: 0;
 }
 
 .item {
@@ -145,15 +127,14 @@ h3 {
   align-items: center;
   border-radius: 14px;
   width: 100%;
-  height: 100px;
+  height: 150px;
   background-color: rgba(69, 69, 69, 1);
   color: rgba(255, 255, 255, 1);
-  margin-top: 2%;
+  margin-top: 1%;
 }
-
 .image {
   width: 30%;
-  height: 115px;
+  height: 170px;  
   border-radius: 18px;
   object-fit: cover;
   margin-top: 1.5%;
@@ -161,12 +142,19 @@ h3 {
   margin-right: 1%;
 }
 
+/* Group 69 
+
+position: absolute;
+width: 1070px;
+height: 250px;
+*/
+
 h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size:  0.55em;
-  line-height: 16px;
+  font-size:  20px;
+  line-height: 20px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
   display: inline-block;
@@ -177,7 +165,7 @@ h3 {
   font-family: 'Inter', sans-serif, sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size:  0.55em;
+  font-size:  16px;
   line-height: 27px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
@@ -188,7 +176,7 @@ h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size:  0.55em;
+  font-size:  16px;
   line-height: 24px;
   letter-spacing: 0.25em;
   color: #aaa;
@@ -202,7 +190,7 @@ h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 9px;
+  font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.20em;
   color: #FFFFFF;

@@ -149,4 +149,25 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 div .section {
   height: 100%;
 }
+main{
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 17%;
+  margin-top: 1%;
+  }
+  @media (max-width: 1440px) { 
+    main{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10%;
+  margin-top: 1%;
+  }
+
+}
 </style>

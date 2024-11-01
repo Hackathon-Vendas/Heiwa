@@ -63,7 +63,7 @@ header {
 }
 @media (max-width: 1024px) { 
   header {
-  width: 47%;
+  width: 100%;
   padding: 7px;
   margin: auto;
   background-color: #1a1818;

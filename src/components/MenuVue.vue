@@ -130,7 +130,6 @@ function scrollToSection8() {
 
 </script>
 <template>
-  <main>
     <div class="aside">
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
@@ -213,21 +212,13 @@ function scrollToSection8() {
         </li>
       </ul>
     </div>
-  </main>
 </template>
 
 <style scoped>
-main {
-  width: 90%;
-  height: 100%;
-  margin: auto;
-  display: flex;
-  position: absolute;
-  margin-top: 5.5%;
-}
-
 .aside {
   width: 200px;
+  height: 100%;
+  margin-top: 5.5%;
   top: 15.5 vh;
   left: 0;
   position: fixed;
@@ -307,17 +298,11 @@ img {
   border-right: rgba(156, 156, 156, 1) 3px solid;
 }
 
-@media (max-width: 1024px) {
-  main {
-    width: 50%;
-    margin: auto;
-    display: flex;
-    position: absolute;
-    margin-top: 7.4%;
-  }
-
+@media (max-width: 1440px) {
   .aside {
     width: 100px;
+    height: 100%;
+    margin-top: 7%;
     top: 15.7 vh;
     left: 0;
     position: fixed;

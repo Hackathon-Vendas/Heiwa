@@ -2,30 +2,20 @@
 defineProps(['title','image']);
 </script>
 <template>
-    <main>
       <div class="topo">
         <img :src=image class="banner">
         <h2>{{ title }}</h2>
       </div>
-    </main>
 </template>
 
 
 <style scoped>
-.main {
-  width: 60%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-left: 25%;
-}
 
 .topo{
   margin-bottom: 2%;
-  width: 1400px;
+  width: 1150px;
   text-align: center;
-  margin-left: 17%;
+  margin-left: 3%;
 
 }
 
@@ -43,28 +33,33 @@ h2 {
   text-align: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
+  margin-top: -20px;
 }
-@media (max-width: 1024px) {
-  .main {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+@media (max-width: 1440px) {
 
 .topo{
-  margin-bottom: 1%;
-  width: 350px;
+  margin-bottom: 3%;
+  width: 100%;
   text-align: center;
-  margin-left: 11%;
+  margin-left: 0%;
 }
 
 
 .banner {
   width: 100%;
-  margin-top: 20%;
+  margin-top: 12%;
+  height: 150px;
 }
+
+/* Group 72 
+
+position: absolute;
+width: 1071px;
+height: 225px;
+left: 284px;
+top: 120px;
+
+*/
 
 
 h2 {
@@ -75,7 +70,7 @@ h2 {
   text-align: center;
   letter-spacing: 0.35em;
   color: #FFFFFF;
-  
+  margin-top: -20px;
 }
 }
 @media (max-width: 768px) {
