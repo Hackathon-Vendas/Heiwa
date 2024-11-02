@@ -2,13 +2,13 @@
 import { ref } from 'vue';
 
 const emit = defineEmits([
-    'boqueteParafuso'
+    'modal'
 ])
 
 const showWelcomeScreen = ref(true) 
 function closeWelcomeScreen() {
     showWelcomeScreen.value = false
-    emit('boqueteParafuso')
+    emit('modal')
 }
 
 
@@ -51,10 +51,11 @@ input:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.726);
+    background-color: var(--cor-fundoSite-icon);
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 .welcome-content {
@@ -64,11 +65,12 @@ input:focus {
 }
 
 .welcome-content h1 {
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Inter', sans-serif;
     font-weight: 900;
-    letter-spacing: 0.25em;
+    letter-spacing: 4px;
     color: #fff;
+    margin-right: 45px; 
 }
 
 .logo-principal {
@@ -81,19 +83,17 @@ input:focus {
     font-size: 20px;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
-    letter-spacing: 0.25em;
+    letter-spacing: 6px;
     color: #fff;
     margin-top: -81px;
+    margin-right: 45px;
 }
 
 .continue-button {
     width: 40%;
     height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
     margin-top: 35px;
+    margin-left: 25.6%;
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
@@ -106,8 +106,9 @@ input:focus {
 
 
 .continue-button:hover {
-    background-color: #ffffff;
+    background-color: #ffffffd2;
     color: black;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 </style>
