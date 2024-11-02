@@ -1,13 +1,20 @@
 <script setup>
+import { ref } from 'vue';
 
+const isModalVisible = ref(true);
+
+// Função para fechar o modal
+function fecharModal() {
+  isModalVisible.value = false;
+}
 </script>
 <template>
 
-    <div class="container">
+    <div v-if="isModalVisible" class="container">
         <div class="pedidos">
             <div class="informacoes">
                 <h1>PEDIDOS</h1>
-                <i><img src="/src/assets/excluir.png" alt=""></i>
+                <i @click="fecharModal"><img src="/src/assets/excluir.png" alt=""></i>
             </div>
             <div class="itens">
                 <div class="item-1">
@@ -68,9 +75,10 @@
     </div>
 </template>
 <style scoped>
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 *{
-    font-family: "Inter", sans-serif;;
+    font-family: "Inter", sans-serif;
 }
 .container{
     background-color: #2D2D2D;
