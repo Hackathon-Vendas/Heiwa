@@ -2,6 +2,7 @@
 
 </script>
 <template>
+
     <div class="container">
         <div class="pedidos">
             <div class="informacoes">
@@ -83,11 +84,14 @@
 .pedidos{
     width: 100%;
     height: 100%;
+    box-shadow: -20px 16px 20px 10px black
+
 }
 .informacoes{
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
 .informacoes h1{
     text-align: center;
@@ -114,6 +118,7 @@ i{
 .itens::-webkit-scrollbar{
     display: none;
 }
+
 .item-1{
     width: 100%;
     display: flex;
@@ -188,5 +193,13 @@ i{
 }
 .pedirConta{
     background-color: #FF8000;
+}
+@media (max-height: 970px){
+    .item-1 {
+        padding: 1.2rem 0;
+    }
+    .itens{
+        height: 50%;
+    }
 }
 </style>

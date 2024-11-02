@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <MenuVue />
-  <!--<HeaderVue /> -->
+  <HeaderVue />
   <!-- <RouterView /> -->
    <ModalPedidos />
 </template>
