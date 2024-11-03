@@ -1,15 +1,20 @@
 <script setup>
 import { ref } from 'vue';
-
 const isModalVisible = ref(true);
-
-// Função para fechar o modal
+const itensPedido = ref([
+  { quantidade: '1X', nome: 'Água', valor: 7.99 },
+  { quantidade: '1X', nome: 'Refrigerante', valor: 5.50 },
+  { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
+  { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
+  { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
+  { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
+  { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
+]);
 function fecharModal() {
   isModalVisible.value = false;
 }
 </script>
 <template>
-
     <div v-if="isModalVisible" class="container">
         <div class="pedidos">
             <div class="informacoes">
@@ -17,48 +22,12 @@ function fecharModal() {
                 <i @click="fecharModal"><img src="/src/assets/excluir.png" alt=""></i>
             </div>
             <div class="itens">
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
-                <div class="item-1">
-                    <p class="quantidade">1X</p>
-                    <p class="item">Água</p>
-                    <p class="valor">7,99</p>
-                    <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
-                </div>
+            <div class="item-1" v-for="(item, index) in itensPedido" :key="index">
+          <p class="quantidade">{{ item.quantidade }}</p>
+          <p class="item">{{ item.nome }}</p>
+          <p class="valor">{{ item.valor.toFixed(2) }}</p>
+          <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+        </div>
             </div>
             <div class="pedidoUsuario">
                 <div class="infoPedido">
@@ -143,19 +112,25 @@ i{
 .quantidade{
     font-size: 30px;
     padding-left: 30px;
-    border-right: px solid white; /* Adiciona uma linha vertical */
+    border-right: px solid white;
     padding-right: 25.3px;
     text-align: center;
+    width: 80px; 
+
 }
 .item{
     font-size: 20px;
     padding-right: 459px;
+    flex-grow: 1; 
+    padding: 0 10px; 
 }
 
 .valor{
     font-size: 25px;
     padding-right: 34px;
     text-align: center;
+    width: 100px; 
+    text-align: center; 
 }
 .botaoExcluir{
    padding-right: 17px;
