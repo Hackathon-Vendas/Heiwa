@@ -233,9 +233,9 @@ main {
   position: fixed;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
-  height: calc(100vh - 10%);
-  overflow-y: auto;
+  z-index: 2;
   }
+
 
   .aside::-webkit-scrollbar {
     display: none;
