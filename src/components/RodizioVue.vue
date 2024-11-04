@@ -28,6 +28,8 @@ function TirarRodizio() {
     contadorRodizio.value--;
   }
 }
+
+
 </script>
 
 <template>
@@ -46,15 +48,21 @@ function TirarRodizio() {
       </div>
       <div v-if="input === 'rodizio'" class="contador-rodizio">
         <div class="contador">
-          <p>Quantidade de Rodízios:</p>
+          <p>Número de rodízios:</p>
         </div>
         <button @click="TirarRodizio">-</button>
         <span>{{ contadorRodizio }}</span>
         <button @click="AdicionarRodizio">+</button>
       </div>
       <hr v-if="input === 'alacarte'" class="divider" />
-      <button v-if="input == 'alacarte'" @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
-      <button v-else @click="voltarPagina" class="continue-button">VOLTAR</button>
+      <button v-if="input === 'alacarte'" @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
+      <button v-if="input === 'alacarte'" @click="voltarPagina" class="continue-button3">VOLTAR</button>
+      <div v-if="input === 'rodizio'" class="aviso">
+        <hr class="divider2" />
+        <span>Informamos que o número de pessoas para o rodízio será verificado em relação aos rodízios pagos.</span>
+        <button @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
+        <button @click="voltarPagina" class="continue-button">VOLTAR</button>
+      </div>
     </div>
   </div>
 </template>
@@ -62,19 +70,40 @@ function TirarRodizio() {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.contador-rodizio button {
-
+.aviso {
+  width: calc(500px - 60px);
+  font-family: 'Inter';
+  font-size: 15px;
 }
 
-.contador-rodizio{
+.divider2 {
+  margin: 15px 20px;
+  border: 0.10rem solid var(--cor-letra-bottom-border);
+  border-radius: 8px;
+}
+
+.contador-rodizio {
   background-color: #404040;
   border-radius: 10px;
-  margin-left: 32px;
+  padding: 30px 30px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  color: white;
+  font-family: 'Inter';
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 32px;
   width: calc(500px - 120px);
-  padding: 30px 40px;
-  align-items: center;;
+}
+
+.contador-rodizio button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .alacarte {
@@ -146,15 +175,19 @@ input[type='radio' i]:checked {
 }
 
 .continue-button {
+  width: 85%;
+  height: 55px;
   margin: auto;
-  padding: 25px 0 0 0;
+  margin-top: 20px;
   font-weight: bold;
   font-size: 20px;
-  cursor: pointer;
-  text-decoration: underline;
   color: var(--cor-letra-bottom-border);
-  border: 1px solid var(--cor-voltar);
   background-color: var(--cor-voltar);
+  border: 1px solid white;
+  border-radius: 14px;
+  cursor: pointer;
+  display: block;
+  outline-color: var(--cor-letra-bottom-border);
 }
 
 .confirm-button-2 {
@@ -173,11 +206,15 @@ input[type='radio' i]:checked {
   outline-color: var(--cor-letra-bottom-border);
 }
 
-.contador-rodizio {
-  margin-top: 20px;
-}
-
-.contador-rodizio button {
-  margin: 0 5px;
+.continue-button3 {
+  margin: auto;
+  padding: 25px 0 0 0;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: var(--cor-letra-bottom-border);
+  border: 1px solid var(--cor-voltar);
+  background-color: var(--cor-voltar);
 }
 </style>
