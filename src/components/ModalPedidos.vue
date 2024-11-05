@@ -13,13 +13,23 @@ const itensPedido = ref([
 function fecharModal() {
   isModalVisible.value = false;
 }
+
+const props = defineProps({
+    isOpen: Boolean
+});
+const emit = defineEmits([
+    "update:isOpen"
+])
+const closeModal = () => {
+    emit("update:isOpen",  false);
+};
 </script>
 <template>
-    <div v-if="isModalVisible" class="container">
+    <div v-if="isOpen" class="container">
         <div class="pedidos">
             <div class="informacoes">
                 <h1>PEDIDOS</h1>
-                <i @click="fecharModal"><img src="/src/assets/excluir.png" alt=""></i>
+                <i @click="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
             </div>
             <div class="itens">
             <div class="item-1" v-for="(item, index) in itensPedido" :key="index">
@@ -62,7 +72,7 @@ function fecharModal() {
     width: 100%;
     height: 100%;
     box-shadow: -20px 16px 20px 10px black
-
+    
 }
 .informacoes{
     display: flex;

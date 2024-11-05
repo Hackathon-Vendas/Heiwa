@@ -1,13 +1,19 @@
-<script setup></script>
+<script setup>
+import ModalPedidosVue from './ModalPedidos.vue';
+import { ref } from 'vue';
+const showModal = ref(false);
+
+</script>
 
 <template>
+  <ModalPedidosVue v-model:isOpen="showModal"/>
   <header>
     <div class="container">
       <img class="logo-principal" src="/public/logoH.png" />
       <h1 class="logo-secundaria">SUSHI & BAR</h1>
     </div>
     <div class="cart-icon">
-      <img src="/public/logo-carrinho.svg" />
+      <img @click="showModal = !showModal" src="/public/logo-carrinho.svg" />
     </div>
   </header>
 </template>
