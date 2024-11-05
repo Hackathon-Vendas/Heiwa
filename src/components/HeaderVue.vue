@@ -3,11 +3,11 @@
 <template>
   <header>
     <div class="container">
-      <img class="logo-principal" src="/public/logoH.png" />
+      <img class="logo-principal" src="/logoH.png" />
       <h1 class="logo-secundaria">SUSHI & BAR</h1>
     </div>
     <div class="cart-icon">
-      <img src="/public/logo-carrinho.svg" />
+      <img src="/logo-carrinho.svg" />
     </div>
   </header>
 </template>
@@ -21,7 +21,6 @@ header {
   padding: 7px;
   margin: auto;
   background-color: #1a1818;
-  position: fixed;
   filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
 }
 

@@ -63,7 +63,7 @@ watch(router.currentRoute, () => {
     <div class="aside">
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
-              src="/public/logo-alacarte.svg">
+              src="/logo-alacarte.svg">
             <p>Á la carte</p>
           </button></li>
         <div v-if="alacarte">
@@ -79,7 +79,7 @@ watch(router.currentRoute, () => {
         </div>
 
         <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img
-              src="/public/logo-rodizio.svg">
+              src="/logo-rodizio.svg">
             <p>Rodízio</p>
           </button></li>
         <div v-if="rodizio">
@@ -100,7 +100,7 @@ watch(router.currentRoute, () => {
         </div>
 
         <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
-              src="/public/logo-bebida.svg">
+              src="/logo-bebida.svg">
             <p>Bebidas</p>
           </button></li>
         <div v-if="bebidas">
@@ -117,7 +117,7 @@ watch(router.currentRoute, () => {
         </div>
         <li>
           <button @click="scrollToSection('section8')" :class="{ 'selectedMenu': (teste3 == '/sobremesas') }"><img
-              src="/public/logo-sobremesa.svg">
+              src="/logo-sobremesa.svg">
             <p>Sobremesas</p>
           </button>
         </li>
