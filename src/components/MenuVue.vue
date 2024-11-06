@@ -226,6 +226,7 @@ function scrollToSection8() {
   margin-top: 6.5%;
   }
 
+
   .aside::-webkit-scrollbar {
     display: none;
   

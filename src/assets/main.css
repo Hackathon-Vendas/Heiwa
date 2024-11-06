@@ -1,9 +1,19 @@
+
+:root{
+  --cor-fundo-input: #6B6B6B;
+  --cor-borda-input: #fff;
+  --cor-borda-input-radio: #85DE66;
+  --cor-fundo: #000000BC;
+  --cor-fundo-bottom: #1e1e1e00;
+}
+
 *{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    font: optional;
   }
   
-   body {
-    background-color: #1E1E1E
+  body{
+    background-color: #1e1e1e
   }
+
