@@ -32,5 +32,6 @@ h2 {
   text-align: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
+  margin-top: -20px;
 }
 </style>

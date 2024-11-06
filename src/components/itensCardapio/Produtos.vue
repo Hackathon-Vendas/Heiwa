@@ -95,7 +95,7 @@ h3 {
 .description {
   font-family: 'Inter', sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
   line-height: 20px;
   letter-spacing: 0.25em;

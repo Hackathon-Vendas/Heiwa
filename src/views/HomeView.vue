@@ -4,7 +4,7 @@ import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 
 <template>
   <main>
-    <CarrosselPrincipal />
+   <!--<CarrosselPrincipal />-->
   </main>
 </template>
 
