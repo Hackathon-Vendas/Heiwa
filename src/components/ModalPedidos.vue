@@ -25,7 +25,7 @@ const closeModal = () => {
 };
 </script>
 <template>
-    <div v-if="isOpen" class="container">
+    <div v-if="isOpen" class="containerPedidos">
         <div class="pedidos">
             <div class="informacoes">
                 <h1>PEDIDOS</h1>
@@ -36,7 +36,7 @@ const closeModal = () => {
           <p class="quantidade">{{ item.quantidade }}</p>
           <p class="item">{{ item.nome }}</p>
           <p class="valor">{{ item.valor.toFixed(2) }}</p>
-          <p class="botaoExcluir"><img src="/public/excluir.png" alt=""></p>
+          <p class="botaoExcluir"><img src="/excluir.png" alt=""></p>
         </div>
             </div>
             <div class="pedidoUsuario">
@@ -59,13 +59,15 @@ const closeModal = () => {
 *{
     font-family: "Inter", sans-serif;
 }
-.container{
+.containerPedidos{
     background-color: #2D2D2D;
     width: 65%;
     height: 100%;
     position: absolute;
     top: 0;
     right: 0;
+    z-index: 999;
+
     display: flex;
 }
 .pedidos{
@@ -78,7 +80,6 @@ const closeModal = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .informacoes h1{
     text-align: center;
@@ -147,9 +148,7 @@ i{
    text-align: center;
    cursor: pointer;
 }
-.pedidoUsuario{
-    height: 212px;
-}
+
 .infoPedido{
     display: flex;
     justify-content: space-between;
@@ -184,15 +183,32 @@ i{
 .finalizarPedido{
     background-color: #B93333;
 }
+
 .pedirConta{
     background-color: #FF8000;
 }
 @media (max-height: 970px){
     .item-1 {
-        padding: 1.2rem 0;
+        padding: 1.4rem 0;
     }
     .itens{
-        height: 50%;
+        height: 60%;
     }
+}
+@media (min-width: 1700px) {
+    .botoesPedido{
+    margin: 32px 50px 49px 50px;
+}
+    .infoPedido{
+        margin: 41px 60px;
+        margin-bottom: 32px;
+    }
+    .botoesPedido button{
+    width: 450px;
+    height: 70px;
+    border-radius: 20px;
+    font-size: 32px;
+}
+
 }
 </style>
