@@ -8,6 +8,7 @@ const contadorRodizio = ref(0);
 
 function FuncaoContinuar() {
   confirmar.value = false;
+  emit('FinalModal')
 }
 
 function voltarPagina() {
@@ -16,7 +17,8 @@ function voltarPagina() {
 }
 
 const emit = defineEmits([
-  'voltarParaMesa'
+  'voltarParaMesa',
+  'FinalModal'
 ]);
 
 function AdicionarRodizio() {

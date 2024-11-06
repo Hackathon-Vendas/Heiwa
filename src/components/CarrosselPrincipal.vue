@@ -1,4 +1,5 @@
 <script setup>
+import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import { Autoplay } from 'swiper/modules';
 
@@ -13,7 +14,6 @@ const modules = [Autoplay];
 </script>
 
 <template>
-  <main class="container">
     <Swiper
       :loop="true"
       :autoplay="{
@@ -21,22 +21,31 @@ const modules = [Autoplay];
         disableOnInteraction: false
       }"
       :modules="modules"
-      class="mySwiper"
+      class="swiper"
     >
-      <SwiperSlide v-for="(foto, index) in fotos" :key="index">
+      <SwiperSlide class="slide" v-for="(foto, index) in fotos" :key="index">
         <img :src="`/${foto}`" class="sushis" />
       </SwiperSlide>
     </Swiper>
-  </main>
 </template>
 
 <style>
 .swiper {
-  height: 50vh;
-  width: 50vh;
+  height: 500px;
+  width: 1150px;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: -1;
 }
+
 .sushis {
-  height: 50vh;
-  width: 50vh;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+} 
+
+.slide{
+  margin-top: 40px;
+  border-radius: 10px;
 }
 </style>

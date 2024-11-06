@@ -12,7 +12,7 @@ const ModalA = ref(0);
 <template>
   <InicioVue @modal="ModalA++" />
   <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
-  <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" />
+  <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
   <main>
     <CarrosselPrincipal />
   </main>
