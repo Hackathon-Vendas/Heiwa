@@ -2,7 +2,6 @@
 import ModalPedidosVue from './ModalPedidos.vue';
 import { ref } from 'vue';
 const showModal = ref(false);
-
 </script>
 
 <template>
@@ -20,8 +19,6 @@ const showModal = ref(false);
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
-
-
 header {
   width: 100%;
   padding: 7px;
@@ -30,7 +27,6 @@ header {
   position: fixed;
   filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
 }
-
 .container {
   display: flex;
   flex-direction: column;
@@ -45,7 +41,6 @@ header {
   height: 54px;
   width: 268px;
 }
-
 .logo-secundaria {
   font-size: 14px;
   font-family: 'Inter', sans-serif;
@@ -53,15 +48,11 @@ header {
   letter-spacing: 0.25em;
   color: #fff;
 }
-
-
-
 .cart-icon {
   position: absolute;
   top: 30px;
   right: 25px;
 }
-
 .cart-icon img {
   width: 40px;
   height: auto;
