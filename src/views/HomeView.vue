@@ -4,6 +4,7 @@ import RodizioVue from '@/components/RodizioVue.vue';
 import NumeroMesa from '@/components/NumeroMesa.vue';
 import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 import InicioVue from '@/components/InicioVue.vue';
+import CarrosselSecundario from '@/components/CarrosselSecundario.vue';
 
 const ModalA = ref(0);
 
@@ -15,6 +16,7 @@ const ModalA = ref(0);
   <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
   <main>
     <CarrosselPrincipal />
+    <CarrosselSecundario />
   </main>
 </template>
 
