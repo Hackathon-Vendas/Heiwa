@@ -215,24 +215,17 @@ function scrollToSection8() {
 </template>
 
 <style scoped>
-main {
-  width: 20%;
-  height: 100%;
-  margin: auto;
-  display: flex;
-  position: absolute;
-  margin-top: 5.5%;
-}
 
 .aside {
   width: 200px;
-  top: 15.5 vh;
+  top: 85px;
   height: 100%;
   left: 0;
   position: fixed;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   overflow-y: auto;
+  background-color: rgba(40, 40, 40, 1);
 }
 
 .aside::-webkit-scrollbar {
@@ -316,7 +309,7 @@ img {
 
   .aside {
     width: 100px;
-    top: 15.7 vh;
+    top: 15.7vh;
     left: 0;
     position: fixed;
     filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));

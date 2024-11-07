@@ -1,7 +1,7 @@
 <template>
-  <h1 class="esp">Especiais da Casa</h1>
-    <swiper :slidesPerView="3.84" :modules="modules" class="meuSwiper" grabCursor="true" :freeMode="true"
-      :spaceBetween="-45" :breakpoints="breakpoints">
+  <h1 class="esp">ESPECIAIS DA CASA</h1>
+    <swiper :slidesPerView="3.8" :modules="modules" class="meuSwiper" grabCursor="true" :freeMode="true"
+      :spaceBetween="2" :breakpoints="breakpoints">
       <swiper-slide>
         <div class="item-slide">
           <img src="/anmitsu.png" alt="">
@@ -121,16 +121,18 @@
   .esp{
     color: white;
     letter-spacing: 5px;
+    margin-left: 3%;
+    margin-top: 25px;
   }
   *{
     font-family: "Inter", sans-serif;
     z-index: 999;
   }
-  /*.swiper { 
-    margin-left: 230px; 
+  .swiper { 
+    margin-left: 0px; 
     margin-top: 26px;
     margin-bottom: 26px
-  } */
+  } 
   
   .swiper-slide {
     display: flex;
@@ -142,7 +144,7 @@
   .title-slide {
     position: relative;
     width: 80%;
-    margin-left: 10%;
+    margin-left: 8%;
     /* margin: 0 auto; */
     z-index: 10;
   }

@@ -18,8 +18,9 @@ const modules = [Autoplay];
       :loop="true"
       :autoplay="{
         delay: 2500,
-        disableOnInteraction: false
+        disableOnInteraction: false,
       }"
+      :slidesPerView="1"
       :modules="modules"
       class="teste"
     >
@@ -31,7 +32,7 @@ const modules = [Autoplay];
 
 <style>
 
-.teste {
+.teste{
   height: 500px;
   width: 1150px;
   max-width: 100%;
@@ -43,10 +44,7 @@ const modules = [Autoplay];
   height: 100%;
   width: 100%;
   object-fit: cover;
+  margin-right: 20px;
 } 
 
-.slide{
-  margin-top: 40px;
-  border-radius: 10px;
-}
 </style>

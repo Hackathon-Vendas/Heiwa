@@ -15,17 +15,19 @@ const ModalA = ref(0);
   <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
   <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
   <main>
-
+    <div class="carosselp">
       <CarrosselPrincipal />
-
-      <CarrosselSecundario />
+    </div>
+    <CarrosselSecundario />
 
   </main>
 </template>
 
 <style scoped>
 main {
-  margin-top: 85px;
-  margin-left: 20%;
+  margin-left: 15%;
+  margin-top: 8%;
 }
+
+
 </style>
