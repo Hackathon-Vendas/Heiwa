@@ -11,18 +11,21 @@ const ModalA = ref(0);
 </script>
 
 <template>
-  <InicioVue @modal="ModalA++" />
+  <InicioVue style="z-index: 1000;" @modal="ModalA++" />
   <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
   <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
   <main>
-    <CarrosselPrincipal />
-    <CarrosselSecundario />
+
+      <CarrosselPrincipal />
+
+      <CarrosselSecundario />
+
   </main>
 </template>
 
 <style scoped>
 main {
   margin-top: 85px;
+  margin-left: 20%;
 }
-
 </style>

@@ -14,14 +14,14 @@ const modules = [Autoplay];
 </script>
 
 <template>
-    <Swiper
+    <Swiper 
       :loop="true"
       :autoplay="{
         delay: 2500,
         disableOnInteraction: false
       }"
       :modules="modules"
-      class="swiper"
+      class="teste"
     >
       <SwiperSlide class="slide" v-for="(foto, index) in fotos" :key="index">
         <img :src="`/${foto}`" class="sushis" />
@@ -30,7 +30,8 @@ const modules = [Autoplay];
 </template>
 
 <style>
-.swiper {
+
+.teste {
   height: 500px;
   width: 1150px;
   max-width: 100%;

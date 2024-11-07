@@ -1,5 +1,6 @@
 <template>
-    <swiper :slidesPerView="3.84" :modules="modules" class="meuSwiper   " grabCursor="true" :freeMode="true"
+  <h1 class="esp">Especiais da Casa</h1>
+    <swiper :slidesPerView="3.84" :modules="modules" class="meuSwiper" grabCursor="true" :freeMode="true"
       :spaceBetween="-45" :breakpoints="breakpoints">
       <swiper-slide>
         <div class="item-slide">
@@ -117,14 +118,19 @@
   </script>
   
   <style scoped>
+  .esp{
+    color: white;
+    letter-spacing: 5px;
+  }
   *{
     font-family: "Inter", sans-serif;
+    z-index: 999;
   }
-  .swiper { 
+  /*.swiper { 
     margin-left: 230px; 
     margin-top: 26px;
     margin-bottom: 26px
-  }
+  } */
   
   .swiper-slide {
     display: flex;
