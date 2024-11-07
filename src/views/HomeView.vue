@@ -1,17 +1,17 @@
 <script setup>
 
 import CarosselSecundario from '@/components/CarosselSecundario.vue';
-
+import InicioVue from '@/components/InicioVue.vue'
 import RodizioVue from '@/components/RodizioVue.vue';
-
 import NumeroMesa from '@/components/NumeroMesa.vue';
-
 import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 
 </script>
 
 <template>
   <main>
+    <InicioVue />
+
   
    <RodizioVue />
    
@@ -19,7 +19,7 @@ import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
    
    <CarrosselPrincipal />
    
-   <CarosselSecundario 
+   <CarosselSecundario />
    
   </main>
 </template>

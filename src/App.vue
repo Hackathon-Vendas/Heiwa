@@ -1,5 +1,4 @@
 <script setup>
-import InicioVue from '@/components/InicioVue.vue'
 import HeaderVue from '@/components/HeaderVue.vue'
 import MenuVue from '@/components/MenuVue.vue'
 import { RouterLink, RouterView } from 'vue-router'
@@ -7,15 +6,14 @@ import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
- 
-  <InicioVue />
-  
+  <header>
+    <HeaderVue />
+  </header>
+  <main>
   <MenuVue />
-
-  <HeaderVue />
   
   <RouterView />
-
+</main>
 </template>
 
 <style scoped>

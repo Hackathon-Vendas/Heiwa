@@ -130,7 +130,7 @@ function scrollToSection8() {
 
 </script>
 <template>
-    <div class="aside">
+  <aside>
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
               src="/public/logo-alacarte.svg">
@@ -211,40 +211,39 @@ function scrollToSection8() {
           </RouterLink>
         </li>
       </ul>
-    </div>
+  </aside>
 </template>
 
 <style scoped>
-.aside {
-  width:13.54%;
-  left: 0;
-  position: fixed !important;
+aside {
+  width: 220px;
+  position: fixed;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
-  height: 100vh;
-  overflow-y: auto;
-  margin: 0;
-  margin-top: 6.5%;
-  }
+  height: 100%; 
+  overflow-y: auto; 
+  margin: 0; 
+  padding: 0;
+  margin-top: 6%;
+}
 
-
-  .aside::-webkit-scrollbar {
+  aside::-webkit-scrollbar {
     display: none;
   
 }
 
-.aside ul {
+aside ul {
   list-style-type: none;
   padding: 0;
   transition: 0.3s;
 }
 
-.aside ul li {
+aside ul li {
   text-align: center;
   height: 100%;
 }
 
 .sub-menu {
-  display: block;
+  display: flex;
   font-family: 'Inter', normal, sans-serif;
   font-weight: 900;
   font-size: 1rem; 

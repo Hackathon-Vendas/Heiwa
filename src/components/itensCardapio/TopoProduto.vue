@@ -12,26 +12,26 @@ defineProps(['title','image']);
 <style scoped>
 .topo{
   margin-bottom: 2%;
-  width: 650px;
+  width: 75%;
   text-align: center;
-  margin-left: 16%;
+  margin-left: 20%;
 
 }
 
 .banner {
   width: 100%;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 
 h2 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 900;
-  font-size: 25px;
+  font-size: 30px;
   line-height: 30px;
   text-align: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
-  margin-top: -20px;
+  margin-top: -30px;
 }
 </style>

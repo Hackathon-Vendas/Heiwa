@@ -26,10 +26,10 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  width:  55.73%;;
+  width:  75%;;
   gap: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  margin-left: 16%;
+  margin-left: 20%;
   margin-top: 1%;
 }
 
