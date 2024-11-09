@@ -1,82 +1,209 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 
 const props = defineProps({
     item: Object,
     isOpen: Boolean
-})
-
-const isOpen = computed(() => {
-    return props.isOpen
-})
+});
 
 const emit = defineEmits(["update:isOpen"]);
 
-let scrollY = window.scrollY;
-const verifica = computed(() =>{ 
-    
-    if(isOpen.value == true){
-        scrollY = window.scrollY
-        document.body.style.overflow = 'hidden';
-    }
-    else{
-        document.body.style.overflow = 'initial';
-    }
-})
+const isOpen = computed(() => props.isOpen);
+const quantity = ref(1);
 
 const closeModal = () => {
     emit("update:isOpen", false);
-    isOpen.value = false;
 };
 
+const increment = () => {
+    quantity.value++;
+};
+
+const decrement = () => {
+    if (quantity.value > 1) {
+        quantity.value--;
+    }
+};
+
+const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
+
+const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
 </script>
 
 <template>
-    <div class="background" v-if="isOpen"></div>
-    <div class="container-modal" v-if="isOpen">
-        <div class="imagem">
-            <img :src=props.item.imagem>
-        </div>
-        <div class="textos">
-            <h1>{{ props.item.name }}</h1>
-            <h2>{{ props.item.unit }}</h2>
-            <h2>R${{ props.item.price }}</h2>
-            <p>{{ props.item.description }}</p> 
-            <label for="">Algum comentário?</label>
-            <textarea name="" id="" placeholder="Ex: Tirar molho..."></textarea>
-            <div class="contador">
-                <button>-</button>
-                <p>1</p>
-                <button>+</button>
+    <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
+    <div v-if="isOpen" class="modal-container">
+        <button class="close-button" @click="closeModal">✕</button>
+        <div class="modal-content">
+            <div class="imagem">
+                <img :src="props.item.imagem" alt="Imagem do produto" />
             </div>
-            <button>Adicionar: {{ props.item.price }}</button>
-            <button @click="closeModal">fechar essa bomba ai</button>
+            <div class="textos">
+                <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
+                <h2>{{ props.item.price }}</h2>
+                <p>{{ props.item.description }}</p>
+                <label>Algum comentário?</label>
+                <textarea placeholder="Ex: Tirar molho..."></textarea>
+                <div class="acoes">
+                    <div class="contador">
+                        <button @click="decrement">-</button>
+                        <p>{{ quantity }}</p>
+                        <button @click="increment">+</button>
+                    </div>
+                    <button class="add-button">Adicionar: R${{ totalPrice }}</button>
+                </div>
+            </div>
         </div>
     </div>
-    {{  verifica }}
 </template>
 
-<style>
-
-
-
-.background{
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, .8);
-    z-index: 999;
+<style scoped>
+*{
+    font-family: 'Inter', normal, sans-serif;
+}
+.modal-overlay {
+    position: fixed;
     top: 0;
     left: 0;
-    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
 }
-.container-modal {
-    z-index: 1000;
-    display: flex;
-    position: fixed;
-    top: 20%;
-    left: 20%;
-    width: 60%;
-    background-color: #5A5A5A;
 
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 900px;
+    background-color: #2c2c2c;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    padding: 20px;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.imagem {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.imagem img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.textos {
+    flex: 1.5;
+    padding: 20px;
+    color: #f5f5f5;
+}
+
+.textos h1 {
+    font-size: 2em;
+    font-weight: 1500;
+    margin-bottom: 10px;
+    display: flex;
+    letter-spacing: 0.25em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.unidade {
+    font-size: 20px;
+    color: #bbb;
+    letter-spacing: 0.25em;
+    margin-left: 10px;
+}
+
+.textos h2 {
+    font-size: 1.2em;
+    color: #bbb;
+    margin: 5px 0;
+}
+
+.textos p {
+    margin: 10px 0;
+    line-height: 1.4;
+}
+
+.textos label {
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+}
+
+.textos textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: #fff;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.contador button {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+}
+
+.contador p {
+    margin: 0 15px;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.add-button {
+    padding: 15px 20px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
 }
 </style>
