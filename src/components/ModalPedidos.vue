@@ -25,7 +25,7 @@ const closeModal = () => {
 };
 </script>
 <template>
-    <Transition name="fade">
+    <Transition name="slide">
         <div v-if="isOpen" class="containerPedidos">
             <div class="pedidos">
                 <div class="informacoes">
@@ -61,7 +61,6 @@ const closeModal = () => {
 * {
     font-family: "Inter", sans-serif;
 }
-
 .containerPedidos {
     background-color: #2D2D2D;
     width: 65%;
@@ -71,18 +70,27 @@ const closeModal = () => {
     right: 0;
     z-index: 999;
     display: flex;
+    position: fixed;
 }
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.3s ease;
+.slide-enter-active, .slide-leave-active {
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
-
-.fade-enter,
-.fade-leave-to {
+.slide-enter-from {
+    transform: translateX(100%);
     opacity: 0;
 }
-
+.slide-enter-to {
+    transform: translateX(0);
+    opacity: 1;
+}
+.slide-leave-from {
+    transform: translateX(0);
+    opacity: 1;
+}
+.slide-leave-to {
+    transform: translateX(100%);
+    opacity: 0;
+}
 .pedidos {
     width: 100%;
     height: 100%;
@@ -168,12 +176,17 @@ i {
     text-align: center;
     cursor: pointer;
 }
+.pedidoUsuario{
+    box-shadow: 0px -75px 77.4px 0px #282828;
+    z-index: 1;
+    position: fixed; 
+}
 
 .infoPedido {
     display: flex;
     justify-content: space-between;
-    margin: 41px;
-    margin-bottom: 32px;
+    padding: 41px;
+    padding-bottom: 32px;
 }
 
 .infoPedido h3 {
@@ -184,7 +197,8 @@ i {
 .botoesPedido {
     display: flex;
     justify-content: space-between;
-    margin: 32px 32px 49px 35px;
+    margin: 3px 32px 49px 35px;
+    gap: 19px;
 }
 
 .botoesPedido button {

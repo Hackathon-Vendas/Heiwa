@@ -6,7 +6,7 @@ import { ref } from "vue";
 
 <template>
   <main>
-    <!-- <CarrosselPrincipal /> -->
+     <!-- <CarrosselPrincipal /> -->
     <ModalPedidos />
 
   </main>
