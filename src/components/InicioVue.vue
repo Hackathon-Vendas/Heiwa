@@ -1,35 +1,33 @@
-<script>
-export default {
-    data() {
-        return {
-            showWelcomeScreen: true,
-        };
-    },
-    methods: {
-        closeWelcomeScreen() {
-            this.showWelcomeScreen = false;
-        }
-    }
-};
+<script setup>
+import { ref } from 'vue';
+
+const emit = defineEmits([
+    'modal'
+])
+
+const showWelcomeScreen = ref(true) 
+function closeWelcomeScreen() {
+    showWelcomeScreen.value = false
+    emit('modal')
+}
+
+
 </script>
 
 <template>
-    <main>
-        <div v-if="showWelcomeScreen" class="welcome-screen">
-            <div class="welcome-content">
-                <h1>BEM-VINDO AO </h1>
-                <img class="logo-principal" src="/public/logoHeiwa.png">
-                <h2>SUSHI & BAR</h2>
-                <button @click="closeWelcomeScreen" class="continue-button">CONTINUAR</button>
-            </div>
+    <div v-if="showWelcomeScreen" class="welcome-screen">
+        <div class="welcome-content">
+            <h1>BEM-VINDO AO </h1>
+            <img class="logo-principal" src="/logoHeiwa.png">
+            <h2>SUSHI & BAR</h2>
+            <button @click="closeWelcomeScreen()" class="continue-button">CONTINUAR</button>
         </div>
-
-    </main>
+    </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 
 input {
@@ -53,10 +51,11 @@ input:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.726);
+    background-color: var(--cor-fundoSite-icon);
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 .welcome-content {
@@ -65,37 +64,36 @@ input:focus {
 
 }
 
-.welcome-content h1{
-  font-size: 15px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 900;
-  letter-spacing: 0.25em;
-  color: #fff;
+.welcome-content h1 {
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #fff;
+    margin-right: 45px; 
 }
 
-.logo-principal{
-  height: 156px;
-  width: 520px;
-  margin-top: 20px;
+.logo-principal {
+    height: 156px;
+    width: 520px;
+    margin-top: 20px;
 }
 
 .welcome-content h2 {
-  font-size: 20px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 300; 
-  letter-spacing: 0.25em;
-  color: #fff;
-  margin-top: -81px;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: #fff;
+    margin-top: -81px;
+    margin-right: 45px;
 }
 
 .continue-button {
     width: 40%;
     height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
     margin-top: 35px;
+    margin-left: 25.6%;
     font-weight: bold;
     font-size: 20px;
     color: #ffffff;
@@ -108,8 +106,9 @@ input:focus {
 
 
 .continue-button:hover {
-    background-color: #ffffff;
+    background-color: #ffffffd2;
     color: black;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 </style>

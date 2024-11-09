@@ -1,7 +1,6 @@
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue';
+import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-import router from '@/router';
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -28,7 +27,7 @@ function showAlacarte() {
 
 function showRodizio() {
   if (rodizio.value) {
-    rodizio.value = false; 
+    rodizio.value = false;
   } else {
     rodizio.value = true;
     alacarte.value = false;
@@ -38,12 +37,12 @@ function showRodizio() {
 
 function showBebidas() {
   if (bebidas.value) {
-    bebidas.value = false; 
+    bebidas.value = false;
   } else {
     bebidas.value = true;
     alacarte.value = false;
     rodizio.value = false;
-    
+
   }
 }
 
@@ -130,11 +129,11 @@ function scrollToSection8() {
 
 </script>
 <template>
-  <main>
+
     <div class="aside">
       <ul>
         <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
-              src="/public/logo-alacarte.svg">
+              src="/logo-alacarte.svg">
             <p>Á la carte</p>
           </button></li>
         <div v-if="alacarte">
@@ -155,7 +154,7 @@ function scrollToSection8() {
         </div>
 
         <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img
-              src="/public/logo-rodizio.svg">
+              src="/logo-rodizio.svg">
             <p>Rodízio</p>
           </button></li>
         <div v-if="rodizio">
@@ -182,7 +181,7 @@ function scrollToSection8() {
         </div>
 
         <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
-              src="/public/logo-bebida.svg">
+              src="/logo-bebida.svg">
             <p>Bebidas</p>
           </button></li>
         <div v-if="bebidas">
@@ -206,40 +205,32 @@ function scrollToSection8() {
         <li>
           <RouterLink :to="{ path: '/produtos', hash: '#-sobremesa' }">
             <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
-                src="/public/logo-sobremesa.svg">
+                src="/logo-sobremesa.svg">
               <p>Sobremesas</p>
             </button>
           </RouterLink>
         </li>
       </ul>
     </div>
-  </main>
 </template>
 
 <style scoped>
-main {
-  width: 20%;
-  height: 100%;
-  margin: auto;
-  display: flex;
-  position: absolute;
-  margin-top: 5.5%;
-}
 
 .aside {
   width: 200px;
-  top: 15.5 vh;
+  top: 85px;
+  height: 100%;
   left: 0;
   position: fixed;
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
-  z-index: 2;
-  }
+  overflow-y: auto;
+  background-color: rgba(40, 40, 40, 1);
+}
 
+.aside::-webkit-scrollbar {
+  display: none;
 
-  .aside::-webkit-scrollbar {
-    display: none;
-  
 }
 
 .aside ul {
@@ -257,8 +248,8 @@ main {
   display: block;
   font-family: 'Inter', normal, sans-serif;
   font-weight: 900;
-  font-size: 1rem; 
-  padding: 3em;  
+  font-size: 1rem;
+  padding: 3em;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.25em;
@@ -318,7 +309,7 @@ img {
 
   .aside {
     width: 100px;
-    top: 15.7 vh;
+    top: 15.7vh;
     left: 0;
     position: fixed;
     filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
@@ -329,48 +320,49 @@ img {
 
   .aside::-webkit-scrollbar {
     display: none;
-  
-}
 
-.aside ul li {
-  text-align: center;
-  height: 100%;
-}
+  }
+
+  .aside ul li {
+    text-align: center;
+    height: 100%;
+  }
 
 
-.aside .sub-menu {
-  display: block;
-  top: 354px;
-  font-family: 'Inter', normal, sans-serif;
-  font-weight: 700;
-  font-size: 10px;
-  line-height: 15px;
-  text-align: center !important;
-  letter-spacing: 0.25em;
-  color: #FFFFFF;
-  padding: 20px;
-  padding-left: 10%;
-  background-color: rgba(69, 69, 69, 1);
-  transition: 0.3s;
-  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.44));
-  width: 100%;
-}
-button p {
-  font-family: 'Inter', normal, sans-serif;
-  font-weight: 900;
-  font-size: 10px;
-  line-height: 17px;
-  text-align: center;
-  letter-spacing: 0.25em;
-  color: #FFFFFF;
-  margin-top: 0.3%;
-}
+  .aside .sub-menu {
+    display: block;
+    top: 354px;
+    font-family: 'Inter', normal, sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 15px;
+    text-align: center !important;
+    letter-spacing: 0.25em;
+    color: #FFFFFF;
+    padding: 20px;
+    padding-left: 10%;
+    background-color: rgba(69, 69, 69, 1);
+    transition: 0.3s;
+    filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.44));
+    width: 100%;
+  }
 
-img {
-  width: 48px;
-  margin-bottom: 10%;
-  margin-top: 10%;
-}
+  button p {
+    font-family: 'Inter', normal, sans-serif;
+    font-weight: 900;
+    font-size: 10px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 0.25em;
+    color: #FFFFFF;
+    margin-top: 0.3%;
+  }
+
+  img {
+    width: 48px;
+    margin-bottom: 10%;
+    margin-top: 10%;
+  }
 }
 
 @media (max-width: 768px) {
