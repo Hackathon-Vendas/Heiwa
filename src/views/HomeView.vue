@@ -19,7 +19,6 @@ const ModalA = ref(0);
       <CarrosselPrincipal />
     </div>
     <CarrosselSecundario />
-
   </main>
 </template>
 

@@ -4,14 +4,13 @@ import MenuVue from '@/components/MenuVue.vue'
 </script>
 
 <template>
- 
+
   <MenuVue />
   <HeaderVue />
+  
   <RouterView />
 
 </template>
-
-
 
 <style scoped>
 </style>
