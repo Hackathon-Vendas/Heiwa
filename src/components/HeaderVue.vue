@@ -11,13 +11,6 @@ console.log(router.currentRoute.value)
 <template>
   <ModalPedidosVue v-model:isOpen="showModal"/>
   <header>
-    <div class="container">
-      <img class="logo-principal" src="/public/logoH.png" />
-      <h1 class="logo-secundaria">SUSHI & BAR</h1>
-    </div>
-    <div class="cart-icon">
-      <img @click="showModal = !showModal" src="/public/logo-carrinho.svg" />
-
       <div class="home">
         <img class="voltar" src="/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
       </div>
@@ -26,9 +19,8 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="/Vector.png" alt="Cart Icon" />
+        <img class="cart-icon" src="/Vector.png" alt="Cart Icon" @click="showModal = !showModal" />
       </div>
-    </div>
   </header>
 </template>
 

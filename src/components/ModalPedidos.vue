@@ -10,10 +10,6 @@ const itensPedido = ref([
     { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
     { quantidade: '2X', nome: 'Sushi', valor: 15.00 },
 ]);
-function fecharModal() {
-    isModalVisible.value = false;
-}
-
 const props = defineProps({
     isOpen: Boolean
 });
@@ -62,13 +58,13 @@ const closeModal = () => {
     font-family: "Inter", sans-serif;
 }
 .containerPedidos {
+z-index: 2000;
     background-color: #2D2D2D;
     width: 65%;
     height: 100%;
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 999;
     display: flex;
     position: fixed;
 }
