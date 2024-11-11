@@ -77,10 +77,14 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    max-width: 900px;
+    min-height: 50%;
+    max-width: 1100px;
     background-color: #2c2c2c;
     border-radius: 14px;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     padding: 20px;
@@ -101,24 +105,30 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
     display: flex;
     flex-direction: row;
     width: 100%;
+    min-height: 28rem;
 }
 
 .imagem {
     flex: 1;
+    min-height: 28rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
 }
 
 .imagem img {
     max-width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 8px;
 }
 
 .textos {
-    flex: 1.5;
+    min-height: 25rem;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     color: #f5f5f5;
 }
 
