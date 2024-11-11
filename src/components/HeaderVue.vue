@@ -1,4 +1,7 @@
 <script setup>
+import ModalPedidosVue from './ModalPedidos.vue';
+import { ref } from 'vue';
+const showModal = ref(false);
 import router from '@/router'
 
 const rota = router.currentRoute.value.name;
@@ -6,8 +9,15 @@ console.log(router.currentRoute.value)
 </script>
 
 <template>
+  <ModalPedidosVue v-model:isOpen="showModal"/>
   <header>
     <div class="container">
+      <img class="logo-principal" src="/public/logoH.png" />
+      <h1 class="logo-secundaria">SUSHI & BAR</h1>
+    </div>
+    <div class="cart-icon">
+      <img @click="showModal = !showModal" src="/public/logo-carrinho.svg" />
+
       <div class="home">
         <img class="voltar" src="/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
       </div>
@@ -23,7 +33,8 @@ console.log(router.currentRoute.value)
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
+
 
 header {
   width: 100%;
@@ -33,7 +44,6 @@ header {
   position: fixed;
   top: 0;
 }
-
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -70,7 +80,6 @@ header {
   display: flex;
   justify-content: end;
 }
-
 .logo-secundaria {
   font-size: 14px;
   font-family: 'Inter', sans-serif;
@@ -78,4 +87,15 @@ header {
   letter-spacing: 0.25em;
   color: #fff;
 }
+.cart-icon {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+}
+.cart-icon img {
+  width: 40px;
+  height: auto;
+  cursor: pointer;
+}
+
 </style>
