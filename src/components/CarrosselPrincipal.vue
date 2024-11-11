@@ -14,30 +14,37 @@ const modules = [Autoplay];
 </script>
 
 <template>
-  <main class="container">
-    <Swiper
+    <Swiper 
       :loop="true"
       :autoplay="{
         delay: 2500,
-        disableOnInteraction: false
+        disableOnInteraction: false,
       }"
+      :slidesPerView="1"
       :modules="modules"
-      class="mySwiper"
+      class="teste"
     >
-      <SwiperSlide v-for="(foto, index) in fotos" :key="index">
-        <img :src="`/public/${foto}`" class="sushis" />
+      <SwiperSlide class="slide" v-for="(foto, index) in fotos" :key="index">
+        <img :src="`/${foto}`" class="sushis" />
       </SwiperSlide>
     </Swiper>
-  </main>
 </template>
 
 <style>
-.swiper {
-  height: 50vh;
-  width: 50vh;
+
+.teste{
+  height: 500px;
+  width: 1150px;
+  max-width: 100%;
+  max-height: 100%;
+  z-index: -1;
 }
+
 .sushis {
-  height: 50vh;
-  width: 50vh;
-}
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  margin-right: 20px;
+} 
+
 </style>

@@ -2,7 +2,6 @@
 defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 </script>
 <template>
-  <main>
     <div class="produtos">
       <div class="item">
         <img :src=imagem class="image">
@@ -16,21 +15,10 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
         </div>
       </div>
     </div>
-  </main>
 </template>
 
 
 <style scoped>
-
-main {
-  width: 60%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 8%;
-  margin-left: 27%;
-}
 
 .produtos {
   display: flex;
@@ -38,7 +26,11 @@ main {
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
-  width: 100%;
+  width:  75%;;
+  gap: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  margin-left: 20%;
+  margin-top: 1%;
 }
 
 .item {
@@ -49,54 +41,60 @@ main {
   height: 200px;
   background-color: rgba(69, 69, 69, 1);
   color: rgba(255, 255, 255, 1);
-  margin-top: 3%;
+  margin-top: 1%;
 }
 
+
 .image {
-  width: 250px;
+  width: 30%;
   height: 230px;
-  border-radius: 18px;
-  margin-top: 19px;
+  border-radius: 20px ;
+  object-fit: cover;
+  margin-top: 1%;
+  margin-right: 1%;
 }
+
 
 h3 {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 1000;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 27px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
   margin-bottom: 2%;
+  display: inline-block;
 }
 
 .price {
   font-family: 'Inter', sans-serif, sans-serif;
   font-style: normal;
   font-weight: 1000;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 27px;
   letter-spacing: 0.25em;
   color: #FFFFFF;
-  position: absolute;
-  right: 15%;
+  margin-left: auto;
 }
+
 
 .unit {
   font-family: 'Inter', sans-serif;
   font-style: normal;
   font-weight: 200;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.25em;
-  color: #FFFFFF;
-  margin-left: 10px;
+  color: #aaa;
+  left: calc(50% - 163px/2 + 209px);
+  display: inline-block;
 }
 
 .description {
   font-family: 'Inter', sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 20px;
   line-height: 20px;
   letter-spacing: 0.25em;
@@ -105,70 +103,13 @@ h3 {
 }
 
 .details {
-  height: 80%;
+  height: 70%;
+  margin-right: 4%;
 }
 
 .name {
   display: flex;
-  flex-wrap: wrap;
+  align-items: baseline;
 }
 
-@media (max-width: 1200px) {
-  main {
-    width: 80%;
-    margin-left: 10%;
-  }
-  
-  .price {
-    right: 10%;
-  }
-}
-
-@media (max-width: 768px) {
-  main {
-    width: 90%;
-    margin-left: 0;
-  }
-  
-  .item {
-    flex-direction: column;
-    height: auto;
-  }
-  
-  .image {
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
-  
-  .price {
-    position: relative;
-    right: 0;
-    margin-top: 10px;
-  }
-  
-  .description {
-    margin-top: 10px;
-  }
-}
-
-@media (max-width: 480px) {
-  main {
-    width: 95%;
-    margin-left: 0;
-  }
-  
-  h3 {
-    font-size: 18px;
-  }
-  
-  .price {
-    font-size: 14px;
-    margin-top: 5px;
-  }
-  
-  .description {
-    font-size: 16px;
-  }
-}
 </style>
