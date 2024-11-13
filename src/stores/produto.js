@@ -65,6 +65,7 @@ export const useBebidaStore = defineStore('bebidas', () => {
 });
 export const useSobremesaStore = defineStore('sobremesas', () => {
     const sobremesas = ref([
+
         { name: 'Mochi', unit: '(2 unidades)', description: 'Doce japonês tradicional de massa de arroz, recheado.', price: 'R$32,50', imagem: mochi },
         { name: 'Sorvete', unit: '(1 unidade)', description: 'Sobremesa cremosa com o sabor suave e característico', price: 'R$30,00', imagem: sorvete },
         { name: 'Cheesecake', unit: '(1 unidade)', description: 'Torta de queijo cremosa com uma base crocante de biscoito, coberta com calda de frutas vermelhas.', price: 'R$40,00', imagem: cheesecake },
