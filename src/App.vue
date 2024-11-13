@@ -4,7 +4,7 @@ import MenuVue from '@/components/MenuVue.vue'
 </script>
 
 <template>
-
+<main>
   <MenuVue />
   <HeaderVue />
   
