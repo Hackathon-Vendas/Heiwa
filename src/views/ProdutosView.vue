@@ -132,6 +132,12 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
       :imagem="item.imagem" @click="openModal(item)"/>
   </div>
+  <div id="section6">
+  <div v-for="banner in Bbebidas" :key="banner">
+    <TopoProduto :image="banner.image" :title="banner.title" />
+  </div>
+
+  <div v-for="item in bebidas" :key="item"></div>
 </div>
 <div id="section7">
 
@@ -159,7 +165,6 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
       :imagem="item.imagem" @click="openModal(item)"/>
   </div>
-</main>
 </template>
 <style>
 div .section {
