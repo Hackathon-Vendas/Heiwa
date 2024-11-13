@@ -13,6 +13,7 @@ const quantity = ref(1);
 
 const closeModal = () => {
     emit("update:isOpen", false);
+    quantity.value = 1;
 };
 
 const increment = () => {
@@ -39,18 +40,26 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
                 <img :src="props.item.imagem" alt="Imagem do produto" />
             </div>
             <div class="textos">
-                <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
-                <h2>{{ props.item.price }}</h2>
-                <p>{{ props.item.description }}</p>
-                <label>Algum comentário?</label>
-                <textarea placeholder="Ex: Tirar molho..."></textarea>
-                <div class="acoes">
-                    <div class="contador">
-                        <button @click="decrement">-</button>
-                        <p>{{ quantity }}</p>
-                        <button @click="increment">+</button>
+                <div>
+                    <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
+                    <h2>{{ props.item.price }}</h2>
+                    <p>{{ props.item.description }}</p>
+                    <label>Algum comentário?</label>
+                    <textarea placeholder="Ex: Tirar molho..."></textarea>
+                </div>
+                <div>
+                    <div class="acoes">
+                        <div class="contador">
+                            <button @click="decrement">-</button>
+                            <p>{{ quantity }}</p>
+                            <button @click="increment">+</button>
+                        </div>
+                        <button class="add-button">
+                            <span>Adicionar: </span>
+                            <span>R${{ totalPrice }}
+                            </span>
+                        </button>
                     </div>
-                    <button class="add-button">Adicionar: R${{ totalPrice }}</button>
                 </div>
             </div>
         </div>
@@ -58,9 +67,10 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
 </template>
 
 <style scoped>
-*{
+* {
     font-family: 'Inter', normal, sans-serif;
 }
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -114,13 +124,14 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
 }
 
 .imagem img {
     max-width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .textos {
@@ -128,7 +139,7 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #f5f5f5;
 }
 
@@ -181,6 +192,8 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
     display: flex;
     align-items: center;
     margin-top: 20px;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .contador {
@@ -207,13 +220,15 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
 
 .add-button {
     padding: 15px 20px;
-    background-color: #e63946;
+    background-color: #B93333;
     color: #fff;
     border: none;
-    font-size: 1.2em;
-    font-weight: bold;
+    font-size: 1em;
+    font-weight: 800;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+    gap: 4rem;
+    display: flex;
 }
 </style>
