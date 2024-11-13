@@ -1,24 +1,29 @@
 <script setup>
+import { ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import { ref } from "vue";
 
-const FuncaoExpandir = ref(true)
-const numMesa = ref(null)
+const FuncaoExpandir = ref(true);
+const numMesa = ref(null);
+const emit = defineEmits([
+    'proximoModal'
+]);
 
 function Permissao() {
     if (numMesa.value < 1 || numMesa.value > 90) {
         toast.error('Por favor, insira o número da mesa', {
             className: 'toast-dark'
         });
-    }
-    else {
-        FuncaoExpandir.value = false
+    } else {
+        FuncaoExpandir.value = false;
         toast.success('Concluído', {
             className: 'toast-dark'
         });
+        emit('proximoModal');
     }
 }
+
+
 </script>
 
 <template>
@@ -36,11 +41,13 @@ function Permissao() {
     </main>
 </template>
 
+
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-
-
+*{
+    z-index: 1000;
+}
 .input-container {
     position: relative;
     align-items: center;
@@ -49,22 +56,22 @@ function Permissao() {
 .input-icon {
     margin-top: 22px;
     position: absolute;
-    left: 35px;
     padding: 10px;
-    width: 25px;
-    border-right: 2px solid var(--cor-icon-fundo-input);
+    width: 10%;
+    border-right: 2px solid var(--cor-fundoSite-icon);
     cursor: pointer;
 }
 
 
 input {
     margin-top: 15px;
-    width: calc(75% - 15px);
-    height: 50px;
+    width: 85%;
+    height: 55px;
     border-radius: 14px;
     border: 1px solid var(--cor-borda-input);
     padding-left: 60px;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 500;
 }
 
 input:focus {
@@ -78,15 +85,16 @@ input:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--cor-icon-fundo-input);
+    background-color: var(--cor-fundoSite-icon);
     display: flex;
     justify-content: center;
     align-items: center;
+    backdrop-filter: blur(5px);
 }
 
 .container {
     text-align: center;
-    color: white;
+    color: var(--cor-letra-bottom-border);
 }
 
 .container h1 {
@@ -103,13 +111,13 @@ input:focus {
     margin-top: 35px;
     font-weight: bold;
     font-size: 20px;
+    letter-spacing: 0.5px;
     color: var(--cor-letra-bottom-border);
     background-color: var(--cor-fundo-bottom);
-    border: 1px solid var(--cor-fundo-borda-bottom);
+    border: 1px solid var(--cor-fundo-bottom);
     border-radius: 14px;
     cursor: pointer;
     display: block;
     outline-color: var(--cor-letra-bottom-border);
 }
-
 </style>

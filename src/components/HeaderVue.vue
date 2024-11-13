@@ -1,6 +1,4 @@
 <script setup>
-import { RouterLink, useRouter } from 'vue-router';
-
 import router from '@/router'
 
 const rota = router.currentRoute.value.name;
@@ -10,30 +8,30 @@ console.log(router.currentRoute.value)
 <template>
   <header>
     <div class="container">
-      <div class="home" >
-        <img class="voltar" src="/public/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
+      <div class="home">
+        <img class="voltar" src="/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
       </div>
       <div class="logo">
-        <img class="logo-principal" src="/public/logoH.png" alt="Logo Principal" />
+        <img class="logo-principal" src="/logoH.png" alt="Logo Principal" />
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="/public/Vector.png" alt="Cart Icon" />
+        <img class="cart-icon" src="/Vector.png" alt="Cart Icon" />
       </div>
     </div>
   </header>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
 header {
   width: 100%;
-  padding: 7px ;
+  padding: 7px;
   background-color: #1a1818;
   box-shadow: 0px 15px 29px rgba(189, 188, 188, 0.438);
-  position:fixed;
-
+  position: fixed;
+  top: 0;
 }
 
 .container {
@@ -45,13 +43,16 @@ header {
   position: relative;
 }
 
- .voltar, .cart-icon {
+.voltar,
+.cart-icon {
   height: 45px;
   width: 45px;
- }
-.home{
+}
+
+.home {
   grid-column: 1;
 }
+
 .logo {
   grid-column: 2;
   display: flex;
@@ -63,11 +64,13 @@ header {
   height: 54px;
   width: auto;
 }
-.cart{
+
+.cart {
   grid-column: 3;
   display: flex;
   justify-content: end;
 }
+
 .logo-secundaria {
   font-size: 14px;
   font-family: 'Inter', sans-serif;
@@ -75,5 +78,4 @@ header {
   letter-spacing: 0.25em;
   color: #fff;
 }
-
 </style>

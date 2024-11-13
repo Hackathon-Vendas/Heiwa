@@ -1,11 +1,15 @@
 
 :root{
   --cor-fundo-input: #6B6B6B;
-  --cor-borda-input: #fff;
   --cor-borda-input-radio: #85DE66;
-  --cor-fundo: #000000BC;
-  --cor-fundo-bottom: #1e1e1e00;
+  --cor-fundo-bottom: #B93333;
+  --cor-borda-input: #D9D9D9;
+  --cor-letra-bottom-border: #ffffff;
+  --cor-fundoSite-icon: #000000d8;
+  --cor-voltar: #00000000;
+  --cor-fundo:  #1e1e1e;
 }
+
 
 *{
     margin: 0;
@@ -14,7 +18,7 @@
   }
   
   body{
-    background-color: #1e1e1e
+    background-color:var(--cor-fundo)
   }
 main {
   height: 100%;

@@ -48,10 +48,9 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 .image {
   width: 30%;
   height: 230px;
-  border-radius: 20px !important;
+  border-radius: 20px ;
   object-fit: cover;
-  margin-top: 1.2%;
-  margin-left: 1%;
+  margin-top: 1%;
   margin-right: 1%;
 }
 

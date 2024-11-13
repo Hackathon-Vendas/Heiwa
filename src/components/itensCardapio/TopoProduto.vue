@@ -33,5 +33,6 @@ h2 {
   letter-spacing: 0.25em;
   color: #FFFFFF;
   margin-top: -30px;
+  margin-bottom: 2%;
 }
 </style>

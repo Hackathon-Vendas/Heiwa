@@ -16,20 +16,26 @@ const router = createRouter({
       name: 'produtos',
       component: ProdutosView
     },
+
+    {
+      path: '/',
+      name: 'home',
+      component: HomeView
+    }
   ],
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to) {
     if (to.hash) {
       return new Promise((resolve) => {
         nextTick(() => {
           resolve({
             el: to.hash,
-            behavior: 'smooth',
-          });
-        });
-      });
+            behavior: 'smooth'
+          })
+        })
+      })
     }
-    return { top: 0 };
-  },
-  });
+    return { top: 0 }
+  }
+})
 
 export default router
