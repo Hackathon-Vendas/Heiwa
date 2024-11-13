@@ -2,6 +2,10 @@
 import { onMounted, watch } from 'vue';
 import Produtos from '@/components/itensCardapio/Produtos.vue';
 import TopoProduto from '@/components/itensCardapio/TopoProduto.vue';
+
+import { ref } from 'vue'
+import ModalProducts from '@/components/ModalProducts.vue';
+
 import { useAlcoolicaStore, useEntradaStore, usePrincipalStore, useBebidaStore, useSobremesaStore, useSobremesarStore } from '@/stores/produto';
 import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
 import { useRoute } from 'vue-router'
@@ -26,6 +30,16 @@ function scrollToHash(hash) {
       element.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
   }
+}
+
+const itemSelecionado = ref(null);
+const show = ref(false)
+function openModal(produto) {
+  console.log(produto)
+  itemSelecionado.value = produto
+
+  console.log("item")
+  show.value = true
 }
 
 const alcoolicaStore = useAlcoolicaStore();
@@ -57,14 +71,14 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
 </script>
 <template>
-  <main>
-  <div id="entradas" class="section">
+  <ModalProducts v-model:isOpen="show" :item="itemSelecionado" />
+  <div id="section1">
     <div v-for="banner in Bentradas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
+      <TopoProduto :image="banner.image" :title="banner.title"   />
     </div>
     <div v-for="item in entradas" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+      :imagem="item.imagem" @click="openModal(item)" />
     </div>
   </div>
   <div id="principais" class="section">
@@ -74,7 +88,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
     <div v-for="item in principais" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+        :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
 
@@ -84,7 +98,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     </div>
     <div v-for="item in entradas" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+        :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
   <div id="principaisR" class="section">
@@ -94,13 +108,18 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
     <div v-for="item in principais" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
+        :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
-  <div id="sobremesasR" class="section">
-    <div v-for="banner in Bsobremesas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
+<div id="section5">
+  <div v-for="banner in Bsobremesas" :key="banner">
+    <TopoProduto :image="banner.image" :title="banner.title" />
+  </div>
+
+  <div v-for="item in sobremesasRodizio" :key="item">
+    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
+      :imagem="item.imagem" @click="openModal(item)"/>
+  </div>
 
     <div v-for="item in sobremesasRodizio" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
@@ -109,10 +128,13 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
   </div>
 
-  <div id="bebidas" class="section">
-    <div v-for="banner in Bbebidas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
+  <div v-for="item in bebidas" :key="item">
+    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
+      :imagem="item.imagem" @click="openModal(item)"/>
+  </div>
+</div>
+<div id="section7">
+
 
     <div v-for="item in bebidas" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
@@ -121,9 +143,10 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
   </div>
   <div id="alcoolicas" class="section">
 
-    <div v-for="banner in Balcoolicas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
+  <div v-for="item in alcoolicas" :key="item">
+    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
+      :imagem="item.imagem" @click="openModal(item)"/>
+  </div>
 
     <div v-for="item in alcoolicas" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
@@ -132,15 +155,9 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 
   </div>
 
-  <div id="-sobremesa" class="section">
-    <div v-for="banner in Bsobremesas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-
-    <div v-for="item in sobremesas" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
-        :imagem="item.imagem" />
-    </div>
+  <div v-for="item in sobremesas" :key="item">
+    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price"
+      :imagem="item.imagem" @click="openModal(item)"/>
   </div>
 </main>
 </template>

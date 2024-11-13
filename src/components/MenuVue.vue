@@ -216,6 +216,15 @@ function scrollToSection8() {
 
 <style scoped>
 
+main {
+  width: 20%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  position: absolute;
+  margin-top: 7.4%;
+}
+
 .aside {
   width: 200px;
   top: 85px;
