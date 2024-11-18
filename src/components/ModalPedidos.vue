@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
+import ContaModal from './ContaModal.vue';
 
 const isModalVisible = ref(true);
 const cartStore = useCartStore();
@@ -12,12 +13,18 @@ const emit = defineEmits(["update:isOpen"]);
 const closeModal = () => {
   emit("update:isOpen", false);
 };
+const show = ref(false)
 const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
+const finalizar = () => {
+    show.value = true
+    emit("update:isOpen", false);
+}
 </script>
 
 <template>
+    <ContaModal v-model:isOpen="show" />
   <Transition name="slide">
     <div v-if="isOpen" class="containerPedidos">
       <div class="pedidos">
@@ -39,7 +46,7 @@ const removeItem = (productId) => {
             <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
           </div>
           <div class="botoesPedido">
-            <button class="finalizarPedido">FINALIZAR PEDIDO</button>
+            <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
             <h3>OU</h3>
             <button class="pedirConta">PEDIR CONTA</button>
           </div>

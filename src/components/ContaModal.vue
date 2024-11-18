@@ -1,17 +1,22 @@
 <script setup>
 import { ref } from 'vue'
+import ModalPedidos from './ModalPedidos.vue';
 
-const emit = defineEmits(['modal'])
+const props = defineProps({
+  isOpen: Boolean
+});
 
-const modalConta = ref(true)
+const emit = defineEmits(["update:isOpen", 'modal']);
+
+const modalConta = ref(false)
 function closeModal() {
     modalConta.value = false
     emit('modal')
 }
 </script>
 <template>
-    <div class="overlay"></div>
-    <div v-if="modalConta" class="modalC">
+    <div v-if="props.isOpen" class="overlay"></div>
+    <div v-if="props.isOpen" class="modalC">
     <div class="conta">
         <div class="informacoesConta">
         <h1>CONTA</h1>
