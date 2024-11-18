@@ -1,69 +1,80 @@
 <script setup>
 import { computed, ref } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
 
 const props = defineProps({
-    item: Object,
-    isOpen: Boolean
+  item: Object,
+  isOpen: Boolean
 });
 
 const emit = defineEmits(["update:isOpen"]);
 
 const isOpen = computed(() => props.isOpen);
 const quantity = ref(1);
+const cartStore = useCartStore();
 
 const closeModal = () => {
-    emit("update:isOpen", false);
-    quantity.value = 1;
+  emit("update:isOpen", false);
+  quantity.value = 1;
 };
 
 const increment = () => {
-    quantity.value++;
+  quantity.value++;
 };
 
 const decrement = () => {
-    if (quantity.value > 1) {
-        quantity.value--;
-    }
+  if (quantity.value > 1) {
+    quantity.value--;
+  }
 };
 
 const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
-
 const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
+
+const addToCart = () => {
+  const product = {
+    ...props.item,
+    id: Date.now(), // Adiciona um identificador único
+    quantity: quantity.value,
+    totalPrice: parsePrice(props.item.price) * quantity.value
+  };
+  cartStore.addItem(product);
+  closeModal();
+};
 </script>
 
 <template>
-    <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
-    <div v-if="isOpen" class="modal-container">
-        <button class="close-button" @click="closeModal">✕</button>
-        <div class="modal-content">
-            <div class="imagem">
-                <img :src="props.item.imagem" alt="Imagem do produto" />
-            </div>
-            <div class="textos">
-                <div>
-                    <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
-                    <h2>{{ props.item.price }}</h2>
-                    <p>{{ props.item.description }}</p>
-                    <label>Algum comentário?</label>
-                    <textarea placeholder="Ex: Tirar molho..."></textarea>
-                </div>
-                <div>
-                    <div class="acoes">
-                        <div class="contador">
-                            <button @click="decrement">-</button>
-                            <p>{{ quantity }}</p>
-                            <button @click="increment">+</button>
-                        </div>
-                        <button class="add-button">
-                            <span>Adicionar: </span>
-                            <span>R${{ totalPrice }}
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
+  <div v-if="isOpen" class="modal-container">
+    <button class="close-button" @click="closeModal">✕</button>
+    <div class="modal-content">
+      <div class="imagem">
+        <img :src="props.item.imagem" alt="Imagem do produto" />
+      </div>
+      <div class="textos">
+        <div>
+          <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
+          <h2>{{ props.item.price }}</h2>
+          <p>{{ props.item.description }}</p>
+          <label>Algum comentário?</label>
+          <textarea placeholder="Ex: Tirar molho..."></textarea>
         </div>
+        <div>
+          <div class="acoes">
+            <div class="contador">
+              <button @click="decrement">-</button>
+              <p>{{ quantity }}</p>
+              <button @click="increment">+</button>
+            </div>
+            <button class="add-button" @click="addToCart">
+              <span>Adicionar: </span>
+              <span>R${{ totalPrice }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <style scoped>
