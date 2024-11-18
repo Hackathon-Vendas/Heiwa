@@ -12,6 +12,9 @@ const emit = defineEmits(["update:isOpen"]);
 const closeModal = () => {
   emit("update:isOpen", false);
 };
+const removeItem = (productId) => {
+    cartStore.removeItem(productId);
+};
 </script>
 
 <template>
@@ -26,8 +29,8 @@ const closeModal = () => {
           <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
             <p class="quantidade">{{ item.quantity }}x</p>
             <p class="item">{{ item.name }}</p>
-            <p class="valor">R${{ item.totalPrice.toFixed(2) }}</p>
-            <p class="botaoExcluir"><img src="/excluir.png" alt=""></p>
+            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
+            <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt=""></p>
           </div>
         </div>
         <div class="pedidoUsuario">
