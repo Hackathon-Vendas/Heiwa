@@ -103,13 +103,13 @@ h3 {
 }
 
 .details {
+  width: 80%;
   height: 70%;
   margin-right: 4%;
 }
 
 .name {
   display: flex;
-  align-items: baseline;
 }
 
 </style>

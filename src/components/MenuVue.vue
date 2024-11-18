@@ -21,9 +21,17 @@ function showAlacarte() {
     alacarte.value = true;
     rodizio.value = false;
     bebidas.value = false;
+    sobremesas.value = false;
   }
 }
 
+function closeMenu() {
+  sobremesas.value = false;
+  alacarte.value = false;
+  rodizio.value = false;
+  bebidas.value = false;
+
+}
 
 function showRodizio() {
   if (rodizio.value) {
@@ -32,6 +40,7 @@ function showRodizio() {
     rodizio.value = true;
     alacarte.value = false;
     bebidas.value = false;
+    sobremesas.value = false;
   }
 }
 
@@ -42,7 +51,7 @@ function showBebidas() {
     bebidas.value = true;
     alacarte.value = false;
     rodizio.value = false;
-
+    sobremesas.value = false;
   }
 }
 
@@ -125,121 +134,117 @@ function scrollToSection8() {
   principaisR.value = false;
   sobremesasR.value = false;
   sobremesas.value = true;
+  alacarte.value = false;
+  rodizio.value = false;
+  bebidas.value = false;
 }
 
 </script>
 <template>
 
-    <div class="aside">
-      <ul>
-        <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
-              src="/logo-alacarte.svg">
-            <p>Á la carte</p>
-          </button></li>
-        <div v-if="alacarte">
-          <ul>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#entradas' }">
-                <button @click="scrollToSection1()" class="sub-menu"
-                  :class="{ 'selectedMenu': entradas == true }">Entradas</button>
-              </RouterLink>
-            </li>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#principais' }">
-                <button @click="scrollToSection2()" class="sub-menu"
-                  :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
-              </RouterLink>
-            </li>
-          </ul>
-        </div>
+  <aside>
+    <ul>
+      <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img src="/logo-alacarte.svg">
+          <p>Á la carte</p>
+        </button></li>
+      <div v-if="alacarte">
+        <ul>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#entradas' }">
+              <button @click="scrollToSection1()" class="sub-menu"
+                :class="{ 'selectedMenu': entradas == true }">Entradas</button>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#principais' }">
+              <button @click="scrollToSection2()" class="sub-menu"
+                :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
 
-        <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img
-              src="/logo-rodizio.svg">
-            <p>Rodízio</p>
-          </button></li>
-        <div v-if="rodizio">
-          <ul>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#entradasR' }">
-                <button @click="scrollToSection3()" class="sub-menu"
-                  :class="[{ 'selectedMenu': entradasR == true }]">Entradas</button>
-              </RouterLink>
-            </li>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#principaisR' }">
-                <button @click="scrollToSection4()" class="sub-menu"
-                  :class="{ 'selectedMenu': principaisR == true }">Pratos Principais</button>
-              </RouterLink>
-            </li>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#sobremesasR' }">
-                <button @click="scrollToSection5()" class="sub-menu"
-                  :class="{ 'selectedMenu': sobremesasR == true }">Sobremesas</button>
-              </RouterLink>
-            </li>
-          </ul>
-        </div>
+      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
+          <p>Rodízio</p>
+        </button></li>
+      <div v-if="rodizio">
+        <ul>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#entradasR' }">
+              <button @click="scrollToSection3()" class="sub-menu"
+                :class="[{ 'selectedMenu': entradasR == true }]">Entradas</button>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#principaisR' }">
+              <button @click="scrollToSection4()" class="sub-menu"
+                :class="{ 'selectedMenu': principaisR == true }">Pratos Principais</button>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#sobremesasR' }">
+              <button @click="scrollToSection5()" class="sub-menu"
+                :class="{ 'selectedMenu': sobremesasR == true }">Sobremesas</button>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
 
-        <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
-              src="/logo-bebida.svg">
-            <p>Bebidas</p>
-          </button></li>
-        <div v-if="bebidas">
-          <ul>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#bebidas' }">
-                <button @click="scrollToSection6()" class="sub-menu"
-                  :class="{ 'selectedMenu': nalcoolicas == true }">Não
-                  alcóolicas </button>
-              </RouterLink>
-            </li>
-            <li>
-              <RouterLink :to="{ path: '/produtos', hash: '#alcoolicas' }">
-                <button @click="scrollToSection7()" class="sub-menu"
-                  :class="{ 'selectedMenu': alcoolicas == true }">Alcóolicas
-                </button>
-              </RouterLink>
-            </li>
-          </ul>
-        </div>
-        <li>
-          <RouterLink :to="{ path: '/produtos', hash: '#-sobremesa' }">
-            <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
-                src="/logo-sobremesa.svg">
-              <p>Sobremesas</p>
-            </button>
-          </RouterLink>
-        </li>
-      </ul>
-    </div>
+      <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img src="/logo-bebida.svg">
+          <p>Bebidas</p>
+        </button></li>
+      <div v-if="bebidas">
+        <ul>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#bebidas' }">
+              <button @click="scrollToSection6()" class="sub-menu" :class="{ 'selectedMenu': nalcoolicas == true }">Não
+                alcóolicas </button>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#alcoolicas' }">
+              <button @click="scrollToSection7()" class="sub-menu"
+                :class="{ 'selectedMenu': alcoolicas == true }">Alcóolicas
+              </button>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+      <li>
+        <RouterLink :to="{ path: '/produtos', hash: '#-sobremesa' }">
+          <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
+              src="/logo-sobremesa.svg">
+            <p>Sobremesas</p>
+          </button>
+        </RouterLink>
+      </li>
+    </ul>
+  </aside>
 </template>
 
 <style scoped>
-
-.aside {
+aside {
   width: 200px;
   top: 85px;
-  height: 100%;
-  left: 0;
+  height: calc(100% - 85px);  left: 0;
   position: fixed;
-  filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
   overflow-y: auto;
   background-color: rgba(40, 40, 40, 1);
 }
 
-.aside::-webkit-scrollbar {
+aside::-webkit-scrollbar {
   display: none;
-
+  height: 100%;
 }
 
-.aside ul {
+aside ul {
   list-style-type: none;
   padding: 0;
   transition: 0.3s;
- }
+}
 
-.aside ul li {
+aside ul li {
   text-align: center;
   height: 100%;
 }
@@ -297,5 +302,4 @@ img {
   background-color: rgba(94, 94, 94, 1) !important;
   border-right: rgba(156, 156, 156, 1) 3px solid;
 }
-
 </style>
