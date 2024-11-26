@@ -43,10 +43,6 @@ header {
   display: flex;
   align-items: center;
 }
-.cart{
-  display: flex;
-  align-items: center;
-}
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

@@ -27,7 +27,7 @@ function scrollToHash(hash) {
     setTimeout(() => {
       element.scrollIntoView({ behavior: 'smooth' });
     }, 1000);
-  }
+  }Balcoolicas
 }
 
 const itemSelecionado = ref(null);
