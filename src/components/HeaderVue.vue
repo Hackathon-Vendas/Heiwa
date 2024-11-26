@@ -19,14 +19,13 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="/Vector.png" alt="Cart Icon" @click="showModal = !showModal" />
+        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
       </div>
   </header>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
-
 
 header {
   width: 100%;
