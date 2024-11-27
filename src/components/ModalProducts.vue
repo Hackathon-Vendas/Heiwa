@@ -53,7 +53,7 @@ const addToCart = () => {
             </div>
             <div class="textos">
                 <div>
-                    <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
+                    <h1>{{ props.item.name }} <span class="unidade ai">{{ props.item.unit }}</span></h1>
                     <h2>{{ props.item.price }}</h2>
                     <p>{{ props.item.description }}</p>
                     <label class="coment">Algum comentário?</label>
@@ -74,22 +74,18 @@ const addToCart = () => {
                     </div>
                 </div>
             </div>
-            <button class="add-button" @click="addToCart">
-              <span>Adicionar: </span>
-              <span>R${{ totalPrice }}</span>
-            </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <style scoped>
 * {
     font-family: 'Inter', normal, sans-serif;
 }
-
+.ai{
+    text-wrap: nowrap;
+    margin: 0;
+}
 .modal-overlay {
     position: fixed;
     top: 0;
