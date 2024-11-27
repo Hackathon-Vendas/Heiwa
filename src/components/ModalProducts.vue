@@ -3,8 +3,8 @@ import { computed, ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 
 const props = defineProps({
-  item: Object,
-  isOpen: Boolean
+    item: Object,
+    isOpen: Boolean
 });
 
 const emit = defineEmits(["update:isOpen"]);
@@ -14,32 +14,32 @@ const quantity = ref(1);
 const cartStore = useCartStore();
 
 const closeModal = () => {
-  emit("update:isOpen", false);
-  quantity.value = 1;
+    emit("update:isOpen", false);
+    quantity.value = 1;
 };
 
 const increment = () => {
-  quantity.value++;
+    quantity.value++;
 };
 
 const decrement = () => {
-  if (quantity.value > 1) {
-    quantity.value--;
-  }
+    if (quantity.value > 1) {
+        quantity.value--;
+    }
 };
 
 const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
 const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
 
 const addToCart = () => {
-  const product = {
-    ...props.item,
-    id: Date.now(), // Adiciona um identificador único
-    quantity: quantity.value,
-    totalPrice: parsePrice(props.item.price) * quantity.value
-  };
-  cartStore.addItem(product);
-  closeModal();
+    const product = {
+        ...props.item,
+        id: Date.now(), // Adiciona um identificador único
+        quantity: quantity.value,
+        totalPrice: parsePrice(props.item.price) * quantity.value
+    };
+    cartStore.addItem(product);
+    closeModal();
 };
 </script>
 
@@ -66,26 +66,27 @@ const addToCart = () => {
                             <p>{{ quantity }}</p>
                             <button @click="increment">+</button>
                         </div>
-                        <button class="add-button">
+                        <button class="add-button" @click="addToCart">
                             <span>Adicionar: </span>
-                            <span>R${{ totalPrice }}
-                            </span>
+                            <span>R${{ totalPrice }}</span>
                         </button>
                     </div>
                 </div>
             </div>
-          </div>
         </div>
+    </div>
 </template>
 
 <style scoped>
 * {
     font-family: 'Inter', normal, sans-serif;
 }
-.ai{
+
+.ai {
     text-wrap: nowrap;
     margin: 0;
 }
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -163,7 +164,7 @@ const addToCart = () => {
     color: #f5f5f5;
 }
 
-.textos .coment{
+.textos .coment {
     font-size: 20px;
     letter-spacing: 0.25em;
     font-weight: 1000;
@@ -182,7 +183,7 @@ const addToCart = () => {
     font-size: 20px;
     color: #fff;
     letter-spacing: 0.25em;
-    margin-left: 10px;    
+    margin-left: 10px;
     font-weight: 200;
 }
 
