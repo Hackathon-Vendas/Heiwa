@@ -44,27 +44,35 @@ const addToCart = () => {
 </script>
 
 <template>
-  <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
-  <div v-if="isOpen" class="modal-container">
-    <button class="close-button" @click="closeModal">✕</button>
-    <div class="modal-content">
-      <div class="imagem">
-        <img :src="props.item.imagem" alt="Imagem do produto" />
-      </div>
-      <div class="textos">
-        <div>
-          <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
-          <h2>{{ props.item.price }}</h2>
-          <p>{{ props.item.description }}</p>
-          <label>Algum comentário?</label>
-          <textarea placeholder="Ex: Tirar molho..."></textarea>
-        </div>
-        <div>
-          <div class="acoes">
-            <div class="contador">
-              <button @click="decrement">-</button>
-              <p>{{ quantity }}</p>
-              <button @click="increment">+</button>
+    <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
+    <div v-if="isOpen" class="modal-container">
+        <button class="close-button" @click="closeModal">✕</button>
+        <div class="modal-content">
+            <div class="imagem">
+                <img :src="props.item.imagem" alt="Imagem do produto" />
+            </div>
+            <div class="textos">
+                <div>
+                    <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
+                    <h2>{{ props.item.price }}</h2>
+                    <p>{{ props.item.description }}</p>
+                    <label class="coment">Algum comentário?</label>
+                    <textarea placeholder="Ex: Tirar molho..."></textarea>
+                </div>
+                <div>
+                    <div class="acoes">
+                        <div class="contador">
+                            <button @click="decrement">-</button>
+                            <p>{{ quantity }}</p>
+                            <button @click="increment">+</button>
+                        </div>
+                        <button class="add-button">
+                            <span>Adicionar: </span>
+                            <span>R${{ totalPrice }}
+                            </span>
+                        </button>
+                    </div>
+                </div>
             </div>
             <button class="add-button" @click="addToCart">
               <span>Adicionar: </span>
@@ -100,7 +108,7 @@ const addToCart = () => {
     width: 90%;
     min-height: 50%;
     max-width: 1100px;
-    background-color: #2c2c2c;
+    background-color: #373737;
     border-radius: 14px;
     overflow: hidden;
     display: flex;
@@ -117,25 +125,29 @@ const addToCart = () => {
     right: 10px;
     background: none;
     border: none;
-    color: #aaa;
+    color: #fff;
     font-size: 1.5em;
     cursor: pointer;
+    font-weight: 700;
 }
 
 .modal-content {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     width: 100%;
     min-height: 28rem;
 }
 
 .imagem {
     flex: 1;
+    width: 45%;
     min-height: 28rem;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    box-shadow: 250px;
 }
 
 .imagem img {
@@ -147,6 +159,7 @@ const addToCart = () => {
 
 .textos {
     min-height: 25rem;
+    width: 45%;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -154,11 +167,16 @@ const addToCart = () => {
     color: #f5f5f5;
 }
 
+.textos .coment{
+    font-size: 20px;
+    letter-spacing: 0.25em;
+    font-weight: 1000;
+}
+
 .textos h1 {
-    font-size: 2em;
-    font-weight: 1500;
+    font-size: 28px;
+    font-weight: 2000;
     margin-bottom: 10px;
-    display: flex;
     letter-spacing: 0.25em;
     align-items: center;
     justify-content: space-between;
@@ -166,20 +184,27 @@ const addToCart = () => {
 
 .unidade {
     font-size: 20px;
-    color: #bbb;
+    color: #fff;
     letter-spacing: 0.25em;
-    margin-left: 10px;
+    margin-left: 10px;    
+    font-weight: 200;
 }
 
 .textos h2 {
-    font-size: 1.2em;
-    color: #bbb;
+    font-size: 20px;
+    font-weight: 900;
+    color: #fff;
     margin: 5px 0;
+    letter-spacing: 0.25em;
 }
 
 .textos p {
     margin: 10px 0;
+    display: grid;
     line-height: 1.4;
+    font-size: 20px;
+    letter-spacing: 0.25em;
+    font-weight: 600;
 }
 
 .textos label {
@@ -189,14 +214,15 @@ const addToCart = () => {
 }
 
 .textos textarea {
-    width: 100%;
-    height: 60px;
+    width: 440px;
+    height: 74px;
     padding: 10px;
     margin-top: 10px;
-    border-radius: 5px;
-    border: 1px solid #666;
+    border-radius: 10px;
+    border: 3px solid #fff;
     background-color: #333;
     color: #fff;
+    letter-spacing: 2px;
 }
 
 .acoes {
@@ -208,13 +234,17 @@ const addToCart = () => {
 }
 
 .contador {
+    height: 50px;
+    width: 100px;
     display: flex;
     align-items: center;
     margin-right: 20px;
+    background-color: #404040;
+    border-radius: 8px;
 }
 
 .contador button {
-    background-color: #555;
+    background-color: rgb(0, 0, 0, 0);
     color: #fff;
     border: none;
     padding: 5px 10px;
