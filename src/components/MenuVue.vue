@@ -211,7 +211,7 @@ function scrollToSection8() {
         </ul>
       </div>
       <li>
-        <RouterLink :to="{ path: '/produtos', hash: '#-sobremesa' }">
+        <RouterLink :to="{ path: '/produtos', hash: '#sobremesa' }">
           <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
               src="/logo-sobremesa.svg">
             <p>Sobremesas</p>
