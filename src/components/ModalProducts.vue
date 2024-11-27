@@ -1,34 +1,46 @@
 <script setup>
 import { computed, ref } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
 
 const props = defineProps({
-    item: Object,
-    isOpen: Boolean
+  item: Object,
+  isOpen: Boolean
 });
 
 const emit = defineEmits(["update:isOpen"]);
 
 const isOpen = computed(() => props.isOpen);
 const quantity = ref(1);
+const cartStore = useCartStore();
 
 const closeModal = () => {
-    emit("update:isOpen", false);
-    quantity.value = 1;
+  emit("update:isOpen", false);
+  quantity.value = 1;
 };
 
 const increment = () => {
-    quantity.value++;
+  quantity.value++;
 };
 
 const decrement = () => {
-    if (quantity.value > 1) {
-        quantity.value--;
-    }
+  if (quantity.value > 1) {
+    quantity.value--;
+  }
 };
 
 const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
-
 const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
+
+const addToCart = () => {
+  const product = {
+    ...props.item,
+    id: Date.now(), // Adiciona um identificador único
+    quantity: quantity.value,
+    totalPrice: parsePrice(props.item.price) * quantity.value
+  };
+  cartStore.addItem(product);
+  closeModal();
+};
 </script>
 
 <template>
@@ -62,8 +74,15 @@ const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value
                     </div>
                 </div>
             </div>
+            <button class="add-button" @click="addToCart">
+              <span>Adicionar: </span>
+              <span>R${{ totalPrice }}</span>
+            </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <style scoped>

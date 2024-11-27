@@ -19,7 +19,7 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="/Vector.png" alt="Cart Icon" @click="showModal = !showModal" />
+        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
       </div>
   </header>
 </template>
@@ -27,14 +27,21 @@ console.log(router.currentRoute.value)
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap'); 
 
-
 header {
   width: 100%;
-  padding: 7px;
+  padding: 15px;
+  display: grid;
+  height: 100px;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: #1a1818;
+  filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
   box-shadow: 0px 15px 29px rgba(189, 188, 188, 0.438);
   position: fixed;
   top: 0;
+}
+.home{
+  display: flex;
+  align-items: center;
 }
 .container {
   display: grid;
@@ -51,9 +58,6 @@ header {
   width: 45px;
 }
 
-.home {
-  grid-column: 1;
-}
 
 .logo {
   grid-column: 2;
@@ -78,11 +82,6 @@ header {
   font-weight: 300;
   letter-spacing: 0.25em;
   color: #fff;
-}
-.cart-icon {
-  position: absolute;
-  top: 30px;
-  right: 25px;
 }
 .cart-icon img {
   width: 40px;
