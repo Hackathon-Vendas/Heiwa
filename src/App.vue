@@ -8,11 +8,14 @@ import { RouterLink, RouterView } from 'vue-router'
 </script> 
 
 <template>
+<main>
 <ContaModal/>
   <MenuVue />
   <HeaderVue />
   <ModalPedidos />
   <RouterView />
+</main>
+
 </template>
 
 <style scoped>

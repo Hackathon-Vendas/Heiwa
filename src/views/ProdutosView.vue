@@ -140,4 +140,5 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 div .section {
   height: 100%;
 }
+
 </style>
