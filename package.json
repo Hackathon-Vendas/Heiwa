@@ -12,7 +12,9 @@
   },
   "dependencies": {
     "pinia": "^2.1.7",
+    "toastify": "^2.0.1",
     "swiper": "^11.1.14",
+    "toast": "^0.5.4",
     "toastify": "^2.0.1",
     "vue": "^3.4.29",
     "vue-router": "^4.3.3",

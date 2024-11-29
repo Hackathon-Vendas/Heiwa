@@ -1,4 +1,5 @@
 <script setup>
+import ContaModal from '@/components/ContaModal.vue';
 import { ref } from 'vue';
 import RodizioVue from '@/components/RodizioVue.vue';
 import NumeroMesa from '@/components/NumeroMesa.vue';
@@ -14,6 +15,7 @@ const ModalA = ref(0);
   <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
   <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
   <main>
+    <ContaModal/>
     <ModalPedidos />
     <div class="carosselp">
       <CarrosselPrincipal />
