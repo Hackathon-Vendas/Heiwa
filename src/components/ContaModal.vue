@@ -9,13 +9,13 @@ const props = defineProps({
 const emit = defineEmits(["update:isOpen", 'modal']);
 
 const modalConta = ref(false)
-function closeModal() {
-    modalConta.value = false
-    emit('modal')
+const closeModal = () => {
+    modalConta.value = true
+    emit('update:isOpen", false')
 }
 </script>
 <template>
-    <div v-if="props.isOpen" class="overlay"></div>
+    <div v-if="props.isOpen" class="overlay"></div> 
     <div v-if="props.isOpen" class="modalC">
     <div class="conta">
         <div class="informacoesConta">

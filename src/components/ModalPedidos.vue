@@ -5,15 +5,17 @@ import ContaModal from './ContaModal.vue';
 
 const isModalVisible = ref(true);
 const cartStore = useCartStore();
-const props = defineProps({
-  isOpen: Boolean
-});
+
 const emit = defineEmits(["update:isOpen"]);
 
 const closeModal = () => {
   emit("update:isOpen", false);
 };
-const show = ref(false)
+const show = () => {
+    closeModal.value = true
+    emit("update:isOpen", true)
+}
+
 const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
@@ -48,7 +50,7 @@ const finalizar = () => {
           <div class="botoesPedido">
             <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
             <h3>OU</h3>
-            <button class="pedirConta">PEDIR CONTA</button>
+            <button class="pedirConta" @click="show" > PEDIR CONTA</button>
           </div>
         </div>
       </div>
