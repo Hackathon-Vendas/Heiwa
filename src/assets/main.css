@@ -14,10 +14,11 @@
 *{
     margin: 0;
     box-sizing: border-box;
-    font: optional;
   }
   
   body{
     background-color:var(--cor-fundo)
   }
-
+main {
+  height: 100%;
+}
