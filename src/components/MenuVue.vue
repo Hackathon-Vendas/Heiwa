@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import { useRoute } from 'vue-router';
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -25,14 +26,6 @@ function showAlacarte() {
   }
 }
 
-function closeMenu() {
-  sobremesas.value = false;
-  alacarte.value = false;
-  rodizio.value = false;
-  bebidas.value = false;
-
-}
-
 function showRodizio() {
   if (rodizio.value) {
     rodizio.value = false;
@@ -54,89 +47,42 @@ function showBebidas() {
     sobremesas.value = false;
   }
 }
+function scrollToSection(section) {
+  nalcoolicas.value = false;
+  alcoolicas.value = false;
+  entradas.value = false;
+  principais.value = false;
+  entradasR.value = false;
+  principaisR.value = false;
+  sobremesasR.value = false;
+  sobremesas.value = false;
 
-function scrollToSection1() {
-  nalcoolicas.value = false;
-  alcoolicas.value = false;
-  entradas.value = true;
-  principais.value = false;
-  entradasR.value = false;
-  principaisR.value = false;
-  sobremesasR.value = false;
-  sobremesas.value = false;
-}
-function scrollToSection2() {
-  nalcoolicas.value = false;
-  alcoolicas.value = false;
-  entradas.value = false;
-  principais.value = true;
-  entradasR.value = false;
-  principaisR.value = false;
-  sobremesasR.value = false;
-  sobremesas.value = false;
-}
-function scrollToSection3() {
-  nalcoolicas.value = false;
-  alcoolicas.value = false;
-  entradas.value = false;
-  principais.value = false;
-  entradasR.value = true;
-  principaisR.value = false;
-  sobremesasR.value = false;
-  sobremesas.value = false;
-}
-function scrollToSection4() {
-  nalcoolicas.value = false;
-  alcoolicas.value = false;
-  entradas.value = false;
-  principais.value = false;
-  entradasR.value = false;
-  principaisR.value = true;
-  sobremesasR.value = false;
-  sobremesas.value = false;
-}
-function scrollToSection5() {
-  nalcoolicas.value = false;
-  alcoolicas.value = false;
-  entradas.value = false;
-  principais.value = false;
-  entradasR.value = false;
-  principaisR.value = false;
-  sobremesasR.value = true;
-  sobremesas.value = false;
-}
-function scrollToSection6() {
-  nalcoolicas.value = true;
-  alcoolicas.value = false;
-  entradas.value = false;
-  principais.value = false;
-  entradasR.value = false;
-  principaisR.value = false;
-  sobremesasR.value = false;
-  sobremesas.value = false;
-}
-function scrollToSection7() {
-  nalcoolicas.value = false;
-  alcoolicas.value = true;
-  entradas.value = false;
-  principais.value = false;
-  entradasR.value = false;
-  principaisR.value = false;
-  sobremesasR.value = false;
-  sobremesas.value = false;
-}
-function scrollToSection8() {
-  nalcoolicas.value = false;
-  alcoolicas.value = false;
-  entradas.value = false;
-  principais.value = false;
-  entradasR.value = false;
-  principaisR.value = false;
-  sobremesasR.value = false;
-  sobremesas.value = true;
-  alacarte.value = false;
-  rodizio.value = false;
-  bebidas.value = false;
+  switch (section) {
+    case 'entradas':
+      entradas.value = true;
+      break;
+    case 'principais':
+      principais.value = true;
+      break;
+    case 'entradasR':
+      entradasR.value = true;
+      break;
+    case 'principaisR':
+      principaisR.value = true;
+      break;
+    case 'sobremesasR':
+      sobremesasR.value = true;
+      break;
+    case 'nalcoolicas':
+      nalcoolicas.value = true;
+      break;
+    case 'alcoolicas':
+      alcoolicas.value = true;
+      break;
+    case 'sobremesas':
+      sobremesas.value = true;
+      break;
+  }
 }
 
 </script>
@@ -151,13 +97,13 @@ function scrollToSection8() {
         <ul>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#entradas' }">
-              <button @click="scrollToSection1()" class="sub-menu"
+              <button @click="scrollToSection('entradas')" class="sub-menu"
                 :class="{ 'selectedMenu': entradas == true }">Entradas</button>
             </RouterLink>
           </li>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#principais' }">
-              <button @click="scrollToSection2()" class="sub-menu"
+              <button @click="scrollToSection('principais')" class="sub-menu"
                 :class="{ 'selectedMenu': principais == true }">Pratos Principais</button>
             </RouterLink>
           </li>
@@ -171,19 +117,19 @@ function scrollToSection8() {
         <ul>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#entradasR' }">
-              <button @click="scrollToSection3()" class="sub-menu"
+              <button @click="scrollToSection('entradasR')" class="sub-menu"
                 :class="[{ 'selectedMenu': entradasR == true }]">Entradas</button>
             </RouterLink>
           </li>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#principaisR' }">
-              <button @click="scrollToSection4()" class="sub-menu"
+              <button @click="scrollToSection('entradasR')" class="sub-menu"
                 :class="{ 'selectedMenu': principaisR == true }">Pratos Principais</button>
             </RouterLink>
           </li>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#sobremesasR' }">
-              <button @click="scrollToSection5()" class="sub-menu"
+              <button @click="scrollToSection('principaisR')" class="sub-menu"
                 :class="{ 'selectedMenu': sobremesasR == true }">Sobremesas</button>
             </RouterLink>
           </li>
@@ -197,13 +143,13 @@ function scrollToSection8() {
         <ul>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#bebidas' }">
-              <button @click="scrollToSection6()" class="sub-menu" :class="{ 'selectedMenu': nalcoolicas == true }">Não
+              <button @click="scrollToSection('nalcoolicas')" class="sub-menu" :class="{ 'selectedMenu': nalcoolicas == true }">Não
                 alcóolicas </button>
             </RouterLink>
           </li>
           <li>
             <RouterLink :to="{ path: '/produtos', hash: '#alcoolicas' }">
-              <button @click="scrollToSection7()" class="sub-menu"
+              <button @click="scrollToSection('alcoolicas')" class="sub-menu"
                 :class="{ 'selectedMenu': alcoolicas == true }">Alcóolicas
               </button>
             </RouterLink>
@@ -212,7 +158,7 @@ function scrollToSection8() {
       </div>
       <li>
         <RouterLink :to="{ path: '/produtos', hash: '#sobremesa' }">
-          <button @click="scrollToSection8()" :class="{ 'selectedMenu': sobremesas == true }"><img
+          <button @click="scrollToSection('sobremesas')" :class="{ 'selectedMenu': sobremesas == true }"><img
               src="/logo-sobremesa.svg">
             <p>Sobremesas</p>
           </button>
