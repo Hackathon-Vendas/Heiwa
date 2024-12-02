@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
+import RodizioVue from '@/components/RodizioVue.vue';
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -48,6 +49,7 @@ function showRodizio() {
     alacarte.value = false;
     bebidas.value = false;
     sobremesas.value = false;
+    ModalA.value = true;
   }
 
 function showBebidas() {
@@ -107,7 +109,7 @@ function scrollToSection(section) {
   }
 }
 
-updateMenu();
+const ModalA = ref(0);
 
 </script>
 <template>
@@ -135,7 +137,7 @@ updateMenu();
       </div>
 
       <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
-          <p>Rodízio</p>
+          <p>Rodízio</p> <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
         </button></li>
       <div v-if="rodizio">
         <ul>
@@ -227,7 +229,7 @@ aside ul li {
   font-weight: 900;
   font-size: 1rem;
   padding: 20%;
-  line-height: 17px;
+  line-height: 24px;
   text-align: center !important;
   letter-spacing: 0.25em;
   color: #FFFFFF;
@@ -256,7 +258,7 @@ button {
 button p {
   font-family: 'Inter', normal, sans-serif;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.25em;
