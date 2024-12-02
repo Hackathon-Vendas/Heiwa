@@ -16,17 +16,6 @@ const router = createRouter({
       name: 'produtos',
       component: ProdutosView
     },
-
-  {
-    path: "/home",
-    name: "home",
-    component:  HomeView
-  },
-  {  
-      path: '/',
-      name: 'home',
-      component: HomeView
-    }
   ],
   scrollBehavior(to) {
     if (to.hash) {
@@ -42,5 +31,6 @@ const router = createRouter({
     return { top: 0 }
   }
 })
+
 
 export default router
