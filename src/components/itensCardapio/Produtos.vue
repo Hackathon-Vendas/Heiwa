@@ -42,6 +42,7 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
   background-color: rgba(69, 69, 69, 1);
   color: rgba(255, 255, 255, 1);
   margin-top: 1%;
+  margin-left: 0.5%;
 }
 
 
