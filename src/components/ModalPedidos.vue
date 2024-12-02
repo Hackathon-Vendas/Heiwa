@@ -3,60 +3,59 @@ import { ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 import ContaModal from './ContaModal.vue';
 
-const isModalVisible = ref(true);
 const cartStore = useCartStore();
 
-const emit = defineEmits(["update:isOpen"]);
+const show = ref(false);
 
+// Função para fechar o modal
 const closeModal = () => {
-  emit("update:isOpen", false);
+    console.log("fechado")
 };
-const show = () => {
-    closeModal.value = true
-    emit("update:isOpen", true)
-}
-
+const showModal = ref(true)
 const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
+
 const finalizar = () => {
-    show.value = true
-    emit("update:isOpen", false);
-}
+    show.value = true;
+    closeModal(); // Fecha o modal após finalizar o pedido
+};
 </script>
 
 <template>
-    <ContaModal v-model:isOpen="show" />
-  <Transition name="slide">
-    <div v-if="isOpen" class="containerPedidos">
-      <div class="pedidos">
-        <div class="informacoes">
-          <h1>PEDIDOS</h1>
-          <i @click="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
+
+    <ContaModal />
+    <Transition name="slide">
+        <div v-if="showModal" class="containerPedidos">
+            <div class="pedidos">
+                <div class="informacoes">
+                    <h1>PEDIDOS</h1>
+                    <i @click="showModal = false"><img src="/src/assets/excluir.png" alt="Fechar"></i>
+                </div>
+                <div class="itens">
+                    <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
+                        <p class="quantidade">{{ item.quantity }}x</p>
+                        <p class="item">{{ item.name }}</p>
+                        <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
+                        <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt="Excluir"></p>
+                    </div>
+                </div>
+                <div class="pedidoUsuario">
+                    <div class="infoPedido">
+                        <h3>TOTAL</h3>
+                        <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
+                    </div>
+                    <div class="botoesPedido">
+                        <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
+                        <h3>OU</h3>
+                        <button class="pedirConta" @click="show = true">PEDIR CONTA</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="itens">
-          <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
-            <p class="quantidade">{{ item.quantity }}x</p>
-            <p class="item">{{ item.name }}</p>
-            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
-            <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt=""></p>
-          </div>
-        </div>
-        <div class="pedidoUsuario">
-          <div class="infoPedido">
-            <h3>TOTAL</h3>
-            <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
-          </div>
-          <div class="botoesPedido">
-            <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
-            <h3>OU</h3>
-            <button class="pedirConta" @click="show" > PEDIR CONTA</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Transition>
+    </Transition>
 </template>
+
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');

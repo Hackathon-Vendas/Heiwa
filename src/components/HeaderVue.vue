@@ -1,15 +1,15 @@
 <script setup>
 import ModalPedidosVue from './ModalPedidos.vue';
 import { ref } from 'vue';
-const showModal = ref(false);
 import router from '@/router'
 
+const showModal = ref(false);
 const rota = router.currentRoute.value.name;
 console.log(router.currentRoute.value)
 </script>
 
 <template>
-  <ModalPedidosVue v-model:isOpen="showModal"/>
+  <ModalPedidosVue v-if="showModal"/>
   <header>
       <div class="home">
         <img class="voltar" src="/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
