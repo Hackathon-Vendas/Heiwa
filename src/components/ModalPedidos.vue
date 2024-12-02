@@ -7,18 +7,16 @@ const cartStore = useCartStore();
 
 const show = ref(false);
 
-// Função para fechar o modal
 const closeModal = () => {
     console.log("fechado")
 };
-// const showModal = ref();
 const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
 
 const finalizar = () => {
     show.value = true;
-    closeModal(); // Fecha o modal após finalizar o pedido
+    closeModal(); 
 };
 </script>
 
