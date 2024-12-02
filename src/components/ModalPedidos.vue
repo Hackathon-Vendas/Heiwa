@@ -11,7 +11,7 @@ const show = ref(false);
 const closeModal = () => {
     console.log("fechado")
 };
-const showModal = ref(true)
+// const showModal = ref();
 const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
@@ -26,11 +26,11 @@ const finalizar = () => {
 
     <ContaModal />
     <Transition name="slide">
-        <div v-if="showModal" class="containerPedidos">
+        <div v-if="cartStore.$state.isVisible" class="containerPedidos">
             <div class="pedidos">
                 <div class="informacoes">
                     <h1>PEDIDOS</h1>
-                    <i @click="showModal = false"><img src="/src/assets/excluir.png" alt="Fechar"></i>
+                    <i @click="cartStore.$state.isVisible = false"><img src="/src/assets/excluir.png" alt="Fechar"></i>
                 </div>
                 <div class="itens">
                     <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
