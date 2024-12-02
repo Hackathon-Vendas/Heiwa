@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
 <main>
 <ContaModal/>
-  <MenuVue />
+  <!-- <MenuVue /> -->
   <HeaderVue />
   <ModalPedidos />
   <RouterView />

@@ -29,6 +29,4 @@ main {
   margin-left: 15%;
   margin-top: 8%;
 }
-
-
 </style>
