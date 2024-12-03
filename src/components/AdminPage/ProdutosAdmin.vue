@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-    <h1>Só para colocar um conteúdo!!!</h1>
+    <h1>Começo de um Projeto que estamos nos dedicando!!!!!</h1>
 </template>
 
 <style scoped></style>
