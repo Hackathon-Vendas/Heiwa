@@ -52,8 +52,6 @@ function showRodizio() {
     sobremesas.value = false;
     ModalA.value = 2; 
   }
-    ModalA.value = true;
-  }
 
 function showBebidas() {
     bebidas.value = !bebidas.value;
@@ -111,8 +109,6 @@ function scrollToSection(section) {
       break;
   }
 }
-
-const ModalA = ref(0);
 
 </script>
 <template>
