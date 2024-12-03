@@ -52,6 +52,8 @@ function showRodizio() {
     sobremesas.value = false;
     ModalA.value = 2; 
   }
+    ModalA.value = true;
+  }
 
 function showBebidas() {
     bebidas.value = !bebidas.value;
@@ -110,7 +112,7 @@ function scrollToSection(section) {
   }
 }
 
-updateMenu();
+const ModalA = ref(0);
 
 </script>
 <template>
@@ -138,7 +140,7 @@ updateMenu();
       </div>
 
       <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
-          <p>Rodízio</p>
+          <p>Rodízio</p> <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
         </button></li>
         <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
 
@@ -234,6 +236,9 @@ aside ul li {
   padding: 20%;
   line-height: 17px;
   text-align: center !important;
+  padding: 20%;
+  line-height: 24px;
+  text-align: center !important;
   letter-spacing: 0.25em;
   color: #FFFFFF;
   background-color: rgba(69, 69, 69, 1);
@@ -261,7 +266,7 @@ button {
 button p {
   font-family: 'Inter', normal, sans-serif;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.25em;

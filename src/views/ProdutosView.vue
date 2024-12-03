@@ -105,12 +105,6 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     <div v-for="item in sobremesasRodizio" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
     </div>
-    <div v-for="item in sobremesasRodizio" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" />
-    </div>
-  </div>
-  <div v-for="item in bebidas" :key="item">
-    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
   </div>
   <div id="bebidas">
     <div v-for="banner in Bbebidas" :key="banner">
