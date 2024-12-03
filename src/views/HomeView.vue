@@ -1,7 +1,6 @@
 <script setup>
 import ContaModal from '@/components/ContaModal.vue';
 import { ref } from 'vue';
-import RodizioVue from '@/components/RodizioVue.vue';
 import NumeroMesa from '@/components/NumeroMesa.vue';
 import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 import ModalPedidos from '@/components/ModalPedidos.vue';
@@ -13,7 +12,6 @@ const ModalA = ref(0);
 <template>
   <InicioVue style="z-index: 1000;" @modal="ModalA++" />
   <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
-  <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
   <main>
     <ContaModal/>
     <ModalPedidos />

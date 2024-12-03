@@ -39,10 +39,6 @@ function TirarRodizio() {
     <div class="container">
       <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
       <div class="input-container">
-        <label class="alacarte" for="alacarte">
-          <span>À la carte</span>
-          <input type="radio" id="alacarte" v-model="input" name="opção" value="alacarte" />
-        </label>
         <label class="alacarte" for="rodizio">
           <span>Rodízio</span>
           <input type="radio" id="rodizio" v-model="input" name="opção" value="rodizio" />
@@ -71,9 +67,7 @@ function TirarRodizio() {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
-    z-index: 1000;
-}
+
 .aviso {
   width: calc(500px - 60px);
   font-family: 'Inter';
@@ -154,7 +148,7 @@ input[type='radio' i]:checked {
 
 .bem-vindo {
   position: fixed;
-  width: 100%;
+  width: 100;
   height: 100%;
   background-color: var(--cor-fundoSite-icon);
   display: flex;
