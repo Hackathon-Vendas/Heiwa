@@ -30,9 +30,10 @@ const finalizar = () => {
       <div class="pedidos">
         <div class="informacoes">
           <h1>PEDIDOS</h1>
-          <i @click="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
+          <i @click="closeModal" class="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
         </div>
         <div class="itens">
+           <div class="semItem" v-if="cartStore.$state.items.length <= 0"><img src="/src/assets/semItem.svg"></div>
           <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
             <p class="quantidade">{{ item.quantity }}x</p>
             <p class="item">{{ item.name }}</p>
@@ -41,11 +42,11 @@ const finalizar = () => {
           </div>
         </div>
         <div class="pedidoUsuario">
-          <div class="infoPedido">
+          <div class="infoPedido" v-if="cartStore.$state.items.length > 0">
             <h3>TOTAL</h3>
             <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
           </div>
-          <div class="botoesPedido">
+          <div class="botoesPedido" v-if="cartStore.$state.items.length > 0">
             <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
             <h3>OU</h3>
             <button class="pedirConta">PEDIR CONTA</button>
@@ -62,8 +63,22 @@ const finalizar = () => {
 * {
     font-family: "Inter", sans-serif;
 }
+.closeModal{
+    position: absolute;
+    right: 0;
+}
+
+.semItem img{
+    height: 50%;
+    width: 50%;
+    margin: auto;
+}
+.semItem{
+    display: flex;
+    height: 100%;
+}
 .containerPedidos {
-z-index: 2000;
+    z-index: 2000;
     background-color: #2D2D2D;
     width: 65%;
     height: 100%;
