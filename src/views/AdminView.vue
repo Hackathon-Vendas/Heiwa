@@ -3,8 +3,9 @@ import Status from '@/components/AdminPage/Status.vue';
 </script>
 
 <template>
-<h1>PEDIDOS</h1>
-
+    <Status/>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>

@@ -11,7 +11,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <main>
 <ContaModal/>
   <!-- <MenuVue /> -->
-  <HeaderVue />
+   <HeaderVue />
   <ModalPedidos />
   <RouterView />
 </main>
@@ -19,4 +19,5 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
+
 </style> 
