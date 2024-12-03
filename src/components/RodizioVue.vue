@@ -1,14 +1,29 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
 
+const cartStore = useCartStore()
 const input = ref();
-const FuncaoEspansao = ref(true);
 const confirmar = ref(true);
 const contadorRodizio = ref(0);
+
+const props = defineProps({
+    item: Object,
+    isOpen: Boolean
+});
+
+const isOpen = computed(() => props.isOpen);
+const quantity = ref(1);
+
+const price = 110;
+
+const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
+const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
 
 function FuncaoContinuar() {
   confirmar.value = false;
   emit('FinalModal')
+  cartStore.$state.isRodizioVisible = false
 }
 
 function voltarPagina() {
@@ -18,7 +33,8 @@ function voltarPagina() {
 
 const emit = defineEmits([
   'voltarParaMesa',
-  'FinalModal'
+  'FinalModal',
+  'update:isOpen'
 ]);
 
 function AdicionarRodizio() {
@@ -31,20 +47,28 @@ function TirarRodizio() {
   }
 }
 
+const addToCart = () => {
+    const rodizio = {
+        ...props.item,
+        id: Date.now(), // Adiciona um identificador único
+        quantity: quantity.value,
+        totalPrice: parsePrice(props.item.price) * quantity.value
+    };
+    cartStore.addItem(rodizio);
+    voltarPagina();
+};
 
 </script>
 
 <template>
-  <div v-if="FuncaoEspansao" class="bem-vindo">
+  <div v-if="cartStore.$state.isRodizioVisible" class="bem-vindo">
     <div class="container">
-      <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
       <div class="input-container">
         <label class="alacarte" for="rodizio">
           <span>Rodízio</span>
-          <input type="radio" id="rodizio" v-model="input" name="opção" value="rodizio" />
         </label>
       </div>
-      <div v-if="input === 'rodizio'" class="contador-rodizio">
+      <div class="contador-rodizio">
         <div class="contador">
           <p>Número de rodízios:</p>
         </div>
@@ -54,12 +78,11 @@ function TirarRodizio() {
       </div>
       <hr v-if="input === 'alacarte'" class="divider" />
       <button v-if="input === 'alacarte'" @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
-      <button v-if="input === 'alacarte'" @click="voltarPagina" class="continue-button3">VOLTAR</button>
-      <div v-if="input === 'rodizio'" class="aviso">
+      <div class="aviso">
         <hr class="divider2" />
         <span>Informamos que o número de pessoas para o rodízio será verificado em relação aos rodízios pagos.</span>
-        <button @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
-        <button @click="voltarPagina" class="continue-button">VOLTAR</button>
+        <button @click="addToCart" class="confirm-button-2">CONFIRMAR</button>
+        <button @click="cartStore.$state.isRodizioVisible = false" class="continue-button">VOLTAR</button>
       </div>
     </div>
   </div>
@@ -67,7 +90,9 @@ function TirarRodizio() {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
-
+* {
+  z-index: 900;
+}
 .aviso {
   width: calc(500px - 60px);
   font-family: 'Inter';
@@ -148,7 +173,8 @@ input[type='radio' i]:checked {
 
 .bem-vindo {
   position: fixed;
-  width: 100;
+  margin: auto;
+  width: 100%;
   height: 100%;
   background-color: var(--cor-fundoSite-icon);
   display: flex;

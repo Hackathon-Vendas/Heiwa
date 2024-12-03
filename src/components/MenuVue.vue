@@ -2,9 +2,11 @@
 import { ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
+import { useCartStore } from '@/stores/cartStore';
 import RodizioVue from '@/components/RodizioVue.vue';
 
-const ModalA = ref(0);
+const cartStore = useCartStore();
+
 const alacarte = ref(false);
 const rodizio = ref(false);
 const bebidas = ref(false);
@@ -50,7 +52,7 @@ function showRodizio() {
     alacarte.value = false;
     bebidas.value = false;
     sobremesas.value = false;
-    ModalA.value = 2; 
+    cartStore.$state.isRodizioVisible = true 
   }
 
 function showBebidas() {
@@ -136,9 +138,9 @@ function scrollToSection(section) {
       </div>
 
       <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
-          <p>Rodízio</p> <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
+          <p>Rodízio</p> 
         </button></li>
-        <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" />
+        <!-- <RodizioVue v-if="ModalA == 2" @voltarParaMesa="ModalA--" @FinalModal="ModalA++" /> -->
 
       <div v-if="rodizio">
         <ul>
