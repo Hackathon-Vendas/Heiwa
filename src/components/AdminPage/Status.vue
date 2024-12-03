@@ -52,7 +52,7 @@
     justify-content: center;
 }
 .statusColumn{
-    height: 79%;
+    height: 808px;
     width: 435px;   
     border-radius: 14px;
     margin: 29px 20px;
