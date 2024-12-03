@@ -37,6 +37,8 @@
     display: flex;
     justify-content: center; 
     align-items: center;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
 }
  h2 {
     color: white;
@@ -51,8 +53,9 @@
 }
 .statusColumn{
     height: 79%;
-    width: 435px;
+    width: 435px;   
     border-radius: 14px;
     margin: 29px 20px;
+    background-color: #282828;
     }
 </style>
