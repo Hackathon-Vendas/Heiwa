@@ -11,6 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.28.0",
+    "axios": "^1.7.9",
     "pinia": "^2.1.7",
     "swiper": "^11.1.14",
     "toast": "^0.5.4",
