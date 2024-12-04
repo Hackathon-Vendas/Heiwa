@@ -5,7 +5,8 @@
     <div class="statusTable">
         <div id="aFazer" class="statusColumn">  
             <div class="statusTittle"><h2>A FAZER</h2></div>
-            <div class="statusPedidos"></div>
+            <div class="statusPedidos">
+            </div>
         </div>
         <div id="preparando" class="statusColumn">
             <div class="statusTittle"><h2>PREPARANDO...</h2></div>
@@ -50,12 +51,15 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    height: 808px;
 }
 .statusColumn{
-    height: 808px;
+    height: 100%;
     width: 435px;   
-    border-radius: 14px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;    
     margin: 29px 20px;
     background-color: #282828;
+    overflow: hidden;
     }
 </style>
