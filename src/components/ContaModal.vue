@@ -1,9 +1,11 @@
 <script setup>
 import { ref } from 'vue'
-import ModalPedidos from './ModalPedidos.vue';
+import { useModalStore } from '../stores/modalStore';
+
+const modalStore = useModalStore();
 
 const props = defineProps({
-  isOpen: Boolean
+isOpen: Boolean
 });
 
 const emit = defineEmits(["update:isOpen", 'modal']);

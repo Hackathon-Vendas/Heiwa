@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 import ContaModal from './ContaModal.vue';
+import { useModalStore } from '../stores/modalStore';
+
 
 const cartStore = useCartStore();
 
@@ -14,10 +16,13 @@ const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
 
-const finalizar = () => {
-    show.value = true;
-    closeModal(); 
+const modalStore = useModalStore();
+
+
+const abrirConta = () => {
+modalStore.abrirContaModal();
 };
+
 </script>
 
 <template>
@@ -46,7 +51,7 @@ const finalizar = () => {
                     <div class="botoesPedido">
                         <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
                         <h3>OU</h3>
-                        <button class="pedirConta" @click="show = true">PEDIR CONTA</button>
+                        <button @click="abrirConta">PEDIR CONTA</button> 
                     </div>
                 </div>
             </div>

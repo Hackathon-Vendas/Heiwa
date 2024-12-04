@@ -7,6 +7,7 @@ import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 import ModalPedidos from '@/components/ModalPedidos.vue';
 import InicioVue from '@/components/InicioVue.vue';
 import CarrosselSecundario from '@/components/CarrosselSecundario.vue';
+import ContaModal from "@/components/ContaModal.vue";
 const ModalA = ref(0);
 </script>
 
@@ -17,6 +18,7 @@ const ModalA = ref(0);
   <main>
     <ContaModal/>
     <ModalPedidos />
+    <ContaModal/>
     <div class="carosselp">
       <CarrosselPrincipal />
     </div>
