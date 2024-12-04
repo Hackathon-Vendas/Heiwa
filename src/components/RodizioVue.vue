@@ -1,11 +1,14 @@
 <script setup>
 import { ref, computed } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
+import { useRodizioStore } from '@/stores/rodizio';
 
-const cartStore = useCartStore()
+const rodizioStore = useRodizioStore();
+const cartStore = useCartStore();
 const input = ref();
 const confirmar = ref(true);
 const contadorRodizio = ref(0);
+const FuncaoEspansao = ref(true);
 
 const props = defineProps({
     item: Object,
@@ -15,26 +18,18 @@ const props = defineProps({
 const isOpen = computed(() => props.isOpen);
 const quantity = ref(1);
 
-const price = 110;
-
-const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
-const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
-
 function FuncaoContinuar() {
   confirmar.value = false;
   emit('FinalModal')
-  cartStore.$state.isRodizioVisible = false
 }
 
 function voltarPagina() {
   FuncaoEspansao.value = true;
   emit('voltarParaMesa');
 }
-
 const emit = defineEmits([
   'voltarParaMesa',
   'FinalModal',
-  'update:isOpen'
 ]);
 
 function AdicionarRodizio() {
@@ -46,22 +41,23 @@ function TirarRodizio() {
     contadorRodizio.value--;
   }
 }
-
+/*
 const addToCart = () => {
+  if (rodizioStore.count > 0) {
     const rodizio = {
         ...props.item,
-        id: Date.now(), // Adiciona um identificador único
-        quantity: quantity.value,
-        totalPrice: parsePrice(props.item.price) * quantity.value
+        id: Date.now(), 
+        quantity: rodizioStore.count, 
+        totalPrice: parsePrice(props.item.price) * rodizioStore.count
     };
-    cartStore.addItem(rodizio);
-    voltarPagina();
-};
-
+    cartStore.addItem(rodizio);  
+    FuncaoContinuar(); 
+  }
+};*/
 </script>
 
 <template>
-  <div v-if="cartStore.$state.isRodizioVisible" class="bem-vindo">
+  <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
     <div class="container">
       <div class="input-container">
         <label class="alacarte" for="rodizio">
@@ -73,21 +69,18 @@ const addToCart = () => {
           <p>Número de rodízios:</p>
         </div>
         <button @click="TirarRodizio">-</button>
-        <span>{{ contadorRodizio }}</span>
+        <span>{{ contadorRodizio  }}</span> 
         <button @click="AdicionarRodizio">+</button>
       </div>
-      <hr v-if="input === 'alacarte'" class="divider" />
-      <button v-if="input === 'alacarte'" @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
       <div class="aviso">
         <hr class="divider2" />
         <span>Informamos que o número de pessoas para o rodízio será verificado em relação aos rodízios pagos.</span>
-        <button @click="addToCart" class="confirm-button-2">CONFIRMAR</button>
-        <button @click="cartStore.$state.isRodizioVisible = false" class="continue-button">VOLTAR</button>
+        <button @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
+        <button @click="voltarPagina = false" class="continue-button">VOLTAR</button>
       </div>
     </div>
   </div>
 </template>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 * {

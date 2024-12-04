@@ -36,6 +36,13 @@ export const useAlcoolicaStore = defineStore('alcoolicas', () => {
   return { alcoolicas };
 });
 
+export const useRodizioStore = defineStore('rodizio', () => {
+  const rodizio = ref([
+    { name: 'Rodízio', price: 'R$130,00' },
+  ]);
+  return { rodizio };
+});
+
 export const useEntradaStore = defineStore('entradas', () => {
   const entradas = ref([
     { name: 'Sunomono', unit: '(1 unidade)', description: 'Salada refrescante de pepino agridoce com gergelim torrado.', price: 'R$22,50', imagem: Sunomono },
