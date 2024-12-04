@@ -20,20 +20,26 @@ const modalStore = useModalStore();
 
 
 const abrirConta = () => {
-modalStore.abrirContaModal();
+    cartStore.$state.isPedidoVisible = false
+    cartStore.$state.isContaVisible = true
+// Voltar para o topo
+window.scrollTo(0, 0);
+
+// Desativar scroll
+document.body.style.overflow = 'scroll';
 };
 
 </script>
 
 <template>
 
-    <ContaModal />
+    <!-- <ContaModal /> -->
     <Transition name="slide">
-        <div v-if="cartStore.$state.isVisible" class="containerPedidos">
+        <div v-if="cartStore.$state.isPedidoVisible" class="containerPedidos">
             <div class="pedidos">
                 <div class="informacoes">
                     <h1>PEDIDOS</h1>
-                    <i @click="cartStore.$state.isVisible = false"><img src="/src/assets/excluir.png" alt="Fechar"></i>
+                    <i @click="cartStore.$state.isPedidoVisible = false"><img src="/src/assets/excluir.png" alt="Fechar"></i>
                 </div>
                 <div class="itens">
                     <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">

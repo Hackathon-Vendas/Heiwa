@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useModalStore } from '../stores/modalStore';
+import { useCartStore } from '../stores/cartStore';
 
+const cartStore = useCartStore();
 const modalStore = useModalStore();
 
 const props = defineProps({
@@ -12,77 +14,32 @@ const emit = defineEmits(["update:isOpen", 'modal']);
 
 const modalConta = ref(false)
 const closeModal = () => {
-    modalConta.value = true
-    emit('update:isOpen", false')
+    cartStore.$state.isContaVisible = false
+    // Ativar scroll
+document.body.style.overflow = '';
+
 }
 </script>
 <template>
-    <div v-if="props.isOpen" class="overlay"></div> 
-    <div v-if="props.isOpen" class="modalC">
+    <div v-if="cartStore.$state.isContaVisible" class="overlay"></div> 
+    <div v-if="cartStore.$state.isContaVisible" class="modalC">
     <div class="conta">
         <div class="informacoesConta">
         <h1>CONTA</h1>
         <img class="sair" src="/Vector.png " @click="closeModal" />
         </div>
         <div class="itens">
-        <div class="item-1">
-            <p class="quantidade">1X</p>
-            <p class="item">Água</p>
-            <p class="valor">7,99</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
+        <div class="item-1" v-for="item in cartStore.items" :key="item.id">
+            <p class="quantidade">{{ item.quantity }}</p>
+            <p class="item">{{ item.name }}</p>
+            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
         </div>
         </div>
         <div class="conta-footer">
-        <div class="subtotal">
-            <p class="subtotal-text">SUBTOTAL:</p>
-            <div class="subtotal-values">
-            <p class="subtotal-original">R$759,78 <span>+10%</span></p>
-            <p class="subtotal-final">R$835,10</p>
-            </div>
-        </div>
 
         <div class="total">
             <p>TOTAL:</p>
-            <p>R$835,10</p>
+            <p>R$ {{ cartStore.totalPrice.toFixed(2) }}</p>
         </div>
 
         <button  @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
@@ -108,7 +65,7 @@ const closeModal = () => {
 .modalC {
     background-color: #2d2d2d;
     width: 85%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     max-width: 93%;

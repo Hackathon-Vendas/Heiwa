@@ -21,7 +21,7 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="cartStore.$state.isVisible = true" />
+        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="cartStore.$state.isPedidoVisible = true" />
       </div>
   </header>
 </template>
