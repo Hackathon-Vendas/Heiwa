@@ -21,6 +21,7 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
 <style scoped>
 
 .produtos {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 20px;
