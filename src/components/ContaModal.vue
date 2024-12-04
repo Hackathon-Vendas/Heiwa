@@ -17,6 +17,7 @@ const closeModal = () => {
     cartStore.$state.isContaVisible = false
     // Ativar scroll
 document.body.style.overflow = '';
+cartStore.$state.isPagamentoVisible = true
 
 }
 </script>

@@ -1,7 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
 import QRCode from 'qrcode'; // Importando a biblioteca QRCode
 
+const cartStore = useCartStore()
 const input = ref('');  // Inicializando o valor como vazio
 const FuncaoEspansao = ref(true);
 const confirmar = ref(true);
@@ -15,6 +17,7 @@ function FuncaoContinuar() {
 function voltarPagina() {
     FuncaoEspansao.value = true;
     emit('voltarParaMesa');
+    cartStore.$state.isPagamentoVisible = false
 }
 
 const emit = defineEmits([
@@ -42,7 +45,7 @@ watch(input, (newValue) => {
 </script>
 
 <template>
-    <div v-if="FuncaoEspansao" class="bem-vindo">
+    <div v-if="cartStore.$state.isPagamentoVisible" class="bem-vindo">
         <div class="container">
             <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
             <div class="input-container">
@@ -72,7 +75,7 @@ watch(input, (newValue) => {
                 </div>
             </div>
             <hr v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" class="divider" />
-            <button v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
+            <button v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" @click="FuncaoContinuar" class="confirm-button-2">CHAMAR GARÇOM</button>
             <button v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" @click="voltarPagina" class="continue-button3">VOLTAR</button>
         </div>
     </div>

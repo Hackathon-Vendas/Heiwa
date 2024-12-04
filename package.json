@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.28.0",
     "pinia": "^2.1.7",
     "qrcode": "^1.5.4",
     "swiper": "^11.1.14",

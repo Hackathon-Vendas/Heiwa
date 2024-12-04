@@ -4,7 +4,8 @@ export const useCartStore = defineStore('cart', {
   state: () => ({
     items: [],
     isPedidoVisible: false,
-    isContaVisible: false,    
+    isContaVisible: false,  
+    isPagamentoVisible: false  
   }),
   actions: {
     addItem(product) {
