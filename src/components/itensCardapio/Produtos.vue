@@ -16,10 +16,7 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
       </div>
     </div>
 </template>
-
-
 <style scoped>
-
 .produtos {
   cursor: pointer;
   display: flex;

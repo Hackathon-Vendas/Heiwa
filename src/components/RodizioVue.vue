@@ -4,7 +4,7 @@ import { ref } from 'vue';
 const input = ref();
 const FuncaoEspansao = ref(true);
 const confirmar = ref(true);
-const contadorRodizio = ref(0);
+const contadorRodizio = ref(1);
 
 function FuncaoContinuar() {
   confirmar.value = false;
@@ -26,12 +26,10 @@ function AdicionarRodizio() {
 }
 
 function TirarRodizio() {
-  if (contadorRodizio.value > 0) {
+  if (contadorRodizio.value > 1) {
     contadorRodizio.value--;
   }
 }
-
-
 </script>
 
 <template>

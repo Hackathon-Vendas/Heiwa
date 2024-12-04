@@ -26,6 +26,7 @@ const finalizar = () => {
 <template>
     <ContaModal v-model:isOpen="show" />
   <Transition name="slide">
+    
     <div v-if="isOpen" class="containerPedidos">
       <div class="pedidos">
         <div class="informacoes">

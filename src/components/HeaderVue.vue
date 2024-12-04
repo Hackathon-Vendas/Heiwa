@@ -54,6 +54,7 @@ header {
 
 .voltar,
 .cart-icon {
+  cursor: pointer;
   width: 51px;
   margin-left: 60px;
   margin-right: 22px;

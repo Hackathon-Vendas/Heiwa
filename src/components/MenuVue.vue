@@ -229,6 +229,7 @@ aside ul li {
   padding: 20%;
   line-height: 17px;
   text-align: center !important;
+  justify-content: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
   background-color: rgba(69, 69, 69, 1);
