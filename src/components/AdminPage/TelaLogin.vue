@@ -61,6 +61,8 @@ input{
     border-radius: 12px;
     width: 427px;
     height: 49px;
+    font-size: 25px
+    
 }
 .confirmarLogin{
     width: 427px;
