@@ -39,18 +39,15 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
   height: 200px;
   background-color: rgba(69, 69, 69, 1);
   color: rgba(255, 255, 255, 1);
-  margin-top: 1%;
-  margin-left: 0.5%;
 }
 
 
 .image {
   width: 30%;
-  height: 230px;
+  height: 105%;
   border-radius: 20px ;
   object-fit: cover;
-  margin-top: 1%;
-  margin-right: 1%;
+  margin: 15px 16px;
 }
 
 

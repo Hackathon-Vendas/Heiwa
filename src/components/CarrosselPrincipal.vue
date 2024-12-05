@@ -1,7 +1,7 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Mousewheel } from 'swiper/modules';
 
 const fotos = [
   "img1.jpeg",
@@ -16,6 +16,7 @@ const modules = [Autoplay];
 <template>
     <Swiper 
       :loop="true"
+      :allowTouchMove="false"
       :autoplay="{
         delay: 2500,
         disableOnInteraction: false,
@@ -35,9 +36,7 @@ const modules = [Autoplay];
 .modulos{
   height: 500px;
   width: 1150px;
-  max-width: 100%;
-  max-height: 100%;
-  z-index: -1;
+  z-index: 2;
   border-radius: 8px;
 }
 
@@ -46,6 +45,8 @@ const modules = [Autoplay];
   width: 100%;
   object-fit: cover;
   margin-right: 20px;
+  margin-top: 20px; 
+  border-radius: 8px;
 } 
 
 </style>

@@ -35,42 +35,41 @@ function updateMenu() {
 watch(() => route.path, updateMenu, { immediate: true });
 
 function showAlacarte() {
-    alacarte.value = !alacarte.value;
-    alacarte.value = true;
-    rodizio.value = false;
-    bebidas.value = false;
-    sobremesas.value = false;
-  }
+  alacarte.value = !alacarte.value;
+  rodizio.value = false;
+  bebidas.value = false;
+  sobremesas.value = false;
+}
 
 
 function showRodizio() {
-    rodizio.value = !rodizio.value;
-    alacarte.value = false;
-    bebidas.value = false;
-    sobremesas.value = false;
-  }
+  rodizio.value = !rodizio.value;
+  alacarte.value = false;
+  bebidas.value = false;
+  sobremesas.value = false;
+}
 
 function showBebidas() {
-    bebidas.value = !bebidas.value;
-    alacarte.value = false;
-    rodizio.value = false;
-    sobremesas.value = false;
-  
+  bebidas.value = !bebidas.value;
+  alacarte.value = false;
+  rodizio.value = false;
+  sobremesas.value = false;
+
 }
 function scrollToSectionsobremesas() {
-    sobremesas.value = !sobremesas.value;
-    alacarte.value = false;
-    rodizio.value = false;
-    bebidas.value = false;
-    nalcoolicas.value = false;
-    alcoolicas.value = false;
-    entradas.value = false;
-    principais.value = false;
-    entradasR.value = false;
-    principaisR.value = false;
-    sobremesasR.value = false;
+  sobremesas.value = !sobremesas.value;
+  alacarte.value = false;
+  rodizio.value = false;
+  bebidas.value = false;
+  nalcoolicas.value = false;
+  alcoolicas.value = false;
+  entradas.value = false;
+  principais.value = false;
+  entradasR.value = false;
+  principaisR.value = false;
+  sobremesasR.value = false;
 
-  }
+}
 
 function scrollToSection(section) {
   nalcoolicas.value = false;
@@ -114,7 +113,7 @@ updateMenu();
 
   <aside>
     <ul>
-      <li><button @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img src="/logo-alacarte.svg">
+      <li><button class="botaoPrincipal" @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img src="/logo-alacarte.svg">
           <p>Á la carte</p>
         </button></li>
       <div v-if="alacarte">
@@ -134,7 +133,7 @@ updateMenu();
         </ul>
       </div>
 
-      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
+      <li><button class="" @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
           <p>Rodízio</p>
         </button></li>
       <div v-if="rodizio">
@@ -160,7 +159,7 @@ updateMenu();
         </ul>
       </div>
 
-      <li><button @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img src="/logo-bebida.svg">
+      <li><button class="" @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img src="/logo-bebida.svg">
           <p>Bebidas</p>
         </button></li>
       <div v-if="bebidas">
@@ -183,7 +182,7 @@ updateMenu();
       </div>
       <li>
         <RouterLink :to="{ path: '/produtos', hash: '#sobremesa' }">
-          <button @click="scrollToSectionsobremesas()" :class="{ 'selectedMenu': sobremesas == true }"><img
+          <button class="" @click="scrollToSectionsobremesas()" :class="{ 'selectedMenu': sobremesas == true }"><img
               src="/logo-sobremesa.svg">
             <p>Sobremesas</p>
           </button>
@@ -208,6 +207,10 @@ aside {
 aside::-webkit-scrollbar {
   display: none;
   height: 100%;
+}
+
+.botaoPrincipal{
+  margin-top: 35px;
 }
 
 aside ul {
