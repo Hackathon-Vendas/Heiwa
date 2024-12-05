@@ -1,13 +1,27 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useOrderStore } from '@/stores/order';
+import { useRouter } from 'vue-router';
 const orderStore = useOrderStore()
-
+ const router = useRouter()
 
 onMounted(
     orderStore.getAllOrder
-)
-const showWelcomeScreen = ref(true) 
+) 
+import { useStore } from 'vuex';
+
+const store = useStore();
+const username = ref('');
+const password = ref('');
+
+const login = async () => {
+  const success = await store.dispatch('login', { username: username.value, password: password.value });
+  if (success) {
+    router.push('/admin');
+  } else {
+    alert('Credenciais inválidas!');
+  }
+};
 </script>
 
 <template>
@@ -15,10 +29,10 @@ const showWelcomeScreen = ref(true)
         <div class="login">
             <h1>LOGIN</h1>
             <label class="usernameLabel" for="username">Usuário: </label>
-            <input type="text" class="username">
+            <input v-model="username"type="text" class="username">
             <label class="passwordLabel" for="password">Senha</label>
-            <input type="password" class="password">
-            <button class="confirmarLogin">CONFIRMAR</button>
+            <input v-model="password" type="password" class="password">
+            <button @click="login" class="confirmarLogin">CONFIRMAR</button>
         </div>
     </div>
 </template>
