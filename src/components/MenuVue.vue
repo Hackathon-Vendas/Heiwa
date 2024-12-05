@@ -2,6 +2,9 @@
 import { ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
+import { useCartStore } from '@/stores/cartStore';
+
+const cartStore = useCartStore();
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -43,11 +46,13 @@ function showAlacarte() {
 
 
 function showRodizio() {
-  rodizio.value = !rodizio.value;
-  alacarte.value = false;
-  bebidas.value = false;
-  sobremesas.value = false;
-}
+    rodizio.value = !rodizio.value;
+    alacarte.value = false;
+    bebidas.value = false;
+    sobremesas.value = false;
+    cartStore.$state.isRodizioVisible = true 
+  }
+
 
 function showBebidas() {
   bebidas.value = !bebidas.value;
@@ -106,8 +111,6 @@ function scrollToSection(section) {
   }
 }
 
-updateMenu();
-
 </script>
 <template>
 
@@ -133,9 +136,14 @@ updateMenu();
         </ul>
       </div>
 
+
+      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
+          <p>Rodízio</p> 
+
       <li><button class="" @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
           <p>Rodízio</p>
-        </button></li>
+
+
       <div v-if="rodizio">
         <ul>
           <li>
@@ -232,6 +240,9 @@ aside ul li {
   padding: 20%;
   line-height: 17px;
   text-align: center !important;
+  padding: 20%;
+  line-height: 24px;
+  text-align: center !important;
   justify-content: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;
@@ -260,7 +271,7 @@ button {
 button p {
   font-family: 'Inter', normal, sans-serif;
   font-weight: 900;
-  font-size: 14px;
+  font-size: 20px;
   line-height: 17px;
   text-align: center;
   letter-spacing: 0.25em;
