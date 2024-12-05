@@ -2,68 +2,61 @@
 import { ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 import ContaModal from './ContaModal.vue';
-import { useModalStore } from '../stores/modalStore';
 
-
+const isModalVisible = ref(true);
 const cartStore = useCartStore();
-
-const show = ref(false);
+const props = defineProps({
+  isOpen: Boolean
+});
+const emit = defineEmits(["update:isOpen"]);
 
 const closeModal = () => {
-    console.log("fechado")
+  emit("update:isOpen", false);
 };
+const show = ref(false)
 const removeItem = (productId) => {
     cartStore.removeItem(productId);
 };
-
-const modalStore = useModalStore();
-
-
-const abrirConta = () => {
-    cartStore.$state.isPedidoVisible = false
-    cartStore.$state.isContaVisible = true
-// Voltar para o topo
-window.scrollTo(0, 0);
-
-// Desativar scroll
-document.body.style.overflow = 'scroll';
-};
-
+const finalizar = () => {
+    show.value = true
+    emit("update:isOpen", false);
+}
 </script>
 
 <template>
-    <!-- <ContaModal /> -->
-    <Transition name="slide">
-        <div v-if="cartStore.$state.isPedidoVisible" class="containerPedidos">
-            <div class="pedidos">
-                <div class="informacoes">
-                    <h1>PEDIDOS</h1>
-                    <i @click="cartStore.$state.isPedidoVisible = false"><img src="/src/assets/excluir.png" alt="Fechar"></i>
-                </div>
-                <div class="itens">
-                    <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
-                        <p class="quantidade">{{ item.quantity }}x</p>
-                        <p class="item">{{ item.name }}</p>
-                        <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
-                        <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt="Excluir"></p>
-                    </div>
-                </div>
-                <div class="pedidoUsuario">
-                    <div class="infoPedido">
-                        <h3>TOTAL</h3>
-                        <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
-                    </div>
-                    <div class="botoesPedido">
-                        <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
-                        <h3>OU</h3>
-                        <button class="pedirConta" @click="abrirConta">PEDIR CONTA</button> 
-                    </div>
-                </div>
-            </div>
+    <ContaModal v-model:isOpen="show" />
+  <Transition name="slide">
+    
+    <div v-if="isOpen" class="containerPedidos">
+      <div class="pedidos">
+        <div class="informacoes">
+          <h1>PEDIDOS</h1>
+          <i @click="closeModal" class="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
         </div>
-    </Transition>
+        <div class="itens">
+           <div class="semItem" v-if="cartStore.$state.items.length <= 0"><img src="/src/assets/semItem.svg"></div>
+          <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
+            <p class="quantidade">{{ item.quantity }}x</p>
+            <p class="item">{{ item.name }}</p>
+            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
+            <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt=""></p>
+          </div>
+        </div>
+        <div class="pedidoUsuario">
+          <div class="infoPedido" v-if="cartStore.$state.items.length > 0">
+            <h3>TOTAL</h3>
+            <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
+          </div>
+          <div class="botoesPedido" v-if="cartStore.$state.items.length > 0">
+            <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
+            <h3>OU</h3>
+            <button class="pedirConta">PEDIR CONTA</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Transition>
 </template>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');

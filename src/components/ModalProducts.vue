@@ -3,8 +3,8 @@ import { computed, ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 
 const props = defineProps({
-    item: Object,
-    isOpen: Boolean
+  item: Object,
+  isOpen: Boolean,
 });
 
 const emit = defineEmits(["update:isOpen"]);
@@ -37,14 +37,15 @@ const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
 const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
 
 const addToCart = () => {
-    const product = {
-        ...props.item,
-        id: Date.now(), // Adiciona um identificador único
-        quantity: quantity.value,
-        totalPrice: parsePrice(props.item.price) * quantity.value
-    };
-    cartStore.addItem(product);
-    closeModal();
+  const product = {
+    ...props.item,
+    id: Date.now(),
+    quantity: quantity.value,
+    totalPrice: parsePrice(props.item.price) * quantity.value,
+  };
+  cartStore.addItem(product);
+  closeModal();
+  isConfirmationOpen.value = true;
 };
 </script>
 
@@ -77,7 +78,6 @@ const addToCart = () => {
                         </button>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -87,6 +87,7 @@ const addToCart = () => {
         <img class="confirmacao" src="/public/teste1.svg">
   </div>
   </div>
+
 </template>
 
 <style scoped>
