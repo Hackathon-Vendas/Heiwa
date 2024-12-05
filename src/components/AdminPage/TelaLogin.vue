@@ -19,10 +19,10 @@ const password = ref('');
 const login = async () => {
   const success = await store.dispatch('login', { username: username.value, password: password.value });
   if (success) {
+    toast.success('Login sucedido', { className: 'toast-dark' });
+  setTimeout(() => {
     router.push('/admin');
-    toast.success('Login sucedido', {
-            className: 'toast-dark'
-        });
+  }, 550); 
   } else {
     toast.error('Credenciais incorretas', {
             className: 'toast-dark'
