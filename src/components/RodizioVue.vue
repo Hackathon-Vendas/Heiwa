@@ -1,24 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useCartStore } from '@/stores/cartStore';
+import { useRodizioStore } from '@/stores/rodizio';
 
+const rodizioStore = useRodizioStore();
+const cartStore = useCartStore();
 const input = ref();
-const FuncaoEspansao = ref(true);
 const confirmar = ref(true);
 const contadorRodizio = ref(0);
+const FuncaoEspansao = ref(true);
 
-function FuncaoContinuar() {
-  confirmar.value = false;
-  emit('FinalModal')
-}
-
-function voltarPagina() {
-  FuncaoEspansao.value = true;
-  emit('voltarParaMesa');
-}
+const props = defineProps({
+    item: Object,
+    isOpen: Boolean
+});
 
 const emit = defineEmits([
-  'voltarParaMesa',
-  'FinalModal'
+  'voltarParaProdutos',
+  'FinalModal',
 ]);
 
 function AdicionarRodizio() {
@@ -26,40 +25,57 @@ function AdicionarRodizio() {
 }
 
 function TirarRodizio() {
-  if (contadorRodizio.value > 0) {
+  if (contadorRodizio.value > 1) {
     contadorRodizio.value--;
   }
 }
 
+function FuncaoContinuar() {
+  if (contadorRodizio.value > 0) {
+    const rodizio = {
+      id: 'rodizio',
+      name: 'Rodízio',
+      quantity: contadorRodizio.value,
+      price: rodizioStore.pricePerUnit || 120, 
+      totalPrice: (rodizioStore.pricePerUnit || 120) * contadorRodizio.value
+    };
+
+    cartStore.addRodizio(rodizio);
+    console.log('Rodízio adicionado ao carrinho:', rodizio);
+    console.log('Carrinho atual:', cartStore.items);
+  } else {
+    console.warn('Nenhum rodízio selecionado!');
+  }
+
+  confirmar.value = false; 
+  console.log('Emitindo FinalModal');
+  cartStore.$state.isRodizioVisible = false; 
+  emit('FinalModal'); 
+}
+function voltarPagina() {
+  FuncaoEspansao.value = false;
+  emit('voltarParaProdutos');
+  cartStore.$state.isRodizioVisible = false
+}
 
 </script>
-
 <template>
-  <div v-if="FuncaoEspansao" class="bem-vindo">
+  <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
     <div class="container">
-      <h1>ESCOLHA A OPÇÃO DESEJADA:</h1>
       <div class="input-container">
-        <label class="alacarte" for="alacarte">
-          <span>À la carte</span>
-          <input type="radio" id="alacarte" v-model="input" name="opção" value="alacarte" />
-        </label>
         <label class="alacarte" for="rodizio">
-          <span>Rodízio</span>
-          <input type="radio" id="rodizio" v-model="input" name="opção" value="rodizio" />
+          <span style="display: flex;">Rodízio  <p style="display: flex; margin-left: 100%">R$120,00</p></span>
         </label>
       </div>
-      <div v-if="input === 'rodizio'" class="contador-rodizio">
+      <div class="contador-rodizio">
         <div class="contador">
           <p>Número de rodízios:</p>
         </div>
         <button @click="TirarRodizio">-</button>
-        <span>{{ contadorRodizio }}</span>
+        <span>{{ contadorRodizio  }}</span> 
         <button @click="AdicionarRodizio">+</button>
       </div>
-      <hr v-if="input === 'alacarte'" class="divider" />
-      <button v-if="input === 'alacarte'" @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
-      <button v-if="input === 'alacarte'" @click="voltarPagina" class="continue-button3">VOLTAR</button>
-      <div v-if="input === 'rodizio'" class="aviso">
+      <div class="aviso">
         <hr class="divider2" />
         <span>Informamos que o número de pessoas para o rodízio será verificado em relação aos rodízios pagos.</span>
         <button @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
@@ -68,11 +84,10 @@ function TirarRodizio() {
     </div>
   </div>
 </template>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
-*{
-    z-index: 1000;
+* {
+  z-index: 900;
 }
 .aviso {
   width: calc(500px - 60px);
@@ -154,6 +169,7 @@ input[type='radio' i]:checked {
 
 .bem-vindo {
   position: fixed;
+  margin: auto;
   width: 100%;
   height: 100%;
   background-color: var(--cor-fundoSite-icon);

@@ -14,10 +14,12 @@
 *{
     margin: 0;
     box-sizing: border-box;
-    font: optional;
+    user-select: none;
   }
   
   body{
     background-color:var(--cor-fundo)
   }
-
+main {
+  height: 100%;
+}

@@ -16,11 +16,9 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
       </div>
     </div>
 </template>
-
-
 <style scoped>
-
 .produtos {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -29,7 +27,7 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
   width:  75%;;
   gap: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
-  margin-left: 20%;
+  margin-left: 19%;
   margin-top: 1%;
 }
 
@@ -41,17 +39,15 @@ defineProps(['name', 'description', 'imagem', 'unit', 'price']);
   height: 200px;
   background-color: rgba(69, 69, 69, 1);
   color: rgba(255, 255, 255, 1);
-  margin-top: 1%;
 }
 
 
 .image {
   width: 30%;
-  height: 230px;
+  height: 105%;
   border-radius: 20px ;
   object-fit: cover;
-  margin-top: 1%;
-  margin-right: 1%;
+  margin: 15px 16px;
 }
 
 
@@ -103,13 +99,13 @@ h3 {
 }
 
 .details {
+  width: 80%;
   height: 70%;
   margin-right: 4%;
 }
 
 .name {
   display: flex;
-  align-items: baseline;
 }
 
 </style>
