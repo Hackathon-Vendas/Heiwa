@@ -5,16 +5,18 @@
         <div class="product">
             <div class="descricao">
                 <span class="DProduto">Yakssoba de frutos do mar</span>
-                <span class="DProduto">Mesa N°03</span>
+                <span class="DProduto">Mesa <span class="color">N°03</span></span>
             </div>
             <div class="espacamento">
                 <span class="OBS">“Não colocar brócolis”...</span>
             </div>
-            <div class="bottom-pronto">
-                <div class="">
-
+            <div class="icone">
+                <div class="bottom-pronto">
+                    <span class="BPronto">Pronto</span>
                 </div>
-                <span class="BPronto">Pronto</span>
+                <div class="trash">
+                    <img src="@/assets/Vector.png">
+                </div>
             </div>
         </div>
     </div>
@@ -25,20 +27,30 @@
 
 * {
     font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.product {
+    width: 400px;
+    height: 200px;
+    background-color: #575757;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .descricao {
     display: flex;
-}
-
-.espacamento{
-    margin-top: 20px;
-}
-
-.OBS {
-    margin: 50px 0 0 30px;
-    color: #FFFFFF;
-    letter-spacing: 1px;
+    justify-content: space-between;
 }
 
 .DProduto {
@@ -49,32 +61,57 @@
     letter-spacing: 1px;
 }
 
-.container {
-    margin-top: 30px;
-    justify-content: center;
-    display: flex;
+.espacamento {
+    color: #FFFFFF;
+    font-size: 14px;
 }
 
-.product {
-    width: 400px;
-    height: 200px;
-    background-color: #575757;
-    border-radius: 8px;
+.OBS {
+    margin: 50px 0 0 30px;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+.icone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .bottom-pronto {
-    width: 300px;
+    flex: 1;
     height: 55px;
-    margin-top: 20px;
     background-color: #454545;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+    cursor:pointer;
 }
 
-.BPronto{
+.BPronto {
     color: #FFFFFF;
     font-weight: bold;
     font-size: 25px;
+}
 
+.trash {
+    width: 55px;
+    height: 55px;
+    background-color: #B93333;
+    border-bottom-right-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.trash img {
+    width: 30px; 
+    height: 30px;
+}
+
+.color {
+    color: #FF8000;
 }
 </style>
