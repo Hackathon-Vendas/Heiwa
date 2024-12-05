@@ -136,14 +136,7 @@ function scrollToSection(section) {
         </ul>
       </div>
 
-
-      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
-          <p>Rodízio</p> 
-
-      <li><button class="" @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
-          <p>Rodízio</p>
-
-
+      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg"><p>Rodízio</p></button></li>
       <div v-if="rodizio">
         <ul>
           <li>

@@ -33,27 +33,24 @@ function TirarRodizio() {
 function FuncaoContinuar() {
   if (contadorRodizio.value > 0) {
     const rodizio = {
-      id: 'rodizio', // ID fixo para identificar rodízio no carrinho
+      id: 'rodizio',
       name: 'Rodízio',
       quantity: contadorRodizio.value,
-      price: rodizioStore.pricePerUnit || 120, // Use o preço da store ou defina um padrão
+      price: rodizioStore.pricePerUnit || 120, 
       totalPrice: (rodizioStore.pricePerUnit || 120) * contadorRodizio.value
     };
 
-    // Adiciona o rodízio ao carrinho
     cartStore.addRodizio(rodizio);
     console.log('Rodízio adicionado ao carrinho:', rodizio);
-
-    // Verificar se o rodízio foi realmente adicionado
     console.log('Carrinho atual:', cartStore.items);
   } else {
     console.warn('Nenhum rodízio selecionado!');
   }
 
-  confirmar.value = false; // Fecha a modal internamente
+  confirmar.value = false; 
   console.log('Emitindo FinalModal');
-  cartStore.$state.isRodizioVisible = false; // Fecha a modal externa se necessário
-  emit('FinalModal'); // Notifica o pai para fechar a modal
+  cartStore.$state.isRodizioVisible = false; 
+  emit('FinalModal'); 
 }
 function voltarPagina() {
   FuncaoEspansao.value = false;
