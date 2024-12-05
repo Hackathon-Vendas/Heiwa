@@ -83,9 +83,6 @@ const addToCart = () => {
             </div>
         </div>
     </div>
-
-  </div>
-
   <div v-if="isConfirmationOpen" class="modal-overlay" @click="closeConfirmationModal"></div>
   <div v-if="isConfirmationOpen">
     <div class="modal-confirmacao" @click="closeConfirmationModal()">
