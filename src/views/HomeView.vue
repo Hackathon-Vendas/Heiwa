@@ -7,6 +7,8 @@ import ModalPedidos from '@/components/ModalPedidos.vue';
 import InicioVue from '@/components/InicioVue.vue';
 import CarrosselSecundario from '@/components/CarrosselSecundario.vue';
 import {arM} from '@/stores/armazenamento';
+import MenuVue from '@/components/MenuVue.vue'
+
 const ModalA = ref(0);
 const guarda = arM()
 </script>
@@ -20,6 +22,7 @@ const guarda = arM()
   <main>
     <ContaModal/>
     <ModalPedidos />
+    <MenuVue/>
     <CarrosselPrincipal />
     <CarrosselSecundario />
   </main>
