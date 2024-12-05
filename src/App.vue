@@ -4,11 +4,14 @@ import HeaderVue from '@/components/HeaderVue.vue'
 import ContaModal from './components/ContaModal.vue';
 import MenuVue from '@/components/MenuVue.vue'
 import ModalPedidos from './components/ModalPedidos.vue';
+import FormaPagamento from './components/FormaPagamento.vue';
 import { RouterLink, RouterView } from 'vue-router'
 </script> 
 
 <template>
-<main>
+  <main>
+   <FormaPagamento />
+  <MenuVue />
 <ContaModal/>
   <!-- <MenuVue /> -->
   <HeaderVue />

@@ -3,8 +3,9 @@ import { computed, ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 
 const props = defineProps({
-  item: Object,
-  isOpen: Boolean,
+    item: Object,
+    isOpen: Boolean
+
 });
 
 const emit = defineEmits(["update:isOpen"]);
@@ -15,8 +16,8 @@ const cartStore = useCartStore();
 const isConfirmationOpen = ref(false);
 
 const closeModal = () => {
-  emit("update:isOpen", false);
-  quantity.value = 1;
+    emit("update:isOpen", false);
+    quantity.value = 1;
 };
 
 const closeConfirmationModal = () => {
@@ -24,62 +25,65 @@ const closeConfirmationModal = () => {
 };
 
 const increment = () => {
-  quantity.value++;
+    quantity.value++;
 };
 
 const decrement = () => {
-  if (quantity.value > 1) {
-    quantity.value--;
-  }
+    if (quantity.value > 1) {
+        quantity.value--;
+    }
 };
 
 const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
 const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
 
 const addToCart = () => {
-  const product = {
-    ...props.item,
-    id: Date.now(),
-    quantity: quantity.value,
-    totalPrice: parsePrice(props.item.price) * quantity.value,
-  };
-  cartStore.addItem(product);
-  closeModal();
-  isConfirmationOpen.value = true;
+    const product = {
+        ...props.item,
+        id: Date.now(), // Adiciona um identificador único
+        quantity: quantity.value,
+        totalPrice: parsePrice(props.item.price) * quantity.value
+    };
+    cartStore.addItem(product);
+    closeModal();
+
 };
 </script>
 
 <template>
-  <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
-  <div v-if="isOpen" class="modal-container">
-    <button class="close-button" @click="closeModal">✕</button>
-    <div class="modal-content">
-      <div class="imagem">
-        <img :src="props.item.imagem" alt="Imagem do produto" />
-      </div>
-      <div class="textos">
-        <div>
-          <h1>{{ props.item.name }} <span class="unidade">{{ props.item.unit }}</span></h1>
-          <h2>{{ props.item.price }}</h2>
-          <p>{{ props.item.description }}</p>   
-          <label class="coment">Algum comentário?</label>
-          <textarea placeholder="Ex: Tirar molho..."></textarea>
-        </div>
-        <div>
-          <div class="acoes">
-            <div class="contador">
-              <button @click="decrement">-</button>
-              <p>{{ quantity }}</p>
-              <button @click="increment">+</button>
+    <div v-if="isOpen" class="modal-overlay" @click="closeModal"></div>
+    <div v-if="isOpen" class="modal-container">
+        <button class="close-button" @click="closeModal">✕</button>
+        <div class="modal-content">
+            <div class="imagem">
+                <img :src="props.item.imagem" alt="Imagem do produto" />
             </div>
-            <button class="add-button" @click="addToCart">
-              <span>Adicionar: </span>
-              <span>R${{ totalPrice }}</span>
-            </button>
-          </div>
+            <div class="textos">
+                <div>
+                    <h1>{{ props.item.name }} <span class="unidade ai">{{ props.item.unit }}</span></h1>
+                    <h2>{{ props.item.price }}</h2>
+                    <p>{{ props.item.description }}</p>
+                    <label class="coment">Algum comentário?</label>
+                    <textarea placeholder="Ex: Tirar molho..."></textarea>
+                </div>
+                <div>
+                    <div class="acoes">
+                        <div class="contador">
+                            <button @click="decrement">-</button>
+                            <p>{{ quantity }}</p>
+                            <button @click="increment">+</button>
+                        </div>
+                        <button class="add-button" @click="addToCart">
+                            <span>Adicionar: </span>
+                            <span>R${{ totalPrice }}</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
+
   </div>
 
   <div v-if="isConfirmationOpen" class="modal-overlay" @click="closeConfirmationModal"></div>
@@ -95,20 +99,9 @@ const addToCart = () => {
     font-family: 'Inter', normal, sans-serif;
 }
 
-.modal-confirmacao{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 30%;
-    min-height: 50%;
-    max-width: 1100px;
-    border-radius: 14px;
-    overflow: hidden;
-    z-index: 1000;
+.ai {
+    text-wrap: nowrap;
+    margin: 0;
 }
 
 .modal-overlay {
