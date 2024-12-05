@@ -15,9 +15,7 @@ const ModalA = ref(0);
   <main>
     <ContaModal/>
     <ModalPedidos />
-    <div class="carosselp">
-      <CarrosselPrincipal />
-    </div>
+    <CarrosselPrincipal />
     <CarrosselSecundario />
   </main>
 </template>

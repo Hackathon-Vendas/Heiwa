@@ -116,7 +116,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
       <TopoProduto :image="banner.image" :title="banner.title" />
     </div>
     <div v-for="item in bebidas" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" />
+      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)"/>
     </div>
   </div>
   <div id="alcoolicas" class="section">

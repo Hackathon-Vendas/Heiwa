@@ -3,8 +3,8 @@ import { computed, ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 
 const props = defineProps({
-    item: Object,
-    isOpen: Boolean
+  item: Object,
+  isOpen: Boolean,
 });
 
 const emit = defineEmits(["update:isOpen"]);
@@ -12,10 +12,15 @@ const emit = defineEmits(["update:isOpen"]);
 const isOpen = computed(() => props.isOpen);
 const quantity = ref(1);
 const cartStore = useCartStore();
+const isConfirmationOpen = ref(false);
 
 const closeModal = () => {
     emit("update:isOpen", false);
     quantity.value = 1;
+};
+
+const closeConfirmationModal = () => {
+  isConfirmationOpen.value = false;
 };
 
 const increment = () => {
@@ -32,14 +37,15 @@ const parsePrice = (price) => parseFloat(price.replace("R$", "").trim());
 const totalPrice = computed(() => (parsePrice(props.item.price) * quantity.value).toFixed(2));
 
 const addToCart = () => {
-    const product = {
-        ...props.item,
-        id: Date.now(), // Adiciona um identificador único
-        quantity: quantity.value,
-        totalPrice: parsePrice(props.item.price) * quantity.value
-    };
-    cartStore.addItem(product);
-    closeModal();
+  const product = {
+    ...props.item,
+    id: Date.now(),
+    quantity: quantity.value,
+    totalPrice: parsePrice(props.item.price) * quantity.value,
+  };
+  cartStore.addItem(product);
+  closeModal();
+  isConfirmationOpen.value = true;
 };
 </script>
 
@@ -75,13 +81,34 @@ const addToCart = () => {
             </div>
         </div>
     </div>
+  <div v-if="isConfirmationOpen" class="modal-overlay" @click="closeConfirmationModal"></div>
+  <div v-if="isConfirmationOpen">
+    <div class="modal-confirmacao" @click="closeConfirmationModal()">
+        <img class="confirmacao" src="/public/teste1.svg">
+  </div>
+  </div>
+
 </template>
 
 <style scoped>
 * {
     font-family: 'Inter', normal, sans-serif;
 }
-
+.modal-confirmacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    min-height: 50%;
+    max-width: 1100px;
+    border-radius: 14px;
+    overflow: hidden;
+    z-index: 1000; 
+}
 .ai {
     text-wrap: nowrap;
     margin: 0;
@@ -269,4 +296,5 @@ const addToCart = () => {
     gap: 4rem;
     display: flex;
 }
+
 </style>

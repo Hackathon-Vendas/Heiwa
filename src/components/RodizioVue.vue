@@ -25,7 +25,7 @@ function AdicionarRodizio() {
 }
 
 function TirarRodizio() {
-  if (contadorRodizio.value > 0) {
+  if (contadorRodizio.value > 1) {
     contadorRodizio.value--;
   }
 }
@@ -60,6 +60,7 @@ function voltarPagina() {
   emit('voltarParaProdutos');
   cartStore.$state.isRodizioVisible = false
 }
+
 </script>
 <template>
   <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
