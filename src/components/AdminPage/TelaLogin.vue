@@ -1,16 +1,23 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useOrderStore } from '@/stores/order';
+const orderStore = useOrderStore()
+
+
+onMounted(
+    orderStore.getAllOrder
+)
 const showWelcomeScreen = ref(true) 
 </script>
 
 <template>
-    <div v-if="showWelcomeScreen" class="welcome-screen">
+    <div class="container">
         <div class="login">
             <h1>LOGIN</h1>
             <label class="usernameLabel" for="username">Usuário: </label>
             <input type="text" class="username">
             <label class="passwordLabel" for="password">Senha</label>
-            <input type="text" class="password">
+            <input type="password" class="password">
             <button class="confirmarLogin">CONFIRMAR</button>
         </div>
     </div>
@@ -21,7 +28,7 @@ const showWelcomeScreen = ref(true)
 *{
     font-family: "Inter", sans-serif;
 }
-.welcome-screen {
+.container {
     position: fixed;
     top: 0;
     left: 0;
@@ -31,7 +38,7 @@ const showWelcomeScreen = ref(true)
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(100px);
     background-image: url(/src/assets/fundoLogin.png);
 }
 .login{
@@ -59,20 +66,24 @@ label{
 }
 input{
     border-radius: 12px;
-    width: 427px;
-    height: 49px;
-    font-size: 25px
-    
+    width: 420px;
+    height: 60px;
+    font-size: 25px;
+    outline: none;
+    padding-left: 10px;
+    border: none;
 }
 .confirmarLogin{
     width: 427px;
-    height: 55px;
+    height: 65px;
     border-radius: 14px;
     margin-top: 34px;
     font-size: 24px;
     color: white;
     background-color: #B93333;
     font-weight: bold;
-    }
+    border: none;    
+    cursor: pointer;
+  }
 </style>
 
