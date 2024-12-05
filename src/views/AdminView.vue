@@ -1,5 +1,6 @@
 <script setup>
 import Status from '@/components/AdminPage/Status.vue';
+
 import ProdutosAdmin from '@/components/AdminPage/ProdutosAdmin.vue';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
