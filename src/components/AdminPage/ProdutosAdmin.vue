@@ -4,7 +4,7 @@
     <div class="container">
         <div class="product">
             <div class="descricao">
-                <span class="DProduto">Yakssoba de frutos do mar</span>
+                <span class="DProduto">Sunomono</span>
                 <span class="DProduto">Mesa <span class="color">N°03</span></span>
             </div>
             <div class="espacamento">
