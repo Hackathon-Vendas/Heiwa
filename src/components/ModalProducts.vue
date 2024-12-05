@@ -5,6 +5,7 @@ import { useCartStore } from '@/stores/cartStore';
 const props = defineProps({
     item: Object,
     isOpen: Boolean
+
 });
 
 const emit = defineEmits(["update:isOpen"]);
@@ -12,10 +13,15 @@ const emit = defineEmits(["update:isOpen"]);
 const isOpen = computed(() => props.isOpen);
 const quantity = ref(1);
 const cartStore = useCartStore();
+const isConfirmationOpen = ref(false);
 
 const closeModal = () => {
     emit("update:isOpen", false);
     quantity.value = 1;
+};
+
+const closeConfirmationModal = () => {
+  isConfirmationOpen.value = false;
 };
 
 const increment = () => {
@@ -40,6 +46,7 @@ const addToCart = () => {
     };
     cartStore.addItem(product);
     closeModal();
+
 };
 </script>
 
@@ -72,9 +79,19 @@ const addToCart = () => {
                         </button>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
+  </div>
+
+  <div v-if="isConfirmationOpen" class="modal-overlay" @click="closeConfirmationModal"></div>
+  <div v-if="isConfirmationOpen">
+    <div class="modal-confirmacao" @click="closeConfirmationModal()">
+        <img class="confirmacao" src="/public/teste1.svg">
+  </div>
+  </div>
 </template>
 
 <style scoped>
