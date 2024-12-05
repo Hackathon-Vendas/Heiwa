@@ -57,7 +57,7 @@ document.body.style.overflow = 'scroll';
                     <div class="botoesPedido">
                         <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
                         <h3>OU</h3>
-                        <button @click="abrirConta">PEDIR CONTA</button> 
+                        <button class="pedirConta" @click="abrirConta">PEDIR CONTA</button> 
                     </div>
                 </div>
             </div>

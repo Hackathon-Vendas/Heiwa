@@ -1,13 +1,16 @@
 <script setup>
 import { ref, watch } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
-import QRCode from 'qrcode'; // Importando a biblioteca QRCode
+import QRCode from 'qrcode';
 
 const cartStore = useCartStore()
-const input = ref('');  // Inicializando o valor como vazio
+const input = ref(''); 
 const FuncaoEspansao = ref(true);
 const confirmar = ref(true);
-const qrCodeUrl = ref(''); // Aqui vamos armazenar a URL do QR Code
+const qrCodeUrl = ref(''); 
+
+
+
 
 function FuncaoContinuar() {
     confirmar.value = false;
@@ -55,10 +58,10 @@ watch(input, (newValue) => {
                         <input type="radio" id="pix" v-model="input" name="opção" value="pix" />
                     </label>
                     <div v-if="input === 'pix'">
-                        <div v-if="qrCodeUrl">
+                        <div class="qr-code" v-if="qrCodeUrl">
+                            <p>000.000.000-00</p>
                             <img :src="qrCodeUrl" alt="QR Code" />
                         </div>
-                        <p v-else>Gerando QR Code...</p>
                     </div>
                 </div>
                 <div class="input-group">
@@ -72,11 +75,12 @@ watch(input, (newValue) => {
                         <span>Dinheiro</span>
                         <input type="radio" id="dinheiro" v-model="input" name="opção" value="dinheiro" />
                     </label>
+                    <hr class="divider" />
+            <button v-if="input === 'pix'" @click="aguardandoPix" class="wait-button-1">AGUARDANDO PIX...</button>
+            <button v-if="input === 'cartao' || input === 'dinheiro'" @click="FuncaoContinuar" class="confirm-button-2">CHAMAR GARÇOM</button>
+            <button @click="voltarPagina" class="continue-button3">VOLTAR</button>
                 </div>
             </div>
-            <hr v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" class="divider" />
-            <button v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" @click="FuncaoContinuar" class="confirm-button-2">CHAMAR GARÇOM</button>
-            <button v-if="input === 'pix' || input === 'cartao' || input === 'dinheiro'" @click="voltarPagina" class="continue-button3">VOLTAR</button>
         </div>
     </div>
 </template>
@@ -85,12 +89,6 @@ watch(input, (newValue) => {
 
 * {
     z-index: 1000;
-}
-
-.qr-code img {
-    width: 200px;
-    height: 200px;
-    margin-top: 20px;
 }
 
 .aviso {
@@ -145,7 +143,31 @@ watch(input, (newValue) => {
 .FPagamento span {
     user-select: none;
 }
+.qr-code {
+    background-color: rgba(64, 64, 64, 1);
+    filter: drop-shadow(-1px 6.5px 25px rgba(0, 0, 0, 0.84));
+    width: 84%;
+    margin-left: 32px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.qr-code img {
+    width: 150px;
+    height: 150px;
+    margin: 10px 0;
+}
+
+.qr-code p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 1);
+    font-weight: bold;
+    margin-top: 10px;
+}
 .divider {
     margin: 15px 20px;
     border: 0.10rem solid var(--cor-letra-bottom-border);
@@ -228,16 +250,36 @@ input[type='radio' i]:checked {
     display: block;
     outline-color: var(--cor-letra-bottom-border);
 }
-
-.continue-button3 {
+.wait-button-1{
+    width: 85%;
+    height: 55px;
     margin: auto;
-    padding: 25px 0 0 0;
+    margin-top: 20px;
     font-weight: bold;
     font-size: 20px;
-    cursor: pointer;
-    text-decoration: underline;
     color: var(--cor-letra-bottom-border);
-    border: 1px solid var(--cor-voltar);
+    background-color: rgba(185, 51, 51, 0.67);
+    border: 1px solid var(--cor-fundo-bottom);
+    border-radius: 14px;
+    cursor: pointer;
+    display: block;
+    outline-color: var(--cor-letra-bottom-border);
+}
+
+
+.continue-button3 {
+    width: 85%;
+    height: 55px;
+    margin: auto;
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--cor-letra-bottom-border);
     background-color: var(--cor-voltar);
+    border: 1px solid white;
+    border-radius: 14px;
+    cursor: pointer;
+    display: block;
+    outline-color: var(--cor-letra-bottom-border);
 }
 </style>
