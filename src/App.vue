@@ -10,10 +10,9 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <main>
-   <FormaPagamento />
+  <FormaPagamento />
   <MenuVue />
-<ContaModal/>
-  <!-- <MenuVue /> -->
+  <ContaModal/>
   <HeaderVue />
   <ModalPedidos />
   <RouterView />

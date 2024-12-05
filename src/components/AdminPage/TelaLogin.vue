@@ -2,8 +2,10 @@
 import { ref, onMounted } from 'vue';
 import { useOrderStore } from '@/stores/order';
 import { useRouter } from 'vue-router';
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
 const orderStore = useOrderStore()
- const router = useRouter()
+const router = useRouter()
 
 onMounted(
     orderStore.getAllOrder
@@ -18,8 +20,13 @@ const login = async () => {
   const success = await store.dispatch('login', { username: username.value, password: password.value });
   if (success) {
     router.push('/admin');
+    toast.success('Login sucedido', {
+            className: 'toast-dark'
+        });
   } else {
-    alert('Credenciais inválidas!');
+    toast.error('Credenciais incorretas', {
+            className: 'toast-dark'
+        });
   }
 };
 </script>
