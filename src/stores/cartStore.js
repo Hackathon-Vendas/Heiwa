@@ -2,7 +2,10 @@ import { defineStore } from 'pinia'
 
 export const useCartStore = defineStore('cart', {
   state: () => ({
-    items: [], 
+    items: [],
+    isPedidoVisible: false,
+    isContaVisible: false,  
+    isPagamentoVisible: false,
     isRodizioVisible: false
   }),
   actions: {

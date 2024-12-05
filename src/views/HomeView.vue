@@ -1,5 +1,5 @@
 <script setup>
-import ContaModal from '@/components/ContaModal.vue';
+// import ContaModal from '@/components/ContaModal.vue';
 import { ref } from 'vue';
 import NumeroMesa from '@/components/NumeroMesa.vue';
 import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
@@ -18,9 +18,11 @@ const guarda = arM()
   <RodizioVue v-if="ModalA == 2 && guarda.getRodizio().value==null" @voltarParaMesa="ModalA--; guarda.setRodizio(true)" @FinalModal="ModalA++" />
   
   <main>
-    <ContaModal/>
+    <!-- <ContaModal/> -->
     <ModalPedidos />
-    <CarrosselPrincipal />
+    <div class="carosselp">
+      <CarrosselPrincipal />
+    </div>
     <CarrosselSecundario />
   </main>
 </template>
@@ -30,6 +32,4 @@ main {
   margin-left: 15%;
   margin-top: 8%;
 }
-
-
 </style>

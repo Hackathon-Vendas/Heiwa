@@ -1,15 +1,17 @@
 <script setup>
 import ModalPedidosVue from './ModalPedidos.vue';
 import { ref } from 'vue';
-const showModal = ref(false);
+import { useCartStore } from '@/stores/cartStore';
 import router from '@/router'
+
+const showModal = ref(false);
+const cartStore = useCartStore()
 
 const rota = router.currentRoute.value.name;
 console.log(router.currentRoute.value)
 </script>
 
 <template>
-  <ModalPedidosVue v-model:isOpen="showModal"/>
   <header>
       <div class="home">
         <img class="voltar" src="/Voltar.png" alt="Home Icon" v-if="rota !== 'home'" @click="router.push('/')">
@@ -19,7 +21,7 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
+        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="cartStore.$state.isPedidoVisible = true" />
       </div>
   </header>
 </template>
