@@ -4,9 +4,9 @@ import "swiper/css";
 import { Autoplay, Mousewheel } from 'swiper/modules';
 
 const fotos = [
-  "img1.jpeg",
-  "img2.jpg",
-  "img3.jpg",
+  "img1.svg",
+  "img2.svg",
+  "img3.svg"
 ];
 
 const modules = [Autoplay];
