@@ -33,11 +33,10 @@ header {
   width: 100%;
   padding: 15px;
   display: grid;
-  height: 100px;
+  height: 120px;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #1a1818;
-  filter: drop-shadow(0px 15px 29px rgba(189, 188, 188, 0.438));
-  box-shadow: 0px 15px 29px rgba(189, 188, 188, 0.438);
+  box-shadow: 0px 30px 58px rgba(189, 188, 188, 0.438);
   position: fixed;
   top: 0;
 }
@@ -56,14 +55,17 @@ header {
 
 .voltar,
 .cart-icon {
-  height: 45px;
-  width: 45px;
+  cursor: pointer;
+  width: 51px;
+  margin-left: 60px;
+  margin-right: 22px;
 }
 
 
 .logo {
   grid-column: 2;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
 }

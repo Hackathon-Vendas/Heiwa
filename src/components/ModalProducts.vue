@@ -5,7 +5,6 @@ import { useCartStore } from '@/stores/cartStore';
 const props = defineProps({
     item: Object,
     isOpen: Boolean
-
 });
 
 const emit = defineEmits(["update:isOpen"]);
@@ -46,7 +45,6 @@ const addToCart = () => {
     };
     cartStore.addItem(product);
     closeModal();
-
 };
 </script>
 
@@ -83,9 +81,6 @@ const addToCart = () => {
             </div>
         </div>
     </div>
-
-  </div>
-
   <div v-if="isConfirmationOpen" class="modal-overlay" @click="closeConfirmationModal"></div>
   <div v-if="isConfirmationOpen">
     <div class="modal-confirmacao" @click="closeConfirmationModal()">
@@ -98,7 +93,21 @@ const addToCart = () => {
 * {
     font-family: 'Inter', normal, sans-serif;
 }
-
+.modal-confirmacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    min-height: 50%;
+    max-width: 1100px;
+    border-radius: 14px;
+    overflow: hidden;
+    z-index: 1000; 
+}
 .ai {
     text-wrap: nowrap;
     margin: 0;
@@ -286,4 +295,5 @@ const addToCart = () => {
     gap: 4rem;
     display: flex;
 }
+
 </style>

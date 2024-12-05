@@ -32,7 +32,6 @@ document.body.style.overflow = 'scroll';
 </script>
 
 <template>
-
     <!-- <ContaModal /> -->
     <Transition name="slide">
         <div v-if="cartStore.$state.isPedidoVisible" class="containerPedidos">
@@ -72,8 +71,22 @@ document.body.style.overflow = 'scroll';
 * {
     font-family: "Inter", sans-serif;
 }
+.closeModal{
+    position: absolute;
+    right: 0;
+}
+
+.semItem img{
+    height: 50%;
+    width: 50%;
+    margin: auto;
+}
+.semItem{
+    display: flex;
+    height: 100%;
+}
 .containerPedidos {
-z-index: 2000;
+    z-index: 2000;
     background-color: #2D2D2D;
     width: 65%;
     height: 100%;
