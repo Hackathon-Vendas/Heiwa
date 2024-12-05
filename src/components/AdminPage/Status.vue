@@ -1,11 +1,13 @@
-<script setup></script>
+<script setup>
+import ProdutosAdmin from './ProdutosAdmin.vue';
+</script>
 
 <template>
     <h1 class="tittle"> PEDIDOS</h1>
     <div class="statusTable">
         <div id="aFazer" class="statusColumn">  
             <div class="statusTittle"><h2>A FAZER</h2></div>
-            <div class="statusPedidos"></div>
+            <div class="statusPedidos"><ProdutosAdmin /></div>
         </div>
         <div id="preparando" class="statusColumn">
             <div class="statusTittle"><h2>PREPARANDO...</h2></div>
