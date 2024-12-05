@@ -13,8 +13,8 @@ const guarda = arM()
 
 <template>
 
-  <InicioVue v-if="!guarda.getVisto().value" style="z-index: 1000;" @modal="ModalA++; guarda.setVisto(true)" />
-  <NumeroMesa v-if="ModalA == 1 && guarda.getNmesa().value==null" @proximoModal="ModalA++; guarda.setNmesa(true)" />
+  <NumeroMesa />
+  <InicioVue style="z-index: 1000;" />
   <RodizioVue v-if="ModalA == 2 && guarda.getRodizio().value==null" @voltarParaMesa="ModalA--; guarda.setRodizio(true)" @FinalModal="ModalA++" />
   
   <main>
