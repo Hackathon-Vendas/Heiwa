@@ -14,7 +14,7 @@ defineProps(['title','image']);
   margin-bottom: 2%;
   width: 75%;
   text-align: center;
-  margin-left: 20%;
+  margin-left: 19%;
 
 }
 

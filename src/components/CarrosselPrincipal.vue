@@ -1,12 +1,12 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Mousewheel } from 'swiper/modules';
 
 const fotos = [
-  "img1.jpeg",
-  "img2.jpg",
-  "img3.jpg",
+  "img1.svg",
+  "img2.svg",
+  "img3.svg"
 ];
 
 const modules = [Autoplay];
@@ -16,13 +16,14 @@ const modules = [Autoplay];
 <template>
     <Swiper 
       :loop="true"
+      :allowTouchMove="false"
       :autoplay="{
         delay: 2500,
         disableOnInteraction: false,
       }"
       :slidesPerView="1"
       :modules="modules"
-      class="teste"
+      class="modulos"
     >
       <SwiperSlide class="slide" v-for="(foto, index) in fotos" :key="index">
         <img :src="`/${foto}`" class="sushis" />
@@ -32,12 +33,11 @@ const modules = [Autoplay];
 
 <style>
 
-.teste{
+.modulos{
   height: 500px;
   width: 1150px;
-  max-width: 100%;
-  max-height: 100%;
-  z-index: -1;
+  z-index: 2;
+  border-radius: 8px;
 }
 
 .sushis {
@@ -45,6 +45,8 @@ const modules = [Autoplay];
   width: 100%;
   object-fit: cover;
   margin-right: 20px;
+  margin-top: 20px; 
+  border-radius: 8px;
 } 
 
 </style>

@@ -122,7 +122,7 @@
     color: white;
     letter-spacing: 5px;
     margin-left: 3%;
-    margin-top: 25px;
+    margin-top: 60px;
   }
   *{
     font-family: "Inter", sans-serif;
@@ -130,7 +130,7 @@
   }
   .swiper { 
     margin-left: 0px; 
-    margin-top: 26px;
+    margin-top: 40px;
     margin-bottom: 26px
   } 
   
@@ -145,7 +145,6 @@
     position: relative;
     width: 80%;
     margin-left: 8%;
-    /* margin: 0 auto; */
     z-index: 10;
   }
   

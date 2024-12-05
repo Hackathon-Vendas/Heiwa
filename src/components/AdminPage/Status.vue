@@ -29,7 +29,7 @@ import ProdutosAdmin from './ProdutosAdmin.vue';
     margin-top: 150px;
     color: white;
     letter-spacing: 7px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
 }
 .statusTittle{
@@ -44,9 +44,10 @@ import ProdutosAdmin from './ProdutosAdmin.vue';
 }
  h2 {
     color: white;
-    font-size: 25px;
+    margin: auto;
+    font-size: 22px;
     font-weight: bold;
-    letter-spacing: 7px;
+    letter-spacing: 5px;
 }
 .statusTable{
     display: flex;
