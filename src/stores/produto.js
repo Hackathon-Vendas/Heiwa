@@ -36,12 +36,6 @@ export const useAlcoolicaStore = defineStore('alcoolicas', () => {
   return { alcoolicas };
 });
 
-export const useRodizioStore = defineStore('rodizio', () => {
-  const rodizio = ref([
-    { name: 'Rodízio', price: 'R$130,00' },
-  ]);
-  return { rodizio };
-});
 
 export const useEntradaStore = defineStore('entradas', () => {
   const entradas = ref([
@@ -52,6 +46,16 @@ export const useEntradaStore = defineStore('entradas', () => {
   return { entradas };
 });
 
+export const useEntradaRStore = defineStore('entradasR', () => {
+  const entradasR = ref([
+    { name: 'Sunomono', unit: '(1 unidade)', description: 'Salada refrescante de pepino agridoce com gergelim torrado.', price: 'R$00,00', imagem: Sunomono },
+    { name: 'Gyoza', unit: '(4 unidades)', description: 'Delicados pasteizinhos recheados com carne suína, servidos com molho especial.', price: 'R$00,00', imagem: Gyoza },
+    { name: 'Tataki de Atum', unit: '(8 unidades)', description: 'Finas fatias de atum levemente selado, servidas com molho cítrico ponzu.', price: 'R$00,00', imagem: Tataki },
+  ]);
+  return { entradasR };
+});
+
+
 export const usePrincipalStore = defineStore('principais', () => {
   const principais = ref([
     { name: 'Sashimi de Salmão', unit: '(10 unidades)', description: 'Fatias frescas de salmão, acompanhadas de wasabi e gengibre.', price: 'R$64,50', imagem: sushi1 },
@@ -61,6 +65,18 @@ export const usePrincipalStore = defineStore('principais', () => {
     { name: 'Temaki de Atum', description: 'Cone de alga recheado com atum fresco, arroz e cebolinha, perfeito para saborear com as mãos.', unit: '(1 unidade)', price: 'R$35,50', imagem: sushi5 },
   ]);
   return { principais };
+});
+
+
+export const usePrincipalRStore = defineStore('principaisR', () => {
+  const principaisR = ref([
+    { name: 'Sashimi de Salmão', unit: '(10 unidades)', description: 'Fatias frescas de salmão, acompanhadas de wasabi e gengibre.', price: 'R$00,00', imagem: sushi1 },
+    { name: 'Sashimi de Atum', unit: '(10 unidades)', description: 'Filés de atum acompanhados de wasabi e gengibre.', price: 'R$00,00', imagem: sushi2 },
+    { name: 'Yakissoba', unit: '(1 unidade)', description: 'Macarrão japonês salteado com camarões, lula e legumes.', price: 'R$00,00', imagem: sushi3 },
+    { name: 'Uramaki Califórnia', description: 'Arroz japonês envolto em alga nori, recheado com kani, pepino e manga.', unit: '(5 unidade)', price: 'R$00,00', imagem: sushi4 },
+    { name: 'Temaki de Atum', description: 'Cone de alga recheado com atum fresco, arroz e cebolinha, perfeito para saborear com as mãos.', unit: '(1 unidade)', price: 'R$00,50', imagem: sushi5 },
+  ]);
+  return { principaisR };
 });
 
 export const useBebidaStore = defineStore('bebidas', () => {
@@ -85,3 +101,17 @@ export const useSobremesaStore = defineStore('sobremesas', () => {
   ]);
   return { sobremesas };
 });
+
+export const useSobremesaRStore = defineStore('sobremesasR', () => {
+  const sobremesasR = ref([
+    { name: 'Mochi', unit: '(2 unidades)', description: 'Doce japonês tradicional de massa de arroz, recheado.', price: 'R$00,00', imagem: mochi },
+    { name: 'Sorvete', unit: '(1 unidade)', description: 'Sobremesa cremosa com o sabor suave e característico', price: 'R$00,00', imagem: sorvete },
+    { name: 'Cheesecake', unit: '(1 unidade)', description: 'Torta de queijo cremosa com uma base crocante de biscoito, coberta com calda de frutas vermelhas.', price: 'R$00,00', imagem: cheesecake },
+    { name: 'Petit Gâteau', unit: '(1 unidade)', description: 'Pequeno bolo de chocolate com recheio cremoso, servido com sorvete de creme.', price: 'R$00,00', imagem: petitgateau },
+    { name: 'Dorayaki', description: 'Panqueca japonesa recheada com doce de feijão azuki, uma combinação de texturas e sabores.', unit: '(2 unidades)', price: 'R$00,00', imagem: dorayaki },
+    { name: 'Tempurá de Sorvete', description: 'Sorvete envolto em uma crosta crocante de tempurá, frito rapidamente e servido quente por fora e gelado por dentro.', unit: '(1 unidades)', price: 'R$00,00', imagem: tempura },
+    { name: 'Anmitsu', description: 'Doce tradicional japonês com cubos de gelatina de ágar, frutas, pasta de feijão doce e sorvete de chá verde, servido com calda de açúcar mascavo.', unit: '(1 unidades)', price: 'R$00,00', imagem: anmitsu },
+  ]);
+  return { sobremesasR };
+});
+

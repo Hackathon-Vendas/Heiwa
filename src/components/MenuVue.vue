@@ -3,7 +3,6 @@ import { ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
 import { useCartStore } from '@/stores/cartStore';
-import RodizioVue from '@/components/RodizioVue.vue';
 
 const cartStore = useCartStore();
 

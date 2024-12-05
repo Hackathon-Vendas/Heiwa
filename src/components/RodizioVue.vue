@@ -15,20 +15,8 @@ const props = defineProps({
     isOpen: Boolean
 });
 
-const isOpen = computed(() => props.isOpen);
-const quantity = ref(1);
-
-function FuncaoContinuar() {
-  confirmar.value = false;
-  emit('FinalModal')
-}
-
-function voltarPagina() {
-  FuncaoEspansao.value = true;
-  emit('voltarParaMesa');
-}
 const emit = defineEmits([
-  'voltarParaMesa',
+  'voltarParaProdutos',
   'FinalModal',
 ]);
 
@@ -41,27 +29,44 @@ function TirarRodizio() {
     contadorRodizio.value--;
   }
 }
-/*
-const addToCart = () => {
-  if (rodizioStore.count > 0) {
-    const rodizio = {
-        ...props.item,
-        id: Date.now(), 
-        quantity: rodizioStore.count, 
-        totalPrice: parsePrice(props.item.price) * rodizioStore.count
-    };
-    cartStore.addItem(rodizio);  
-    FuncaoContinuar(); 
-  }
-};*/
-</script>
 
+function FuncaoContinuar() {
+  if (contadorRodizio.value > 0) {
+    const rodizio = {
+      id: 'rodizio', // ID fixo para identificar rodízio no carrinho
+      name: 'Rodízio',
+      quantity: contadorRodizio.value,
+      price: rodizioStore.pricePerUnit || 120, // Use o preço da store ou defina um padrão
+      totalPrice: (rodizioStore.pricePerUnit || 120) * contadorRodizio.value
+    };
+
+    // Adiciona o rodízio ao carrinho
+    cartStore.addRodizio(rodizio);
+    console.log('Rodízio adicionado ao carrinho:', rodizio);
+
+    // Verificar se o rodízio foi realmente adicionado
+    console.log('Carrinho atual:', cartStore.items);
+  } else {
+    console.warn('Nenhum rodízio selecionado!');
+  }
+
+  confirmar.value = false; // Fecha a modal internamente
+  console.log('Emitindo FinalModal');
+  cartStore.$state.isRodizioVisible = false; // Fecha a modal externa se necessário
+  emit('FinalModal'); // Notifica o pai para fechar a modal
+}
+function voltarPagina() {
+  FuncaoEspansao.value = false;
+  emit('voltarParaProdutos');
+  cartStore.$state.isRodizioVisible = false
+}
+</script>
 <template>
   <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
     <div class="container">
       <div class="input-container">
         <label class="alacarte" for="rodizio">
-          <span>Rodízio</span>
+          <span style="display: flex;">Rodízio  <p style="display: flex; margin-left: 100%">R$120,00</p></span>
         </label>
       </div>
       <div class="contador-rodizio">
@@ -76,7 +81,7 @@ const addToCart = () => {
         <hr class="divider2" />
         <span>Informamos que o número de pessoas para o rodízio será verificado em relação aos rodízios pagos.</span>
         <button @click="FuncaoContinuar" class="confirm-button-2">CONFIRMAR</button>
-        <button @click="voltarPagina = false" class="continue-button">VOLTAR</button>
+        <button @click="voltarPagina" class="continue-button">VOLTAR</button>
       </div>
     </div>
   </div>

@@ -21,17 +21,15 @@ export const useCartStore = defineStore('cart', {
       this.items = this.items.filter(item => item.id !== itemId);
     },
     addRodizio(rodizio) {
-      // Adiciona o rodízio à lista de itens do carrinho
       const existingRodizio = this.items.find(item => item.id === rodizio.id);
       if (existingRodizio) {
-        existingRodizio.quantity += rodizio.quantity;  // Atualiza a quantidade
-        existingRodizio.totalPrice = existingRodizio.quantity * existingRodizio.price;  // Atualiza o preço total
+        existingRodizio.quantity += rodizio.quantity;  
+        existingRodizio.totalPrice = existingRodizio.quantity * existingRodizio.price;  total
       } else {
-        this.items.push(rodizio);  // Adiciona o rodízio se não existir
+        this.items.push(rodizio); 
       }
     },
     removeRodizio(rodizioId) {
-      // Remove o rodízio pelo id
       this.items = this.items.filter(item => item.id !== rodizioId);
     }
   },
