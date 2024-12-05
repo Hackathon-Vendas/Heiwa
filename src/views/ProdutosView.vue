@@ -70,7 +70,6 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 </script>
 
 <template>
-  <MenuVue/>
   <ModalProducts v-model:isOpen="show" :item="itemSelecionado" />
   <div id="entradas">
     <div v-for="banner in Bentradas" :key="banner">

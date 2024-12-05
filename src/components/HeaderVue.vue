@@ -19,7 +19,7 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
+        <img class="cart-icon" style="position: absolute; right: 5%; top: 28%;" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
       </div>
   </header>
 </template>

@@ -22,7 +22,6 @@ const guarda = arM()
   <main>
     <ContaModal/>
     <ModalPedidos />
-    <MenuVue/>
     <CarrosselPrincipal />
     <CarrosselSecundario />
   </main>
