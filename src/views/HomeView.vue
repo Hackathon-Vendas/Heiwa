@@ -6,12 +6,17 @@ import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 import ModalPedidos from '@/components/ModalPedidos.vue';
 import InicioVue from '@/components/InicioVue.vue';
 import CarrosselSecundario from '@/components/CarrosselSecundario.vue';
+import {arM} from '@/stores/armazenamento';
 const ModalA = ref(0);
+const guarda = arM()
 </script>
 
 <template>
-  <InicioVue style="z-index: 1000;" @modal="ModalA++" />
-  <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
+
+  <InicioVue v-if="!guarda.getVisto().value" style="z-index: 1000;" @modal="ModalA++; guarda.setVisto(true)" />
+  <NumeroMesa v-if="ModalA == 1 && guarda.getNmesa().value==null" @proximoModal="ModalA++; guarda.setNmesa(true)" />
+  <RodizioVue v-if="ModalA == 2 && guarda.getRodizio().value==null" @voltarParaMesa="ModalA--; guarda.setRodizio(true)" @FinalModal="ModalA++" />
+  
   <main>
     <ContaModal/>
     <ModalPedidos />
