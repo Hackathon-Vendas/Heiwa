@@ -7,6 +7,7 @@ import { useAlcoolicaStore, useEntradaStore, useEntradaRStore, usePrincipalStore
 import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
 import { useRoute } from 'vue-router';
 import MenuVue from '@/components/MenuVue.vue';
+import HeaderVue from '@/components/HeaderVue.vue'
 const route = useRoute();
 
 onMounted(() => {
@@ -70,6 +71,8 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 </script>
 
 <template>
+  <MenuVue />
+  <HeaderVue />
   <ModalProducts v-model:isOpen="show" :item="itemSelecionado" />
   <div id="entradas">
     <div v-for="banner in Bentradas" :key="banner">

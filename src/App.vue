@@ -14,8 +14,6 @@ import { RouterLink, RouterView } from 'vue-router'
   <FormaPagamento />
   <RodizioVue />
   <ContaModal/>
-  <MenuVue />
-  <HeaderVue />
   <ModalPedidos />
   <RouterView />
 </main>
