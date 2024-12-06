@@ -17,11 +17,9 @@ const guarda = arM()
 <template>
   <MenuVue />
   <HeaderVue />
-
-  <NumeroMesa />
-  <InicioVue style="z-index: 1000;" />
+  <InicioVue v-if="!guarda.getVisto().value"; @modal="ModalA++; guarda.setVisto(true)"/>
+  <NumeroMesa v-if="ModalA == 1 && guarda.getNmesa().value==null" />
   <RodizioVue v-if="ModalA == 2 && guarda.getRodizio().value==null" @voltarParaMesa="ModalA--; guarda.setRodizio(true)" @FinalModal="ModalA++" />
-  
   <main>
     <ContaModal/>
     <ModalPedidos />

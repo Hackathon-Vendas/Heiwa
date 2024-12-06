@@ -30,6 +30,11 @@ window.scrollTo(0, 0);
 // Desativar scroll
 document.body.style.overflow = 'scroll';
 };
+
+const abrireFechar = () => {
+    abrirConta();
+    closeModal();
+}
 </script>
 
 <template>
@@ -59,7 +64,7 @@ document.body.style.overflow = 'scroll';
           <div class="botoesPedido" v-if="cartStore.$state.items.length > 0">
             <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
             <h3>OU</h3>
-            <button @click="abrirConta"class="pedirConta">PEDIR CONTA</button>
+            <button @click="abrireFechar" class="pedirConta">PEDIR CONTA</button>
           </div>
         </div>
       </div>

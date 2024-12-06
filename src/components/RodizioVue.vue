@@ -7,7 +7,7 @@ const rodizioStore = useRodizioStore();
 const cartStore = useCartStore();
 const input = ref();
 const confirmar = ref(true);
-const contadorRodizio = ref(0);
+const contadorRodizio = ref(1);
 const FuncaoEspansao = ref(true);
 
 const props = defineProps({
@@ -55,7 +55,8 @@ function FuncaoContinuar() {
 function voltarPagina() {
   FuncaoEspansao.value = false;
   emit('voltarParaProdutos');
-  cartStore.$state.isRodizioVisible = false
+  cartStore.$state.isRodizioVisible = false;
+  contadorRodizio.value = 1;
 }
 
 </script>
@@ -64,7 +65,7 @@ function voltarPagina() {
     <div class="container">
       <div class="input-container">
         <label class="alacarte" for="rodizio">
-          <span style="display: flex;">Rodízio  <p style="display: flex; margin-left: 100%">R$120,00</p></span>
+          <span>Rodízio<p>R${{ (120 * contadorRodizio).toFixed(2) }}</p></span>
         </label>
       </div>
       <div class="contador-rodizio">
@@ -72,7 +73,7 @@ function voltarPagina() {
           <p>Número de rodízios:</p>
         </div>
         <button @click="TirarRodizio">-</button>
-        <span>{{ contadorRodizio  }}</span> 
+        <span>{{ contadorRodizio }}</span> 
         <button @click="AdicionarRodizio">+</button>
       </div>
       <div class="aviso">
@@ -114,6 +115,13 @@ function voltarPagina() {
   font-weight: bold;
   margin-left: 32px;
   width: calc(500px - 120px);
+}
+span p {
+  display: flex;
+  margin-left: 100%;
+}
+span{
+  display: flex;
 }
 
 .contador-rodizio button {

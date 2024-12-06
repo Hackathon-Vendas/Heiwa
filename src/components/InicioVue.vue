@@ -30,6 +30,9 @@ function closeWelcomeScreen() {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 
+*{
+    z-index: 1000;
+}
 
 input {
     margin-top: 30px;

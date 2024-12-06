@@ -126,7 +126,7 @@
   }
   *{
     font-family: "Inter", sans-serif;
-    z-index: 999;
+    z-index: 99;
   }
   .swiper { 
     margin-left: 0px; 
