@@ -13,14 +13,19 @@ const numMesa = ref(null);
 const emit = defineEmits([
     'proximoModal'
 ]);
-async function Permissao() {
-    if (!numMesa.value) {
-    toast.error('Por favor, insira o número da mesa', {
-      className: 'toast-dark',
-    });
-    return;
-}}
-
+function Permissao() {
+    if (numMesa.value < 1 || numMesa.value > 90) {
+        toast.error('Por favor, insira o número da mesa', {
+            className: 'toast-dark'
+        });
+    } else {
+        FuncaoExpandir.value = false;
+        toast.success('Concluído', {
+            className: 'toast-dark'
+        });
+        emit('proximoModal');
+    }
+}
 
 onMounted(async() => {
       allMesa.value = await TableService.getAllMesas()
