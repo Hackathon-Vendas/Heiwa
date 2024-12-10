@@ -1,7 +1,7 @@
 export const actions = {
     async validarNumeroMesa({ commit }, numeroMesa) {
       try {
-        const response = await axios.get(`/mesa/`, {
+        const response = await axios.get(`mesa/`, {
           params: { numeroMesa },
         });
   

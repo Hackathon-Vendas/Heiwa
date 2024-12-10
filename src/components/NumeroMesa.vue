@@ -1,7 +1,12 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import TableService from '@/services/mesa'
+
+const allMesa = ref([[]])
+
+console.log(allMesa)
 
 const FuncaoExpandir = ref(true);
 const numMesa = ref(null);
@@ -9,28 +14,17 @@ const emit = defineEmits([
     'proximoModal'
 ]);
 async function Permissao() {
-  if (!numMesa.value) {
+    if (!numMesa.value) {
     toast.error('Por favor, insira o número da mesa', {
       className: 'toast-dark',
     });
     return;
-  }
-
-  const isValid = await store.dispatch('authMesa/validarNumeroMesa', numMesa.value);
-
-  if (isValid) {
-    toast.success('Número de mesa válido! Redirecionando...', {
-      className: 'toast-dark',
-    });
-    router.push('/home'); 
-  } else {
-    toast.error('Número de mesa inválido.', {
-      className: 'toast-dark',
-    });
-  }
-}
+}}
 
 
+onMounted(async() => {
+      allMesa.value = await TableService.getAllMesas()
+  })
 </script>
 
 <template>
@@ -40,7 +34,10 @@ async function Permissao() {
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
                 <div class="input-container">
                     <img src="/Mesa.png" class="input-icon">
-                    <input type="number" min="1" max="90" id="numMesa" required v-model="numMesa">
+                    <select name="teste" id="numMesa" v-model="numMesa">
+                        <option value="" disabled>Selecione uma mesa</option>
+                        <option :value="mesa.id" v-for="mesa in allMesa">{{ mesa.id }}</option>
+                    </select>
                 </div>
                 <button @click="Permissao" class="continue-button">CONTINUAR</button>
             </div>
@@ -70,7 +67,7 @@ async function Permissao() {
 }
 
 
-input {
+input, select {
     margin-top: 15px;
     width: 85%;
     height: 55px;
