@@ -7,13 +7,19 @@
         <div class="content">
             <div class="add">
                 <div class="addImage">
-                    <input type="image" src="" alt="" placeholder="Adicione uma imagem" >
+                    <input type="file" name="" id="">
                 </div>
                 <div class="addText">
                     <input type="text">
                     <input type="text">
                 </div>
-                <div class="numbers"></div>
+                <div class="select">
+                    <select name="" id=""></select>
+                </div>
+                <div class="numbers">
+                    <input type="number" name="" id="">
+                    <input type="number" name="" id="">
+                </div>
                 <button>ADICIONAR</button>
             </div>
         </div>
@@ -27,7 +33,7 @@
 }
 .container{
     height: 73%;
-    width: 1355px;
+    width: 94%;
     margin-top: 150px;
     justify-content: center;
     margin-left: auto;
@@ -36,10 +42,9 @@
     border-radius: 8px;
 }
 .content{
-    width: 100%;
-    height: 90%;
+    width: 1355px;
+    height: 679px;
     display: flex;
-    justify-content: center;
     background-color: #2D2D2D;
 }
 .tittle{
@@ -57,9 +62,14 @@ h1{
     font-size: 30px;
     color: white;
 }
+
 .addImage{
     width: 456px;
     height: 600px;
+    background-color: red;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
 }
 </style>
 
