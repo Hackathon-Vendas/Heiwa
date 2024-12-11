@@ -20,8 +20,6 @@ const sobremesas = ref(false);
 const route = useRoute();
 
 function updateMenu() {
-  const currentPath = route.path;
-
   rodizio.value = false;
   alacarte.value = false;
   bebidas.value = false;
@@ -194,6 +192,10 @@ function scrollToSection(section) {
 </template>
 
 <style scoped>
+*{
+  z-index: 1;
+}
+
 aside {
   width: 200px;
   top: 85px;

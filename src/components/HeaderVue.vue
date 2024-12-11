@@ -37,6 +37,7 @@ header {
   box-shadow: 0px 30px 58px rgba(189, 188, 188, 0.438);
   position: fixed;
   top: 0;
+  z-index: 2;
 }
 .home{
   display: flex;

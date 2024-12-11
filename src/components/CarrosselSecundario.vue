@@ -66,8 +66,8 @@
   import 'swiper/css';
   const breakpoints = {
     724: {
-      slidesPerView: 2.2,
-      spaceBetween: 60
+      slidesPerView: 1,
+      spaceBetween: -300
     },
     770: {
       slidesPerView: 2.2,
@@ -109,9 +109,9 @@
       spaceBetween: -45
   
     },
-    1460: {
-      slidesPerView: 3.84,
-      spaceBetween: -45
+    1600: {
+      slidesPerView: 5,
+      spaceBetween: -10
     }
   };
   
@@ -121,12 +121,10 @@
   .esp{
     color: white;
     letter-spacing: 5px;
-    margin-left: 3%;
-    margin-top: 60px;
+    margin-top: 40px;
   }
   *{
     font-family: "Inter", sans-serif;
-    z-index: 99;
   }
   .swiper { 
     margin-left: 0px; 
@@ -144,7 +142,7 @@
   .title-slide {
     position: relative;
     width: 80%;
-    margin-left: 8%;
+    margin-left: 4%;
     z-index: 10;
   }
   
