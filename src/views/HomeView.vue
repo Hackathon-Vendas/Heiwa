@@ -27,10 +27,10 @@ const guarda = arM();
     @voltarParaMesa="ModalA--" 
     @FinalModal="ModalA++" 
   />
+  <ContaModal />
+  <ModalPedidos />
 
   <main>
-    <ContaModal />
-    <ModalPedidos />
     <CarrosselPrincipal />
     <CarrosselSecundario />
   </main>
@@ -38,7 +38,7 @@ const guarda = arM();
 
 <style scoped>
 main {
-  margin-left: 15%;
+  margin-left: 250px;
   margin-top: 8%;
 }
 </style>

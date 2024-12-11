@@ -107,7 +107,7 @@ const addToCart = () => {
     max-width: 1100px;
     border-radius: 14px;
     overflow: hidden;
-    z-index: 1000; 
+    z-index: 3; 
 }
 .ai {
     text-wrap: nowrap;
@@ -121,7 +121,8 @@ const addToCart = () => {
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 999;
+    z-index: 3;
+    backdrop-filter: blur(5px);
 }
 
 .modal-container {
