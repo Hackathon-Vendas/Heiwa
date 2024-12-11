@@ -5,13 +5,15 @@
         <div class="tittle"><h1>Adicionar Produto</h1></div>
 
         <div class="content">
-            <div class="add">
-                <div class="addImage">
-                    <input type="file" name="" id="">
+            <div class="addImage">
+                    <input type="file" class="imageInput" placeholder="Adicione uma imagem">
                 </div>
+            <div class="add">
                 <div class="addText">
-                    <input type="text">
-                    <input type="text">
+                    <label for="textInput">Adicione o nome:</label>
+                    <input type="text" class="nomeInput">
+                    <label for="">Adicione descrição:</label>
+                    <input type="text" class="descricaoInput">
                 </div>
                 <div class="select">
                     <select name="" id=""></select>
@@ -42,7 +44,6 @@
     border-radius: 8px;
 }
 .content{
-    width: 1355px;
     height: 679px;
     display: flex;
     background-color: #2D2D2D;
@@ -62,14 +63,53 @@ h1{
     font-size: 30px;
     color: white;
 }
-
-.addImage{
-    width: 456px;
+.add{
+    margin: 40px auto;
+    width: 765px;
     height: 600px;
-    background-color: red;
-    border-radius: 8px;
+}
+.addImage{
     display: flex;
     justify-content: center;
+    margin: auto 44px;
 }
+.imageInput{
+    width: 456px;
+    height: 600px;
+    background-color: aliceblue;
+    border-radius: 8px;
+}
+.addText > input{
+    display: flex;
+}
+.addText > label{
+    font-size: 20px;
+    color: white;
+}
+.nomeInput{
+    width: 763px;
+    height: 51px;
+    border-radius: 8px;
+    outline: none;
+    background-color: #1E1E1E;
+    border: none;
+    font-size: 20px;
+    color: white;
+    padding-left: 10px;
+    margin: 13px auto;
+}
+.descricaoInput{
+    width: 765px;
+    height: 204px;
+    background-color: #1E1E1E;
+    font-size: 20px;
+    border: none;
+    color: white;
+    padding-left: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    margin-bottom: 29px;
+}
+
 </style>
 
