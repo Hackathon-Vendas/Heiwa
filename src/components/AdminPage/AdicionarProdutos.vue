@@ -7,9 +7,12 @@
         <div class="content">
             <div class="add">
                 <div class="addImage">
-                    <input type="image" src="" alt="" placeholder="Adicione uma imagem" pla>
+                    <input type="image" src="" alt="" placeholder="Adicione uma imagem" >
                 </div>
-                <div class="addText"></div>
+                <div class="addText">
+                    <input type="text">
+                    <input type="text">
+                </div>
                 <div class="numbers"></div>
                 <button>ADICIONAR</button>
             </div>
@@ -34,9 +37,10 @@
 }
 .content{
     width: 100%;
-    height: 100%;
+    height: 90%;
     display: flex;
     justify-content: center;
+    background-color: #2D2D2D;
 }
 .tittle{
     width: 100%;
@@ -50,6 +54,12 @@
 }
 h1{
     text-align: center;
+    font-size: 30px;
+    color: white;
+}
+.addImage{
+    width: 456px;
+    height: 600px;
 }
 </style>
 
