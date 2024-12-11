@@ -15,8 +15,8 @@ if (!isAuthenticated.value) {
 
 <template>
   <HeaderVue />
-  <TelaLogin/>
-  <Status />
+  <!-- <TelaLogin/>
+  <Status /> -->
   <AdicionarProdutos/>
 </template>
 
