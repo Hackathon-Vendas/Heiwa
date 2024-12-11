@@ -1,13 +1,18 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+const quantidade = ref(1)
+</script>
 
 <template>
     <div class="container">
-        <div class="tittle"><h1>Adicionar Produto</h1></div>
+        <div class="tittle">
+            <h1>Adicionar Produto</h1>
+        </div>
 
         <div class="content">
             <div class="addImage">
-                    <input type="file" class="imageInput" placeholder="Adicione uma imagem">
-                </div>
+                <input type="file" class="imageInput" placeholder="Adicione uma imagem">
+            </div>
             <div class="add">
                 <div class="addText">
                     <label for="textInput">Adicione o nome:</label>
@@ -15,12 +20,25 @@
                     <label for="">Adicione descrição:</label>
                     <input type="text" class="descricaoInput">
                 </div>
-                <div class="select">
-                    <select name="" id=""></select>
+                <div class="selectMenu">
+                    <select name="" id="">
+                        <option value="Selecione uma mesa">Selecione um tipo</option>
+                    </select>
                 </div>
                 <div class="numbers">
-                    <input type="number" name="" id="">
-                    <input type="number" name="" id="">
+                <div class="column">
+                    <label for="valor">Adicione um valor</label>
+                    <input type="number" name="valor" id="">
+                </div>
+                    <div class="column">
+                        <label for="">Adicione a quantidade</label>
+                        <div class="quantidadeBotao">
+                            <button>-</button>
+                            <p>{{ quantidade }}</p>
+                            <button>+</button>
+                        </div>
+                    </div>
+
                 </div>
                 <button>ADICIONAR</button>
             </div>
@@ -30,10 +48,12 @@
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-*{
+
+* {
     font-family: "Inter", sans-serif;
 }
-.container{
+
+.container {
     height: 73%;
     width: 94%;
     margin-top: 150px;
@@ -43,12 +63,14 @@
     display: block;
     border-radius: 8px;
 }
-.content{
+
+.content {
     height: 679px;
     display: flex;
     background-color: #2D2D2D;
 }
-.tittle{
+
+.tittle {
     width: 100%;
     height: 80px;
     background-color: #404040;
@@ -58,35 +80,44 @@
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
-h1{
+
+h1 {
     text-align: center;
     font-size: 30px;
     color: white;
+    letter-spacing: 2.5px;
 }
-.add{
+
+.add {
     margin: 40px auto;
     width: 765px;
     height: 600px;
 }
-.addImage{
+
+.addImage {
     display: flex;
     justify-content: center;
     margin: auto 44px;
 }
-.imageInput{
+
+.imageInput {
     width: 456px;
     height: 600px;
-    background-color: aliceblue;
+    background-color: #1E1E1E;
     border-radius: 8px;
 }
-.addText > input{
+
+.addText>input {
     display: flex;
 }
-.addText > label{
+
+.addText>label {
     font-size: 20px;
     color: white;
+    letter-spacing: 2.5px;
 }
-.nomeInput{
+
+.nomeInput {
     width: 763px;
     height: 51px;
     border-radius: 8px;
@@ -98,7 +129,8 @@ h1{
     padding-left: 10px;
     margin: 13px auto;
 }
-.descricaoInput{
+
+.descricaoInput {
     width: 765px;
     height: 204px;
     background-color: #1E1E1E;
@@ -111,5 +143,48 @@ h1{
     margin-bottom: 29px;
 }
 
-</style>
+select {
+    width: 763px;
+    height: 50px;
+    background-color: #404040;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    padding-left: 30px;
+    color: white;
+    letter-spacing: 2.5px;
+}
 
+.quantidadeBotao {
+    display: flex;
+    width: 354px;
+    height: 50px;
+    border-radius: 8px;
+    background-color: #404040;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.quantidadeBotao>button {
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color: white;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.column > label{
+    font-size: 25px;
+}
+.numbers{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.quantidadeBotao > p {
+    font-size: 25px;
+    color: white;
+}
+</style>
