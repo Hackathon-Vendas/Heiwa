@@ -5,12 +5,11 @@ import { useRodizioStore } from '@/stores/rodizio';
 
 const rodizioStore = useRodizioStore();
 const cartStore = useCartStore();
-const input = ref();
 const confirmar = ref(true);
 const contadorRodizio = ref(1);
 const FuncaoEspansao = ref(true);
 
-const props = defineProps({
+defineProps({
     item: Object,
     isOpen: Boolean
 });
@@ -51,6 +50,7 @@ function FuncaoContinuar() {
   console.log('Emitindo FinalModal');
   cartStore.$state.isRodizioVisible = false; 
   emit('FinalModal'); 
+  contadorRodizio.value = 1;
 }
 function voltarPagina() {
   FuncaoEspansao.value = false;
@@ -58,9 +58,18 @@ function voltarPagina() {
   cartStore.$state.isRodizioVisible = false;
   contadorRodizio.value = 1;
 }
+const handler = computed( () => {
+  if (cartStore.isRodizioVisible) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'initial';
+  }
+  return null;
+})
 
 </script>
 <template>
+  {{ handler }}
   <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
     <div class="container">
       <div class="input-container">
@@ -88,7 +97,7 @@ function voltarPagina() {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 * {
-  z-index: 900;
+  z-index: 3;
 }
 .aviso {
   width: calc(500px - 60px);

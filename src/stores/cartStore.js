@@ -25,7 +25,7 @@ export const useCartStore = defineStore('cart', {
       const existingRodizio = this.items.find(item => item.id === rodizio.id);
       if (existingRodizio) {
         existingRodizio.quantity += rodizio.quantity;  
-        existingRodizio.totalPrice = existingRodizio.quantity * existingRodizio.price;  total
+        existingRodizio.totalPrice = existingRodizio.quantity * existingRodizio.price;
       } else {
         this.items.push(rodizio); 
       }
