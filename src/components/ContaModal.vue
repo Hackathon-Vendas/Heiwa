@@ -1,10 +1,11 @@
 <script setup>
 import { useCartStore } from '../stores/cartStore';
+import axios from '@/plugins/axios';
 
 const cartStore = useCartStore();
 
 defineProps({
-isOpen: Boolean
+    isOpen: Boolean
 });
 
 defineEmits(["update:isOpen", 'modal']);
@@ -12,42 +13,47 @@ defineEmits(["update:isOpen", 'modal']);
 const closeModal = () => {
     cartStore.$state.isContaVisible = false
     // Ativar scroll
-document.body.style.overflow = '';
-cartStore.$state.isPagamentoVisible = true
+    axios.get('/mercadop/redirect')
+        .then((response) => {
+            window.location.href = response.data.redirect_url
+        })
 
+    document.body.style.overflow = '';
 }
 </script>
 <template>
-    <div v-if="cartStore.$state.isContaVisible" class="overlay"></div> 
+    <div v-if="cartStore.$state.isContaVisible" class="overlay"></div>
     <div v-if="cartStore.$state.isContaVisible" class="modalC">
-    <div class="conta">
-        <div class="informacoesConta">
-        <h1>CONTA</h1>
-        <img class="sair" src="/Vector.png " @click="closeModal" />
-        </div>
-        <div class="itens">
-        <div class="item-1" v-for="item in cartStore.items" :key="item.id">
-            <p class="quantidade">{{ item.quantity }}</p>
-            <p class="item">{{ item.name }}</p>
-            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
-        </div>
-        </div>
-        <div class="conta-footer">
-        <div class="total">
-            <p>TOTAL:</p>
-            <p>R$ {{ cartStore.totalPrice.toFixed(2) }}</p>
-        </div>
+        <div class="conta">
+            <div class="informacoesConta">
+                <h1>CONTA</h1>
+                <img class="sair" src="/Vector.png " @click="closeModal" />
+            </div>
+            <div class="itens">
+                <div class="item-1" v-for="item in cartStore.items" :key="item.id">
+                    <p class="quantidade">{{ item.quantity }}</p>
+                    <p class="item">{{ item.name }}</p>
+                    <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
+                </div>
+            </div>
+            <div class="conta-footer">
+                <div class="total">
+                    <p>TOTAL:</p>
+                    <p>R$ {{ cartStore.totalPrice.toFixed(2) }}</p>
+                </div>
 
-        <button @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
+                <button @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
+            </div>
         </div>
-    </div>
     </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
     font-family: 'Inter', sans-serif;
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -58,6 +64,7 @@ cartStore.$state.isPagamentoVisible = true
     z-index: 10;
     backdrop-filter: blur(10px);
 }
+
 .modalC {
     background-color: #2d2d2d;
     width: 85%;
@@ -78,11 +85,13 @@ cartStore.$state.isPagamentoVisible = true
 .sair {
     margin-right: 75px;
 }
+
 .informacoesConta {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .informacoesConta h1 {
     text-align: center;
     flex-grow: 1;
@@ -92,6 +101,7 @@ cartStore.$state.isPagamentoVisible = true
     font-size: 40px;
     letter-spacing: 0.17em;
 }
+
 .itens {
     display: flex;
     flex-direction: column;
@@ -100,6 +110,7 @@ cartStore.$state.isPagamentoVisible = true
     height: 64%;
     overflow-y: scroll;
 }
+
 .item-1 {
     width: 100%;
     display: flex;
@@ -113,6 +124,7 @@ cartStore.$state.isPagamentoVisible = true
     color: white;
     font-weight: bold;
 }
+
 .quantidade {
     font-size: 30px;
     padding-left: 30px;
@@ -120,6 +132,7 @@ cartStore.$state.isPagamentoVisible = true
     padding-right: 25.3px;
     text-align: center;
 }
+
 .item {
     font-size: 20px;
     padding-right: 459px;
@@ -134,7 +147,7 @@ cartStore.$state.isPagamentoVisible = true
 .conta-footer {
     padding: 20px;
     background-color: #333333;
-    border-top: 2px solid #6B6B6B; 
+    border-top: 2px solid #6B6B6B;
     padding-top: 15px;
     margin-top: 20px;
 }
@@ -144,11 +157,12 @@ cartStore.$state.isPagamentoVisible = true
     width: 93%;
     margin: auto;
     justify-content: space-between;
-    background-color: #555555; 
+    background-color: #555555;
     padding: 30px 20px;
     border-radius: 20px;
     margin-bottom: 20px;
-    font-weight: bold;flex-wrap: nowrap;
+    font-weight: bold;
+    flex-wrap: nowrap;
     align-items: baseline;
 
 }
@@ -170,12 +184,12 @@ cartStore.$state.isPagamentoVisible = true
 
 .subtotal-original span {
     font-size: 0.8rem;
-    color: #bcbcbc; 
+    color: #bcbcbc;
 }
 
 .subtotal-final {
     font-size: 1.5rem;
-    color: #85DE66; 
+    color: #85DE66;
     margin-top: 5px;
 }
 
@@ -197,7 +211,7 @@ cartStore.$state.isPagamentoVisible = true
     font-size: 30px;
     font-weight: bold;
     color: white;
-    background-color: #b93333; 
+    background-color: #b93333;
     border: none;
     border-radius: 20px;
     cursor: pointer;
