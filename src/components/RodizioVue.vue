@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 import { useRodizioStore } from '@/stores/rodizio';
 
@@ -58,9 +58,18 @@ function voltarPagina() {
   cartStore.$state.isRodizioVisible = false;
   contadorRodizio.value = 1;
 }
+const handler = computed( () => {
+  if (cartStore.isRodizioVisible) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'initial';
+  }
+  return null;
+})
 
 </script>
 <template>
+  {{ handler }}
   <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
     <div class="container">
       <div class="input-container">

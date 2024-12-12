@@ -1,18 +1,14 @@
 <script setup>
-import { ref } from 'vue'
-import { useModalStore } from '../stores/modalStore';
 import { useCartStore } from '../stores/cartStore';
 
 const cartStore = useCartStore();
-const modalStore = useModalStore();
 
-const props = defineProps({
+defineProps({
 isOpen: Boolean
 });
 
-const emit = defineEmits(["update:isOpen", 'modal']);
+defineEmits(["update:isOpen", 'modal']);
 
-const modalConta = ref(false)
 const closeModal = () => {
     cartStore.$state.isContaVisible = false
     // Ativar scroll
@@ -37,13 +33,12 @@ cartStore.$state.isPagamentoVisible = true
         </div>
         </div>
         <div class="conta-footer">
-
         <div class="total">
             <p>TOTAL:</p>
             <p>R$ {{ cartStore.totalPrice.toFixed(2) }}</p>
         </div>
 
-        <button  @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
+        <button @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
         </div>
     </div>
     </div>
@@ -51,7 +46,7 @@ cartStore.$state.isPagamentoVisible = true
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 * {
-        font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 .overlay {
     position: fixed;
@@ -59,22 +54,20 @@ cartStore.$state.isPagamentoVisible = true
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(3, 0, 0, 0.829);
+    background-color: rgba(3, 0, 0, 0.2);
     z-index: 10;
     backdrop-filter: blur(10px);
 }
 .modalC {
     background-color: #2d2d2d;
     width: 85%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    max-width: 93%;
-    margin: auto;
-    margin-top: 50px;
-    position: relative;
+    height: 80vh;
+    position: fixed;
     border-radius: 20px;
     z-index: 20;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 
 .conta {
