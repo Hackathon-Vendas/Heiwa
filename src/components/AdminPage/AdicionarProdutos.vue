@@ -1,6 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 const quantidade = ref(1)
+const increment = () => {
+    quantidade.value++;
+};
+
+const decrement = () => {
+    if (quantidade.value > 1) {
+        quantidade.value--;
+    }
+};
 </script>
 
 <template>
@@ -41,9 +50,9 @@ const quantidade = ref(1)
                     <div class="column">
                         <label for="">Adicione a quantidade</label>
                         <div class="quantidadeBotao">
-                            <button>-</button>
+                            <button @click="decrement">-</button>
                             <p>{{ quantidade }}</p>
-                            <button>+</button>
+                            <button @click="increment">+</button>
                         </div>
                     </div>
 
@@ -94,7 +103,7 @@ h1 {
     text-align: center;
     font-size: 30px;
     color: white;
-    letter-spacing: 2.5px;
+    letter-spacing: 4px;
 }
 
 .add {
