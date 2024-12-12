@@ -11,10 +11,14 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+
     "@rollup/rollup-linux-x64-gnu": "^4.28.0",
     "axios": "^1.7.9",
     "axos": "^0.0.1",
     "esbuild": "^0.24.0",
+
+    "axios": "^1.7.9",
+
     "pinia": "^2.1.7",
     "qrcode": "^1.5.4",
     "rollup": "^4.28.0",
