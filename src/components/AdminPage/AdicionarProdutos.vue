@@ -12,6 +12,9 @@ const quantidade = ref(1)
         <div class="content">
             <div class="addImage">
                 <input type="file" class="imageInput" placeholder="Adicione uma imagem">
+                <label for="fileInput" class="custom-file-label">
+                    <img src="/src/assets/addImage.png" alt="Adicionar Imagem" />
+                </label>
             </div>
             <div class="add">
                 <div class="addText">
@@ -26,10 +29,15 @@ const quantidade = ref(1)
                     </select>
                 </div>
                 <div class="numbers">
-                <div class="column">
-                    <label for="valor">Adicione um valor</label>
-                    <input type="number" name="valor" id="">
-                </div>
+                    <div class="column">
+                        <label for="valor">Adicione um valor</label>
+                        <div class="precoBotao">
+                            <div class="reais">
+                                <p class="pReais">R$</p>
+                            </div>
+                            <input type="number" name="valor" id="">
+                        </div>
+                    </div>
                     <div class="column">
                         <label for="">Adicione a quantidade</label>
                         <div class="quantidadeBotao">
@@ -40,7 +48,7 @@ const quantidade = ref(1)
                     </div>
 
                 </div>
-                <button>ADICIONAR</button>
+                <button class="adicionar">ADICIONAR</button>
             </div>
         </div>
     </div>
@@ -81,6 +89,7 @@ const quantidade = ref(1)
     border-top-right-radius: 8px;
 }
 
+
 h1 {
     text-align: center;
     font-size: 30px;
@@ -105,6 +114,16 @@ h1 {
     height: 600px;
     background-color: #1E1E1E;
     border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #1E1E1E;
+}
+
+.custom-file-label > img{
+    margin-left: -250px;
+    margin-top: 280px;
 }
 
 .addText>input {
@@ -155,6 +174,39 @@ select {
     letter-spacing: 2.5px;
 }
 
+.precoBotao {
+    display: flex;
+    justify-content: space-around;
+}
+
+.precoBotao>input {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 300px;
+    height: 50px;
+    background-color: #1E1E1E;
+    outline: none;
+    border: none;
+    padding-left: 10px;
+    font-size: 20px;
+    color: white;
+}
+
+.reais {
+    width: 60px;
+    height: 50px;
+    background-color: #404040;
+    border-top-left-radius: 8px;
+    border-end-start-radius: 8px;
+}
+
+.pReais {
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    padding: auto;
+}
+
 .quantidadeBotao {
     display: flex;
     width: 354px;
@@ -171,20 +223,38 @@ select {
     font-size: 30px;
     color: white;
 }
-.column{
+
+.column {
     display: flex;
     flex-direction: column;
 }
-.column > label{
+
+.column>label {
     font-size: 25px;
+    color: white;
+    letter-spacing: 2.5px;
+    margin: 15px auto;
 }
-.numbers{
+
+.numbers {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.quantidadeBotao > p {
+
+.quantidadeBotao>p {
     font-size: 25px;
     color: white;
+}
+
+.adicionar {
+    width: 765px;
+    height: 50px;
+    margin-top: 25px;
+    border-radius: 8px;
+    background-color: #B93333;
+    color: white;
+    font-size: 18px;
+    border: none;
 }
 </style>
