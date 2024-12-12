@@ -70,6 +70,7 @@ const decrement = () => {
     font-family: "Inter", sans-serif;
 }
 
+
 .container {
     height: 73%;
     width: 94%;
@@ -188,7 +189,7 @@ select {
     justify-content: space-around;
 }
 
-.precoBotao>input {
+.precoBotao > input {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     width: 300px;
@@ -231,6 +232,8 @@ select {
     border: none;
     font-size: 30px;
     color: white;
+    margin: auto 10px;
+    text-align: center;
 }
 
 .column {
