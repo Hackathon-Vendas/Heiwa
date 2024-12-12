@@ -2,9 +2,11 @@
 import { ref, watch } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
+import { useRodizioStore } from '@/stores/rodizio';
 import { useCartStore } from '@/stores/cartStore';
 
-const cartStore = useCartStore();
+const cartStore = useCartStore()
+const rodizioStore = useRodizioStore();
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -33,6 +35,19 @@ function updateMenu() {
   sobremesasR.value = false;
 }
 
+function showRodizio() {
+    rodizio.value = !rodizio.value;
+    alacarte.value = false;
+    bebidas.value = false;
+    sobremesas.value = false;
+    const rodizio2 = cartStore.items.filter(produto => produto.id == "rodizio" )
+    if (!rodizio2.length > 0) {
+      cartStore.$state.isRodizioVisible = true
+    }
+    console.log(rodizio2)
+  }
+
+
 watch(() => route.path, updateMenu, { immediate: true });
 
 function showAlacarte() {
@@ -41,15 +56,6 @@ function showAlacarte() {
   bebidas.value = false;
   sobremesas.value = false;
 }
-
-
-function showRodizio() {
-    rodizio.value = !rodizio.value;
-    alacarte.value = false;
-    bebidas.value = false;
-    sobremesas.value = false;
-    cartStore.$state.isRodizioVisible = true 
-  }
 
 
 function showBebidas() {
@@ -237,7 +243,6 @@ aside ul li {
   text-align: center !important;
   padding: 20%;
   line-height: 24px;
-  text-align: center !important;
   justify-content: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;

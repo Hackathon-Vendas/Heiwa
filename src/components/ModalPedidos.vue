@@ -23,11 +23,9 @@ const finalizar = () => {
 const abrirConta = () => {
     cartStore.$state.isPedidoVisible = false
     cartStore.$state.isContaVisible = true
-    // Voltar para o topo
-    window.scrollTo(0, 0);
 
     // Desativar scroll
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflow = 'hidden';
 };
 
 const abrireFechar = () => {

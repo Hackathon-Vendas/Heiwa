@@ -21,6 +21,7 @@ const closeModal = () => {
 
 const closeConfirmationModal = () => {
   isConfirmationOpen.value = false;
+  
 };
 
 const increment = () => {
@@ -106,7 +107,6 @@ const addToCart = () => {
     min-height: 50%;
     max-width: 1100px;
     border-radius: 14px;
-    overflow: hidden;
     z-index: 3; 
 }
 .ai {
