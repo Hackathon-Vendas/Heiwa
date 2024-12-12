@@ -90,6 +90,29 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
     </div>
   </div>
+  <div id="bebidas">
+    <div v-for="banner in Bbebidas" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
+    <div v-for="item in bebidas" :key="item">
+      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)"/>
+    </div>
+  </div>
+  <div id="alcoolicas" class="section">
+    <div v-for="banner in Balcoolicas" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
+    <div v-for="item in alcoolicas" :key="item">
+      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
+    </div>
+    <div id="sobremesa" class="section">
+    <div v-for="banner in Bsobremesas" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
+  </div>
+  <div v-for="item in sobremesas" :key="item">
+    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
+  </div>
   <div id="entradasR" class="section">
     <div v-for="banner in Bentradas" :key="banner">
       <TopoProduto :image="banner.image" :title="banner.title" />
@@ -114,29 +137,7 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
     </div>
   </div>
-  <div id="bebidas">
-    <div v-for="banner in Bbebidas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-    <div v-for="item in bebidas" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)"/>
-    </div>
-  </div>
-  <div id="alcoolicas" class="section">
-    <div v-for="banner in Balcoolicas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-    <div v-for="item in alcoolicas" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
-    </div>
-    <div id="sobremesa" class="section">
-    <div v-for="banner in Bsobremesas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-  </div>
-  <div v-for="item in sobremesas" :key="item">
-    <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
-  </div>
+
   </div>
 </template>
 
