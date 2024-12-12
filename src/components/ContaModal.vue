@@ -12,7 +12,6 @@ defineEmits(["update:isOpen", 'modal']);
 
 const closeModal = () => {
     cartStore.$state.isContaVisible = false
-    // Ativar scroll
     axios.get('/mercadop/redirect')
         .then((response) => {
             window.location.href = response.data.redirect_url

@@ -2,18 +2,14 @@
 import { onMounted, ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
-import TableService from '@/services/mesa'
+import { useMesaStore } from '@/stores/mesa'; 
 
-
-const allMesa = ref([[]])
-
-console.log(allMesa)
+const mesaStore = useMesaStore();
 
 const FuncaoExpandir = ref(true);
 const numMesa = ref(null);
-const emit = defineEmits([
-    'proximoModal'
-]);
+const emit = defineEmits(['proximoModal']);
+
 function Permissao() {
     if (numMesa.value < 1 || numMesa.value > 90) {
         toast.error('Por favor, insira o número da mesa', {
@@ -28,9 +24,9 @@ function Permissao() {
     }
 }
 
-onMounted(async() => {
-      allMesa.value = await TableService.getAllMesas()
-  })
+onMounted(async () => {
+    await mesaStore.getAllMesa();
+});
 </script>
 
 <template>
@@ -41,8 +37,8 @@ onMounted(async() => {
                 <div class="input-container">
                     <img src="/Mesa.png" class="input-icon">
                     <select name="teste" id="numMesa" v-model="numMesa">
-                        <option value="" disabled >Selecione uma mesa</option>
-                        <option :value="mesa.id" v-for="mesa in allMesa">{{ mesa.id }}</option>
+                        <option value="" disabled>Selecione uma mesa</option>
+                        <option :value="mesa.id" v-for="mesa in mesaStore.mesa" :key="mesa.id">{{ mesa.id }}</option>
                     </select>
                 </div>
                 <button @click="Permissao" class="continue-button">CONTINUAR</button>

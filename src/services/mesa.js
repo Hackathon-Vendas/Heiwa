@@ -2,7 +2,7 @@ import axios from "axios";
 
 class TableService {
     async getAllMesas() {
-        const response =  await axios.get("mesa/")
+        const response =  await axios.get("mesas/")
         return response.data
     }
 }
