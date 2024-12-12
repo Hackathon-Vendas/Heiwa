@@ -4,6 +4,7 @@ const quantidade = ref(1)
 const increment = () => {
     quantidade.value++;
 };
+const quantidadeValor = ref(1);
 
 const decrement = () => {
     if (quantidade.value > 1) {
@@ -33,9 +34,10 @@ const decrement = () => {
                     <input type="text" class="descricaoInput">
                 </div>
                 <div class="selectMenu">
-                    <select name="" id="">
-                        <option value="Selecione uma mesa">Selecione um tipo</option>
-                    </select>
+                    <div class="btn-select">
+                        <span>Selecione um tipo</span>
+                        <i id="icon-select" class="bx-chevron-down"></i>
+                    </div>
                 </div>
                 <div class="numbers">
                     <div class="column">
@@ -44,7 +46,7 @@ const decrement = () => {
                             <div class="reais">
                                 <p class="pReais">R$</p>
                             </div>
-                            <input type="number" name="valor" id="">
+                            <input type="number" name="valor" id="" v-model="quantidadeValor">
                         </div>
                     </div>
                     <div class="column">
