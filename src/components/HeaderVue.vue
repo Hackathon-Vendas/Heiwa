@@ -34,7 +34,7 @@ header {
   height: 120px;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #1a1818;
-  box-shadow: 0px 30px 58px rgba(189, 188, 188, 0.438);
+  box-shadow: 0px 30px 58px rgba(46, 45, 45, 0.438);
   position: fixed;
   top: 0;
   z-index: 2;

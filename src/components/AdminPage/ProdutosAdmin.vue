@@ -1,4 +1,16 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+
+const status = ref("Pendente");
+
+function atualizarStatus() {
+    if (status.value === "Pendente") {
+        status.value = "Pronto";
+    } else {
+        status.value = "Entregue"; 
+    }
+}
+</script>
 
 <template>
     <div class="container">
@@ -11,7 +23,7 @@
                 <span class="OBS">“Não colocar brócolis”...</span>
             </div>
             <div class="icone">
-                <div class="bottom-pronto">
+                <div class="bottom-pronto" >
                     <span class="BPronto">Pronto</span>
                 </div>
                 <div class="trash">

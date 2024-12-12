@@ -1,21 +1,46 @@
 <script setup>
 import ProdutosAdmin from './ProdutosAdmin.vue';
-</script>
+import { ref } from 'vue';
 
+const produtos = ref([
+    { id: 1, nome: "Sunomono", mesa: "N°03", status: "Pendente" },
+    // Adicione mais produtos conforme necessário
+]);
+
+function atualizarStatus(produto) {
+    if (produto.status === "Pendente") {
+        produto.status = "Pronto";
+    } else if (produto.status === "Pronto") {
+        produto.status = "Entregue";
+    }
+}
+</script>
 <template>
     <h1 class="tittle"> PEDIDOS</h1>
     <div class="statusTable">
         <div id="aFazer" class="statusColumn">  
             <div class="statusTittle"><h2>A FAZER</h2></div>
-            <div class="statusPedidos"><ProdutosAdmin /></div>
+            <div class="statusPedidos">
+                <div v-for="produto in produtos" v-if="produto.status === 'Pendente'" :key="produto.id">
+                    <ProdutosAdmin :produto="produto" @atualizar="atualizarStatus(produto)" />
+                </div>
+            </div>
         </div>
         <div id="preparando" class="statusColumn">
             <div class="statusTittle"><h2>PREPARANDO...</h2></div>
-            <div class="statusPedidos"></div>
+            <div class="statusPedidos">
+                <div v-for="produto in produtos" v-if="produto.status === 'Pronto'" :key="produto.id">
+                    <ProdutosAdmin :produto="produto" @atualizar="atualizarStatus(produto)" />
+                </div>
+            </div>
         </div>
         <div id="pronto" class="statusColumn">
             <div class="statusTittle"><h2>PRONTO</h2></div>
-            <div class="statusPedidos"></div>
+            <div class="statusPedidos">
+                <div v-for="produto in produtos" v-if="produto.status === 'Entregue'" :key="produto.id">
+                    <ProdutosAdmin :produto="produto" @atualizar="atualizarStatus(produto)" />
+                </div>
+            </div>
         </div>
     </div>
 </template>
