@@ -27,6 +27,7 @@ function Permissao() {
 onMounted(async () => {
     await mesaStore.getAllMesa();
 });
+console.log(mesaStore.mesa  )
 </script>
 
 <template>
@@ -38,7 +39,7 @@ onMounted(async () => {
                     <img src="/Mesa.png" class="input-icon">
                     <select name="teste" id="numMesa" v-model="numMesa">
                         <option value="" disabled>Selecione uma mesa</option>
-                        <option :value="mesa.id" v-for="mesa in mesaStore.mesa" :key="mesa.id">{{ mesa.id }}</option>
+                        <option :value="mesa.id" v-for="mesa in mesaStore.mesa" :key="mesa.id">{{ mesa.mesaNumber }}</option>
                     </select>
                 </div>
                 <button @click="Permissao" class="continue-button">CONTINUAR</button>

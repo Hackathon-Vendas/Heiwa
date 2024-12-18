@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { computed, reactive } from "vue";
-import TableMesa from '@/services/mesa';
+import TableService from '@/services/mesa';
+
 
 export const useMesaStore = defineStore('mesa', () => {
     const state = reactive({
@@ -11,8 +12,9 @@ export const useMesaStore = defineStore('mesa', () => {
 
     const getAllMesa = async () => {
         try {
-            const data = await TableMesa.getAllMesas();
+            const data = await TableService.getAllMesas();
             state.mesa = data;
+            console.log(data)
         } catch (error) {
             console.error(error);
         }

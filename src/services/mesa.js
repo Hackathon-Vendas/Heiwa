@@ -1,9 +1,11 @@
-import axios from "axios";
+import axios from "@/plugins/axios.js";
+
 
 class TableService {
     async getAllMesas() {
-        const response =  await axios.get("mesas/")
-        return response.data
+        const {data}  =  await axios.get("mesas/")
+        console.log(data)
+        return data
     }
 }
 
