@@ -19,7 +19,7 @@ console.log(router.currentRoute.value)
         <h1 class="logo-secundaria">SUSHI & BAR</h1>
       </div>
       <div class="cart">
-        <img class="cart-icon" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
+        <img class="cart-icon" style="position: absolute; right: 5%; top: 28%;" src="@/assets/logo-carrinho.svg" alt="Cart Icon" @click="showModal = !showModal" />
       </div>
   </header>
 </template>
@@ -34,9 +34,10 @@ header {
   height: 120px;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: #1a1818;
-  box-shadow: 0px 30px 58px rgba(189, 188, 188, 0.438);
+  box-shadow: 0px 30px 58px rgba(46, 45, 45, 0.438);
   position: fixed;
   top: 0;
+  z-index: 2;
 }
 .home{
   display: flex;

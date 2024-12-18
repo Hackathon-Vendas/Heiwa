@@ -1,20 +1,28 @@
 <script setup>
-import ContaModal from '@/components/ContaModal.vue';
 import { ref } from 'vue';
-import NumeroMesa from '@/components/NumeroMesa.vue';
-import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
-import ModalPedidos from '@/components/ModalPedidos.vue';
+import { arM } from '@/stores/armazenamento';
+
 import InicioVue from '@/components/InicioVue.vue';
+import NumeroMesa from '@/components/NumeroMesa.vue';
+import MenuVue from '@/components/MenuVue.vue';
+import HeaderVue from '@/components/HeaderVue.vue';
+import ModalPedidos from '@/components/ModalPedidos.vue';
+import CarrosselPrincipal from '@/components/CarrosselPrincipal.vue';
 import CarrosselSecundario from '@/components/CarrosselSecundario.vue';
-const ModalA = ref(0);
+
+let ModalA = ref(0); // Controla qual modal está sendo exibido
+const guarda = arM();
 </script>
 
 <template>
-  <InicioVue style="z-index: 1000;" @modal="ModalA++" />
-  <NumeroMesa v-if="ModalA == 1" @proximoModal="ModalA++" />
+  <MenuVue />
+  <HeaderVue />
+
+  <InicioVue v-if="ModalA === 0" @modal="ModalA++" />
+  <NumeroMesa v-if="ModalA === 1 && guarda.getNmesa().value === null" @avancar="ModalA++" />
+  <ModalPedidos />
+
   <main>
-    <ContaModal/>
-    <ModalPedidos />
     <CarrosselPrincipal />
     <CarrosselSecundario />
   </main>
@@ -22,9 +30,7 @@ const ModalA = ref(0);
 
 <style scoped>
 main {
-  margin-left: 15%;
+  margin-left: 250px;
   margin-top: 8%;
 }
-
-
 </style>

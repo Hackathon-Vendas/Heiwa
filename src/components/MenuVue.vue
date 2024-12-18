@@ -4,7 +4,7 @@ import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
 import { useCartStore } from '@/stores/cartStore';
 
-const cartStore = useCartStore();
+const cartStore = useCartStore()
 
 const alacarte = ref(false);
 const rodizio = ref(false);
@@ -20,8 +20,6 @@ const sobremesas = ref(false);
 const route = useRoute();
 
 function updateMenu() {
-  const currentPath = route.path;
-
   rodizio.value = false;
   alacarte.value = false;
   bebidas.value = false;
@@ -35,6 +33,19 @@ function updateMenu() {
   sobremesasR.value = false;
 }
 
+function showRodizio() {
+  rodizio.value = !rodizio.value;
+  alacarte.value = false;
+  bebidas.value = false;
+  sobremesas.value = false;
+  const rodizio2 = cartStore.items.filter(produto => produto.id == "rodizio")
+  if (!rodizio2.length > 0) {
+    cartStore.$state.isRodizioVisible = true
+    rodizio.value = false;
+  }
+}
+
+
 watch(() => route.path, updateMenu, { immediate: true });
 
 function showAlacarte() {
@@ -43,15 +54,6 @@ function showAlacarte() {
   bebidas.value = false;
   sobremesas.value = false;
 }
-
-
-function showRodizio() {
-    rodizio.value = !rodizio.value;
-    alacarte.value = false;
-    bebidas.value = false;
-    sobremesas.value = false;
-    cartStore.$state.isRodizioVisible = true 
-  }
 
 
 function showBebidas() {
@@ -116,7 +118,8 @@ function scrollToSection(section) {
 
   <aside>
     <ul>
-      <li><button class="botaoPrincipal" @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img src="/logo-alacarte.svg">
+      <li><button class="botaoPrincipal" @click="showAlacarte()" :class="{ 'selectedMenu': alacarte == true }"><img
+            src="/logo-alacarte.svg">
           <p>Á la carte</p>
         </button></li>
       <div v-if="alacarte">
@@ -135,36 +138,8 @@ function scrollToSection(section) {
           </li>
         </ul>
       </div>
-
-
-      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
-          <p>Rodízio</p></button></li>
-
-
-      <div v-if="rodizio">
-        <ul>
-          <li>
-            <RouterLink :to="{ path: '/produtos', hash: '#entradasR' }">
-              <button @click="scrollToSection('entradasR')" class="sub-menu"
-                :class="[{ 'selectedMenu': entradasR == true }]">Entradas</button>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink :to="{ path: '/produtos', hash: '#principaisR' }">
-              <button @click="scrollToSection('principaisR')" class="sub-menu"
-                :class="{ 'selectedMenu': principaisR == true }">Pratos Principais</button>
-            </RouterLink>
-          </li>
-          <li>
-            <RouterLink :to="{ path: '/produtos', hash: '#sobremesasR' }">
-              <button @click="scrollToSection('sobremesasR')" class="sub-menu"
-                :class="{ 'selectedMenu': sobremesasR == true }">Sobremesas</button>
-            </RouterLink>
-          </li>
-        </ul>
-      </div>
-
-      <li><button class="" @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img src="/logo-bebida.svg">
+      <li><button class="" @click="showBebidas()" :class="{ 'selectedMenu': bebidas == true }"><img
+            src="/logo-bebida.svg">
           <p>Bebidas</p>
         </button></li>
       <div v-if="bebidas">
@@ -193,11 +168,42 @@ function scrollToSection(section) {
           </button>
         </RouterLink>
       </li>
+      <li><button @click="showRodizio()" :class="{ 'selectedMenu': rodizio == true }"><img src="/logo-rodizio.svg">
+          <p>Rodízio</p>
+        </button></li>
+
+      <div v-if="rodizio">
+        <ul>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#entradasR' }">
+              <button @click="scrollToSection('entradasR')" class="sub-menu"
+                :class="[{ 'selectedMenu': entradasR == true }]">Entradas</button>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#principaisR' }">
+              <button @click="scrollToSection('principaisR')" class="sub-menu"
+                :class="{ 'selectedMenu': principaisR == true }">Pratos Principais</button>
+            </RouterLink>
+          </li>
+          <li>
+            <RouterLink :to="{ path: '/produtos', hash: '#sobremesasR' }">
+              <button @click="scrollToSection('sobremesasR')" class="sub-menu"
+                :class="{ 'selectedMenu': sobremesasR == true }">Sobremesas</button>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+
     </ul>
   </aside>
 </template>
 
 <style scoped>
+* {
+  z-index: 1;
+}
+
 aside {
   width: 200px;
   top: 85px;
@@ -214,7 +220,7 @@ aside::-webkit-scrollbar {
   height: 100%;
 }
 
-.botaoPrincipal{
+.botaoPrincipal {
   margin-top: 35px;
 }
 
@@ -239,7 +245,6 @@ aside ul li {
   text-align: center !important;
   padding: 20%;
   line-height: 24px;
-  text-align: center !important;
   justify-content: center;
   letter-spacing: 0.25em;
   color: #FFFFFF;

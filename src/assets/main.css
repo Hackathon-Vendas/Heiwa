@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root{
   --cor-fundo-input: #6B6B6B;
@@ -15,6 +16,7 @@
     margin: 0;
     box-sizing: border-box;
     user-select: none;
+    font-family: "Inter", sans-serif;
   }
   
   body{

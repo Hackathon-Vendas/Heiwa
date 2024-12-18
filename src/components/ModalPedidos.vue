@@ -3,15 +3,14 @@ import { ref } from 'vue';
 import { useCartStore } from '@/stores/cartStore';
 import ContaModal from './ContaModal.vue';
 
-const isModalVisible = ref(true);
 const cartStore = useCartStore();
-const props = defineProps({
-  isOpen: Boolean
+defineProps({
+    isOpen: Boolean
 });
 const emit = defineEmits(["update:isOpen"]);
 
 const closeModal = () => {
-  emit("update:isOpen", false);
+    emit("update:isOpen", false);
 };
 const show = ref(false)
 const removeItem = (productId) => {
@@ -21,41 +20,53 @@ const finalizar = () => {
     show.value = true
     emit("update:isOpen", false);
 }
+const abrirConta = () => {
+    cartStore.$state.isPedidoVisible = false
+    cartStore.$state.isContaVisible = true
+
+    // Desativar scroll
+    document.body.style.overflow = 'hidden';
+};
+
+const abrireFechar = () => {
+    abrirConta();
+    closeModal();
+}
 </script>
 
 <template>
     <ContaModal v-model:isOpen="show" />
-  <Transition name="slide">
-    
-    <div v-if="isOpen" class="containerPedidos">
-      <div class="pedidos">
-        <div class="informacoes">
-          <h1>PEDIDOS</h1>
-          <i @click="closeModal" class="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
-        </div>
-        <div class="itens">
-           <div class="semItem" v-if="cartStore.$state.items.length <= 0"><img src="/src/assets/semItem.svg"></div>
-          <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
-            <p class="quantidade">{{ item.quantity }}x</p>
-            <p class="item">{{ item.name }}</p>
-            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
-            <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt=""></p>
-          </div>
-        </div>
-        <div class="pedidoUsuario">
-          <div class="infoPedido" v-if="cartStore.$state.items.length > 0">
-            <h3>TOTAL</h3>
-            <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
-          </div>
-          <div class="botoesPedido" v-if="cartStore.$state.items.length > 0">
-            <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
-            <h3>OU</h3>
-            <button class="pedirConta">PEDIR CONTA</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </Transition>
+    <Transition name="slide">
+            <div v-if="isOpen" class="containerPedidos">
+                <div class="pedidos">
+                    <div class="informacoes">
+                        <h1>PEDIDOS</h1>
+                        <i @click="closeModal" class="closeModal"><img src="/src/assets/excluir.png" alt=""></i>
+                    </div>
+                    <div class="itens">
+                        <div class="semItem" v-if="cartStore.$state.items.length <= 0"><img
+                                src="/src/assets/semItem.svg"></div>
+                        <div class="item-1" v-for="(item, index) in cartStore.items" :key="index">
+                            <p class="quantidade">{{ item.quantity }}x</p>
+                            <p class="item">{{ item.name }}</p>
+                            <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
+                            <p @click="removeItem(item.id)" class="botaoExcluir"><img src="/excluir.png" alt=""></p>
+                        </div>
+                    </div>
+                    <div class="pedidoUsuario">
+                        <div class="infoPedido" v-if="cartStore.$state.items.length > 0">
+                            <h3>TOTAL</h3>
+                            <h3>R${{ cartStore.totalPrice.toFixed(2) }}</h3>
+                        </div>
+                        <div class="botoesPedido" v-if="cartStore.$state.items.length > 0">
+                            <button class="finalizarPedido" @click="finalizar">FINALIZAR PEDIDO</button>
+                            <h3>OU</h3>
+                            <button @click="abrireFechar" class="pedirConta">PEDIR CONTA</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </Transition>
 </template>
 
 <style scoped>
@@ -64,24 +75,28 @@ const finalizar = () => {
 * {
     font-family: "Inter", sans-serif;
 }
-.closeModal{
+
+.closeModal {
     position: absolute;
     right: 0;
 }
 
-.semItem img{
+
+.semItem img {
     height: 50%;
     width: 50%;
     margin: auto;
 }
-.semItem{
+
+.semItem {
     display: flex;
     height: 100%;
 }
+
 .containerPedidos {
-    z-index: 2000;
+    z-index: 3;
     background-color: #2D2D2D;
-    width: 65%;
+    width: 60%;
     height: 100%;
     position: absolute;
     top: 0;
@@ -89,25 +104,32 @@ const finalizar = () => {
     display: flex;
     position: fixed;
 }
-.slide-enter-active, .slide-leave-active {
+
+.slide-enter-active,
+.slide-leave-active {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
 .slide-enter-from {
     transform: translateX(100%);
     opacity: 0;
 }
+
 .slide-enter-to {
     transform: translateX(0);
     opacity: 1;
 }
+
 .slide-leave-from {
     transform: translateX(0);
     opacity: 1;
 }
+
 .slide-leave-to {
     transform: translateX(100%);
     opacity: 0;
 }
+
 .pedidos {
     width: 100%;
     height: 100%;
@@ -185,7 +207,7 @@ i {
     font-size: 25px;
     text-align: end;
     width: 100px;
-    margin-right: 30px; 
+    margin-right: 30px;
 }
 
 .botaoExcluir {
@@ -193,10 +215,10 @@ i {
     text-align: center;
     cursor: pointer;
 }
-.pedidoUsuario{
+
+.pedidoUsuario {
     box-shadow: 0px -75px 77.4px 0px #282828;
     z-index: 1;
-    position: fixed; 
 }
 
 .infoPedido {
@@ -242,34 +264,5 @@ i {
 
 .pedirConta {
     background-color: #FF8000;
-}
-
-@media (max-height: 970px) {
-    .item-1 {
-        padding: 1.4rem 0;
-    }
-
-    .itens {
-        height: 60%;
-    }
-}
-
-@media (min-width: 1700px) {
-    .botoesPedido {
-        margin: 32px 50px 49px 50px;
-    }
-
-    .infoPedido {
-        margin: 41px 60px;
-        margin-bottom: 32px;
-    }
-
-    .botoesPedido button {
-        width: 450px;
-        height: 70px;
-        border-radius: 20px;
-        font-size: 32px;
-    }
-
 }
 </style>

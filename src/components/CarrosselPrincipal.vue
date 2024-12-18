@@ -1,12 +1,12 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
-import { Autoplay, Mousewheel } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 
 const fotos = [
-  "img1.jpeg",
-  "img2.jpg",
-  "img3.jpg",
+  "img1.svg",
+  "img2.svg",
+  "img3.svg"
 ];
 
 const modules = [Autoplay];
@@ -34,9 +34,8 @@ const modules = [Autoplay];
 <style>
 
 .modulos{
-  height: 500px;
-  width: 1150px;
-  z-index: 2;
+  height: 520px;
+  width: 97%;
   border-radius: 8px;
 }
 
@@ -44,8 +43,7 @@ const modules = [Autoplay];
   height: 100%;
   width: 100%;
   object-fit: cover;
-  margin-right: 20px;
-  margin-top: 20px; 
+  margin-top: 10px; 
   border-radius: 8px;
 } 
 

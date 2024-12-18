@@ -5,12 +5,11 @@ import { useRodizioStore } from '@/stores/rodizio';
 
 const rodizioStore = useRodizioStore();
 const cartStore = useCartStore();
-const input = ref();
 const confirmar = ref(true);
-const contadorRodizio = ref(0);
+const contadorRodizio = ref(1);
 const FuncaoEspansao = ref(true);
 
-const props = defineProps({
+defineProps({
     item: Object,
     isOpen: Boolean
 });
@@ -33,41 +32,49 @@ function TirarRodizio() {
 function FuncaoContinuar() {
   if (contadorRodizio.value > 0) {
     const rodizio = {
-      id: 'rodizio', // ID fixo para identificar rodízio no carrinho
+      id: 'rodizio',
       name: 'Rodízio',
       quantity: contadorRodizio.value,
-      price: rodizioStore.pricePerUnit || 120, // Use o preço da store ou defina um padrão
+      price: rodizioStore.pricePerUnit || 120, 
       totalPrice: (rodizioStore.pricePerUnit || 120) * contadorRodizio.value
     };
 
-    // Adiciona o rodízio ao carrinho
     cartStore.addRodizio(rodizio);
     console.log('Rodízio adicionado ao carrinho:', rodizio);
-
-    // Verificar se o rodízio foi realmente adicionado
     console.log('Carrinho atual:', cartStore.items);
   } else {
     console.warn('Nenhum rodízio selecionado!');
   }
 
-  confirmar.value = false; // Fecha a modal internamente
+  confirmar.value = false; 
   console.log('Emitindo FinalModal');
-  cartStore.$state.isRodizioVisible = false; // Fecha a modal externa se necessário
-  emit('FinalModal'); // Notifica o pai para fechar a modal
+  cartStore.$state.isRodizioVisible = false; 
+  emit('FinalModal'); 
+  contadorRodizio.value = 1;
 }
 function voltarPagina() {
   FuncaoEspansao.value = false;
   emit('voltarParaProdutos');
-  cartStore.$state.isRodizioVisible = false
+  cartStore.$state.isRodizioVisible = false;
+  contadorRodizio.value = 1;
 }
+const handler = computed( () => {
+  if (cartStore.isRodizioVisible) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = 'initial';
+  }
+  return null;
+})
 
 </script>
 <template>
+  {{ handler }}
   <div v-if="cartStore.isRodizioVisible" class="bem-vindo">
     <div class="container">
       <div class="input-container">
         <label class="alacarte" for="rodizio">
-          <span style="display: flex;">Rodízio  <p style="display: flex; margin-left: 100%">R$120,00</p></span>
+          <span>Rodízio<p>R${{ (120 * contadorRodizio).toFixed(2) }}</p></span>
         </label>
       </div>
       <div class="contador-rodizio">
@@ -75,7 +82,7 @@ function voltarPagina() {
           <p>Número de rodízios:</p>
         </div>
         <button @click="TirarRodizio">-</button>
-        <span>{{ contadorRodizio  }}</span> 
+        <span>{{ contadorRodizio }}</span> 
         <button @click="AdicionarRodizio">+</button>
       </div>
       <div class="aviso">
@@ -90,7 +97,7 @@ function voltarPagina() {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 * {
-  z-index: 900;
+  z-index: 3;
 }
 .aviso {
   width: calc(500px - 60px);
@@ -117,6 +124,13 @@ function voltarPagina() {
   font-weight: bold;
   margin-left: 32px;
   width: calc(500px - 120px);
+}
+span p {
+  display: flex;
+  margin-left: 100%;
+}
+span{
+  display: flex;
 }
 
 .contador-rodizio button {

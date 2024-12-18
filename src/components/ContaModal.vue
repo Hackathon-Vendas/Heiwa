@@ -1,120 +1,79 @@
 <script setup>
-import { ref } from 'vue'
-import ModalPedidos from './ModalPedidos.vue';
+import { useCartStore } from '../stores/cartStore';
+import axios from '@/plugins/axios';
 
-const props = defineProps({
-  isOpen: Boolean
+const cartStore = useCartStore();
+
+defineProps({
+    isOpen: Boolean
 });
 
-const emit = defineEmits(["update:isOpen", 'modal']);
+defineEmits(["update:isOpen", 'modal']);
 
-const modalConta = ref(false)
-function closeModal() {
-    modalConta.value = false
-    emit('modal')
+const closeModal = () => {
+    cartStore.$state.isContaVisible = false
+    axios.get('/mercadop/redirect')
+        .then((response) => {
+            window.location.href = response.data.redirect_url
+        })
+
+    document.body.style.overflow = '';
 }
 </script>
 <template>
-    <div v-if="props.isOpen" class="overlay"></div>
-    <div v-if="props.isOpen" class="modalC">
-    <div class="conta">
-        <div class="informacoesConta">
-        <h1>CONTA</h1>
-        <img class="sair" src="/Vector.png " @click="closeModal" />
-        </div>
-        <div class="itens">
-        <div class="item-1">
-            <p class="quantidade">1X</p>
-            <p class="item">Água</p>
-            <p class="valor">7,99</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        <div class="item-1">
-            <p class="quantidade">2X</p>
-            <p class="item">Rodízios</p>
-            <p class="valor">R$214,90</p>
-        </div>
-        </div>
-        <div class="conta-footer">
-        <div class="subtotal">
-            <p class="subtotal-text">SUBTOTAL:</p>
-            <div class="subtotal-values">
-            <p class="subtotal-original">R$759,78 <span>+10%</span></p>
-            <p class="subtotal-final">R$835,10</p>
+    <div v-if="cartStore.$state.isContaVisible" class="overlay"></div>
+    <div v-if="cartStore.$state.isContaVisible" class="modalC">
+        <div class="conta">
+            <div class="informacoesConta">
+                <h1>CONTA</h1>
+                <img class="sair" src="/Vector.png " @click="closeModal" />
+            </div>
+            <div class="itens">
+                <div class="item-1" v-for="item in cartStore.items" :key="item.id">
+                    <p class="quantidade">{{ item.quantity }}</p>
+                    <p class="item">{{ item.name }}</p>
+                    <p class="valor">R$ {{ item.totalPrice.toFixed(2) }}</p>
+                </div>
+            </div>
+            <div class="conta-footer">
+                <div class="total">
+                    <p>TOTAL:</p>
+                    <p>R$ {{ cartStore.totalPrice.toFixed(2) }}</p>
+                </div>
+
+                <button @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
             </div>
         </div>
-
-        <div class="total">
-            <p>TOTAL:</p>
-            <p>R$835,10</p>
-        </div>
-
-        <button  @click="closeModal" class="finalizar-conta">FINALIZAR CONTA</button>
-        </div>
-    </div>
     </div>
 </template>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 * {
-        font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
+
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(3, 0, 0, 0.829);
+    background-color: rgba(3, 0, 0, 0.2);
     z-index: 10;
     backdrop-filter: blur(10px);
 }
+
 .modalC {
     background-color: #2d2d2d;
     width: 85%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    max-width: 93%;
-    margin: auto;
-    margin-top: 50px;
-    position: relative;
+    height: 80vh;
+    position: fixed;
     border-radius: 20px;
     z-index: 20;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
 }
 
 .conta {
@@ -125,11 +84,13 @@ function closeModal() {
 .sair {
     margin-right: 75px;
 }
+
 .informacoesConta {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
 .informacoesConta h1 {
     text-align: center;
     flex-grow: 1;
@@ -139,6 +100,7 @@ function closeModal() {
     font-size: 40px;
     letter-spacing: 0.17em;
 }
+
 .itens {
     display: flex;
     flex-direction: column;
@@ -147,6 +109,7 @@ function closeModal() {
     height: 64%;
     overflow-y: scroll;
 }
+
 .item-1 {
     width: 100%;
     display: flex;
@@ -160,6 +123,7 @@ function closeModal() {
     color: white;
     font-weight: bold;
 }
+
 .quantidade {
     font-size: 30px;
     padding-left: 30px;
@@ -167,6 +131,7 @@ function closeModal() {
     padding-right: 25.3px;
     text-align: center;
 }
+
 .item {
     font-size: 20px;
     padding-right: 459px;
@@ -181,7 +146,7 @@ function closeModal() {
 .conta-footer {
     padding: 20px;
     background-color: #333333;
-    border-top: 2px solid #6B6B6B; 
+    border-top: 2px solid #6B6B6B;
     padding-top: 15px;
     margin-top: 20px;
 }
@@ -191,11 +156,12 @@ function closeModal() {
     width: 93%;
     margin: auto;
     justify-content: space-between;
-    background-color: #555555; 
+    background-color: #555555;
     padding: 30px 20px;
     border-radius: 20px;
     margin-bottom: 20px;
-    font-weight: bold;flex-wrap: nowrap;
+    font-weight: bold;
+    flex-wrap: nowrap;
     align-items: baseline;
 
 }
@@ -217,12 +183,12 @@ function closeModal() {
 
 .subtotal-original span {
     font-size: 0.8rem;
-    color: #bcbcbc; 
+    color: #bcbcbc;
 }
 
 .subtotal-final {
     font-size: 1.5rem;
-    color: #85DE66; 
+    color: #85DE66;
     margin-top: 5px;
 }
 
@@ -244,7 +210,7 @@ function closeModal() {
     font-size: 30px;
     font-weight: bold;
     color: white;
-    background-color: #b93333; 
+    background-color: #b93333;
     border: none;
     border-radius: 20px;
     cursor: pointer;

@@ -1,13 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { toast } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
+import { useMesaStore } from '@/stores/mesa'; 
+
+const mesaStore = useMesaStore();
 
 const FuncaoExpandir = ref(true);
 const numMesa = ref(null);
-const emit = defineEmits([
-    'proximoModal'
-]);
+const emit = defineEmits(['proximoModal']);
 
 function Permissao() {
     if (numMesa.value < 1 || numMesa.value > 90) {
@@ -23,7 +24,10 @@ function Permissao() {
     }
 }
 
-
+onMounted(async () => {
+    await mesaStore.getAllMesa();
+});
+console.log(mesaStore.mesa  )
 </script>
 
 <template>
@@ -33,7 +37,10 @@ function Permissao() {
                 <h1>DIGITE O NÚMERO DA SUA MESA</h1>
                 <div class="input-container">
                     <img src="/Mesa.png" class="input-icon">
-                    <input type="number" min="1" max="90" id="numMesa" required v-model="numMesa">
+                    <select name="teste" id="numMesa" v-model="numMesa">
+                        <option value="" disabled>Selecione uma mesa</option>
+                        <option :value="mesa.id" v-for="mesa in mesaStore.mesa" :key="mesa.id">{{ mesa.mesaNumber }}</option>
+                    </select>
                 </div>
                 <button @click="Permissao" class="continue-button">CONTINUAR</button>
             </div>
@@ -43,6 +50,8 @@ function Permissao() {
 
 
 <style scoped>
+
+ 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 *{
@@ -63,7 +72,7 @@ function Permissao() {
 }
 
 
-input {
+ select {
     margin-top: 15px;
     width: 85%;
     height: 55px;
@@ -74,7 +83,8 @@ input {
     font-weight: 500;
 }
 
-input:focus {
+
+select:focus {
     outline: none;
 }
 

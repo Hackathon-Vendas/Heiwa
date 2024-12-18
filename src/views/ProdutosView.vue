@@ -6,7 +6,8 @@ import ModalProducts from '@/components/ModalProducts.vue';
 import { useAlcoolicaStore, useEntradaStore, useEntradaRStore, usePrincipalStore, usePrincipalRStore, useBebidaStore, useSobremesaStore, useSobremesaRStore} from '@/stores/produto';
 import { useBentradaStore, useBprincipalStore, useBalcoolicaStore, useBbebidasStore, useBsobremeStore } from '@/stores/banner';
 import { useRoute } from 'vue-router';
-
+import MenuVue from '@/components/MenuVue.vue';
+import HeaderVue from '@/components/HeaderVue.vue'
 const route = useRoute();
 
 onMounted(() => {
@@ -70,6 +71,8 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
 </script>
 
 <template>
+  <MenuVue />
+  <HeaderVue />
   <ModalProducts v-model:isOpen="show" :item="itemSelecionado" />
   <div id="entradas">
     <div v-for="banner in Bentradas" :key="banner">
@@ -85,30 +88,6 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
     </div>
     <div v-for="item in principais" :key="item">
       <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
-    </div>
-  </div>
-  <div id="entradasR" class="section">
-    <div v-for="banner in Bentradas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-    <div v-for="item in entradasR" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
-    </div>
-  </div>
-  <div id="principaisR" class="section">
-    <div v-for="banner in Bprincipais" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-    <div v-for="item in principaisR" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
-    </div>
-  </div>
-  <div id="sobremesasR">
-    <div v-for="banner in Bsobremesas" :key="banner">
-      <TopoProduto :image="banner.image" :title="banner.title" />
-    </div>
-    <div v-for="item in sobremesasR" :key="item">
-      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
     </div>
   </div>
   <div id="bebidas">
@@ -134,6 +113,31 @@ const Bsobremesas = BsobremeStore.Bsobremesas;
   <div v-for="item in sobremesas" :key="item">
     <Produtos :name="item.name" :description="item.description" :unit="item.unit" :price="item.price" :imagem="item.imagem" @click="openModal(item)" />
   </div>
+  <div id="entradasR" class="section">
+    <div v-for="banner in Bentradas" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
+    <div v-for="item in entradasR" :key="item">
+      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
+    </div>
+  </div>
+  <div id="principaisR" class="section">
+    <div v-for="banner in Bprincipais" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
+    <div v-for="item in principaisR" :key="item">
+      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
+    </div>
+  </div>
+  <div id="sobremesasR">
+    <div v-for="banner in Bsobremesas" :key="banner">
+      <TopoProduto :image="banner.image" :title="banner.title" />
+    </div>
+    <div v-for="item in sobremesasR" :key="item">
+      <Produtos :name="item.name" :description="item.description" :unit="item.unit" :imagem="item.imagem" @click="openModal(item)" />
+    </div>
+  </div>
+
   </div>
 </template>
 
