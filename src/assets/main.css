@@ -1,9 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+  --cor-fundo-input: #6B6B6B;
+  --cor-borda-input-radio: #85DE66;
+  --cor-fundo-bottom: #B93333;
+  --cor-borda-input: #D9D9D9;
+  --cor-letra-bottom-border: #ffffff;
+  --cor-fundoSite-icon: #000000d8;
+  --cor-voltar: #00000000;
+  --cor-fundo:  #1e1e1e;
+}
+
+
 *{
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    font-family: "Inter", sans-serif;
   }
   
   body{
-    background-color: #1E1E1E
+    background-color:var(--cor-fundo)
   }
+main {
+  height: 100%;
+}
